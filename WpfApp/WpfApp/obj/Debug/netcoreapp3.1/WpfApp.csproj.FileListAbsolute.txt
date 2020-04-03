@@ -1,0 +1,17 @@
+J:\WpfDesigns\WpfApp\WpfApp\bin\Debug\netcoreapp3.1\WpfApp.exe
+J:\WpfDesigns\WpfApp\WpfApp\bin\Debug\netcoreapp3.1\WpfApp.deps.json
+J:\WpfDesigns\WpfApp\WpfApp\bin\Debug\netcoreapp3.1\WpfApp.runtimeconfig.json
+J:\WpfDesigns\WpfApp\WpfApp\bin\Debug\netcoreapp3.1\WpfApp.runtimeconfig.dev.json
+J:\WpfDesigns\WpfApp\WpfApp\bin\Debug\netcoreapp3.1\WpfApp.dll
+J:\WpfDesigns\WpfApp\WpfApp\bin\Debug\netcoreapp3.1\WpfApp.pdb
+J:\WpfDesigns\WpfApp\WpfApp\obj\Debug\netcoreapp3.1\WpfApp.csprojAssemblyReference.cache
+J:\WpfDesigns\WpfApp\WpfApp\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+J:\WpfDesigns\WpfApp\WpfApp\obj\Debug\netcoreapp3.1\App.g.cs
+J:\WpfDesigns\WpfApp\WpfApp\obj\Debug\netcoreapp3.1\WpfApp_MarkupCompile.cache
+J:\WpfDesigns\WpfApp\WpfApp\obj\Debug\netcoreapp3.1\WpfApp_MarkupCompile.lref
+J:\WpfDesigns\WpfApp\WpfApp\obj\Debug\netcoreapp3.1\MainWindow.baml
+J:\WpfDesigns\WpfApp\WpfApp\obj\Debug\netcoreapp3.1\WpfApp.g.resources
+J:\WpfDesigns\WpfApp\WpfApp\obj\Debug\netcoreapp3.1\WpfApp.AssemblyInfoInputs.cache
+J:\WpfDesigns\WpfApp\WpfApp\obj\Debug\netcoreapp3.1\WpfApp.AssemblyInfo.cs
+J:\WpfDesigns\WpfApp\WpfApp\obj\Debug\netcoreapp3.1\WpfApp.dll
+J:\WpfDesigns\WpfApp\WpfApp\obj\Debug\netcoreapp3.1\WpfApp.pdb
