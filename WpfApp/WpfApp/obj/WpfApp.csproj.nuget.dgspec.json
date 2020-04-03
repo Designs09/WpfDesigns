@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "J:\\WpfDesigns\\WpfApp\\WpfApp\\WpfApp.csproj": {}
+    "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp\\WpfApp.csproj": {}
   },
   "projects": {
-    "J:\\WpfDesigns\\WpfApp\\WpfApp\\WpfApp.csproj": {
+    "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp\\WpfApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "J:\\WpfDesigns\\WpfApp\\WpfApp\\WpfApp.csproj",
+        "projectUniqueName": "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp\\WpfApp.csproj",
         "projectName": "WpfApp",
-        "projectPath": "J:\\WpfDesigns\\WpfApp\\WpfApp\\WpfApp.csproj",
+        "projectPath": "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp\\WpfApp.csproj",
         "packagesPath": "C:\\Users\\l\\.nuget\\packages\\",
-        "outputPath": "J:\\WpfDesigns\\WpfApp\\WpfApp\\obj\\",
+        "outputPath": "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\l\\AppData\\Roaming\\NuGet\\NuGet.Config",
