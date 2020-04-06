@@ -38,7 +38,7 @@ namespace WpfApp.ConsoleOut
 
             //WPF支持
             System.Windows.Markup.XamlReader xr;
-            System.Windows.Markup.XamlWriter xw;
+            //System.Windows.Markup.XamlWriter xw;
         }
         #endregion
 

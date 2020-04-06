@@ -114,7 +114,24 @@
                 <TextBlock Text="Input" FontWeight="Bold" Margin="0 10"/>
                 <!-- TextBox -->
                 <TextBlock Text="TextBox" Margin="{StaticResource textBlockMargin}" />
-                <TextBox/>
+                <TextBox Name="textBox1"
+         TextWrapping="Wrap"
+         Margin="10, 10, 5, 5" Grid.Row="7">
+                    The quick brown fox jumps over the lazy dog.
+                    <TextBox.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="_Bold"
+                IsCheckable="True"/>
+                            <MenuItem Header="_Italic"
+                IsCheckable="True" />
+                            <Separator />
+                            <MenuItem Header="I_ncrease Font Size"/>
+                            <MenuItem Header="_Decrease Font Size"/>
+
+                        </ContextMenu>
+                    </TextBox.ContextMenu>
+                </TextBox>
+
                 <!-- RichTextBox -->
                 <TextBlock Text="RichTextBox" Margin="{StaticResource textBlockMargin}" />
                 <RichTextBox />
@@ -131,6 +148,9 @@
 
                 <!-- Menus -->
                 <TextBlock Text="Menus" FontWeight="Bold" Margin="0 10"/>
+                <Menu />
+                <ToolBar />
+
 
                 <!-- Navigation -->
                 <TextBlock Text="Navigation" FontWeight="Bold" Margin="0 10"/>
@@ -140,6 +160,23 @@
 
                 <!-- User Information -->
                 <TextBlock Text="User Information" FontWeight="Bold" Margin="0 10"/>
+
+                <!-- Others -->
+                <TextBlock Text="Others" FontWeight="Bold" Margin="0 10"/>
+                <RibbonComboBox Label="1" 
+                  SelectionBoxWidth="62"
+                  VerticalAlignment="Center" 
+                  IsEditable="True" >
+                    <RibbonGallery SelectedValue="Green"
+                          SelectedValuePath="Content"
+                          MaxColumnCount="1">
+                        <RibbonGalleryCategory>
+                            <RibbonGalleryItem Content="Green" Foreground="Green" />
+                            <RibbonGalleryItem Content="Blue" Foreground="Blue" />
+                            <RibbonGalleryItem Content="Orange" Foreground="Orange" />
+                        </RibbonGalleryCategory>
+                    </RibbonGallery>
+                </RibbonComboBox>
 
             </StackPanel>
         </Grid>
