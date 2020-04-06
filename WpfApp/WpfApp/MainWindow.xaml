@@ -1,12 +1,59 @@
 ﻿<Window x:Class="WpfApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"       
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp"
+        xmlns:local="clr-namespace:WpfApp.Model;assembly=WpfApp.Model"
+        xmlns:k="clr-namespace:System;assembly=System.Runtime"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Window.Resources>
+        <LinearGradientBrush x:Key="gradientBrush1" StartPoint="0.5,0.0" EndPoint="0.5,1.0">
+            <GradientStop Offset="0" Color="Yellow"/>
+            <GradientStop Offset="0.3" Color="Orange"/>
+            <GradientStop Offset="0.7" Color="Red"/>
+            <GradientStop Offset="1" Color="DarkRed"/>
+        </LinearGradientBrush>
+    </Window.Resources>
+    <StackPanel Button.Click="StackPanel_Click">
+        <!--<Button Background="LightGoldenrodYellow" Click="Button_Click_1" PreviewMouseMove="Button_PreviewMouseMove_1" MouseMove="Button_MouseMove_1">-->
+        <Button Background="LightGoldenrodYellow" Click="Button_Click_1">
+            <ListBox>
+                <!--<Button Content="点击内部1" Click="Button_Click" PreviewMouseMove="Button_PreviewMouseMove" MouseMove="Button_MouseMove"/>-->
+                <Button Content="点击内部1" Click="Button_Click"/>
+                <Button Content="点击内部1" Click="Button_Click"/>
+                <Button Content="点击内部2"/>
+                <Button Content="点击内部3"/>
+            </ListBox>
+        </Button>
+        <!--<Button Background="{StaticResource gradientBrush1}">-->
+        <Button>
+            <Button.Background>
+                <StaticResourceExtension ResourceKey="gradientBrush1"/>
+            </Button.Background>
+            <Button.Content>
+                <k:String>
+                    点击
+                </k:String>
+            </Button.Content>
+        </Button>
 
-    </Grid>
+        <ListBox ItemsSource="{Binding}">
+        </ListBox>
+
+        <ListBox>
+            <ListBox.Items>
+                <!--<x:Array Type="local:Person">
+                    <local:Person FirstName="Wang" LastName="Wu"/>
+                    <local:Person FirstName="Li" LastName="Si"/>
+                </x:Array> -->
+                <!--<ObservableCollection x:TypeArguments="local:Person">
+                    <local:Person FirstName="Wang" LastName="Wu"/>
+                    <local:Person FirstName="Li" LastName="Si"/>
+                </ObservableCollection>-->
+                <local:Person FirstName="Wang" LastName="Wu"/>
+                <local:Person FirstName="Li" LastName="Si"/>
+            </ListBox.Items>
+        </ListBox>
+    </StackPanel>
 </Window>

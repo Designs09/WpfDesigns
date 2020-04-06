@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "WpfApp.Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/WpfApp.Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WpfApp.Model.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "WpfApp.Model/1.0.0": {
+      "type": "project",
+      "path": "../WpfApp.Model/WpfApp.Model.csproj",
+      "msbuildProject": "../WpfApp.Model/WpfApp.Model.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "WpfApp.Model >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\l\\.nuget\\packages\\": {}
@@ -32,7 +51,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj": {
+              "projectPath": "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -61,7 +84,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

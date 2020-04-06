@@ -7,14 +7,27 @@
   "targets": {
     ".NETCoreApp,Version=v3.1": {
       "WpfApp/1.0.0": {
+        "dependencies": {
+          "WpfApp.Model": "1.0.0"
+        },
         "runtime": {
           "WpfApp.dll": {}
+        }
+      },
+      "WpfApp.Model/1.0.0": {
+        "runtime": {
+          "WpfApp.Model.dll": {}
         }
       }
     }
   },
   "libraries": {
     "WpfApp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WpfApp.Model/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

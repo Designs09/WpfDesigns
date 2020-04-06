@@ -1,0 +1,147 @@
+﻿<Window x:Class="WpfApp.WPFControls"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        mc:Ignorable="d"
+        Title="WPFControls" Height="1000" Width="800">
+    <Window.Resources>
+        <Thickness x:Key="textBlockMargin" >
+            0 5
+        </Thickness>
+    </Window.Resources>
+    <Border Margin="10">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Column 1 -->
+            <StackPanel Grid.Column="0">
+                <!-- Buttons -->
+                <TextBlock Text="Buttons" FontWeight="Bold" Margin="0 10"/>
+                <!-- Button -->
+                <TextBlock Text="Button" Margin="{StaticResource textBlockMargin}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="OpenButton" Click="OpenButton_Click" Grid.Column="0" Content="Open" Margin="0 0 10 0"/>
+                    <Button x:Name="SaveButton" Click="SaveButton_Click" Grid.Column="1" Content="Save" />
+                    <Button x:Name="PrintButton" Click="PrintButton_Click" Grid.Column="2" Content="Print" Margin="10 0" />
+                </Grid>
+                <!-- RepeatButton -->
+                <TextBlock Text="RepeatButton" Margin="{StaticResource textBlockMargin}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <RepeatButton Grid.Column="0" Content="Repeat" Margin="0 0 10 0"/>
+                </Grid>
+
+
+                <!-- Data Display -->
+                <TextBlock Text="Data Display" FontWeight="Bold" Margin="0 10"/>
+                <!-- DataGrid -->
+                <TextBlock Text="DataGrid" Margin="{StaticResource textBlockMargin}" />
+                <!--<DataGrid/>-->
+                <!-- ListView -->
+                <TextBlock Text="ListView" Margin="{StaticResource textBlockMargin}" />
+                <!--<ListView/>-->
+                <!-- TreeView -->
+                <TextBlock Text="TreeView" Margin="{StaticResource textBlockMargin}" />
+                <TreeView>
+                    <TreeViewItem Header="Emplyee1">
+                        <TreeViewItem Header="Jaspar">
+                            <TreeViewItem Header="Jane" />
+                            <TreeViewItem Header="Jim" />
+                            <TreeViewItem Header="Jao" />
+                        </TreeViewItem>
+                        <TreeViewItem Header="Jack" />
+                        <TreeViewItem Header="James" />
+                    </TreeViewItem>
+                    <TreeViewItem Header="Emplyee2">
+                        <TreeViewItem Header="Michael" />
+                        <TreeViewItem Header="Mick" />
+                        <TreeViewItem Header="Mary" />
+                    </TreeViewItem>
+                </TreeView>
+
+                <!-- Date Display and Selection -->
+                <TextBlock Text="Date Display and Selection" FontWeight="Bold" Margin="0 10"/>
+                <!-- Calendar -->
+                <TextBlock Text="Calendar" Margin="{StaticResource textBlockMargin}" />
+                <Calendar Margin="10 0" />
+                <!-- DatePicker -->
+                <TextBlock Text="DatePicker" Margin="{StaticResource textBlockMargin}" />
+                <DatePicker />
+
+                <!-- Digital Ink -->
+                <TextBlock Text="Digital Ink" FontWeight="Bold" Margin="0 10"/>
+                <!-- InkCanavas -->
+                <TextBlock Text="InkCanavas" Margin="{StaticResource textBlockMargin}" />
+                <!-- InkPresenter -->
+                <TextBlock Text="InkPresenter" Margin="{StaticResource textBlockMargin}" />
+
+                <!-- Documents -->
+                <TextBlock Text="Documents" FontWeight="Bold" Margin="0 10"/>
+                <!-- DocumentViewer -->
+                <TextBlock Text="DocumentViewer" Margin="{StaticResource textBlockMargin}" />
+                <!--<DocumentViewer />-->
+                <!-- FlowDocumentPageViewer -->
+                <TextBlock Text="FlowDocumentPageViewer" Margin="{StaticResource textBlockMargin}" />
+                <FlowDocumentPageViewer />
+                <!-- FlowDocumentReader -->
+                <TextBlock Text="FlowDocumentReader" Margin="{StaticResource textBlockMargin}" />
+                <FlowDocumentReader />
+                <!-- FlowDocumentScrollViewer -->
+                <TextBlock Text="FlowDocumentScrollViewer" Margin="{StaticResource textBlockMargin}" />
+                <FlowDocumentScrollViewer />
+                <!-- StickyNoteControl -->
+                <TextBlock Text="StickyNoteControl" Margin="{StaticResource textBlockMargin}" />
+
+            </StackPanel>
+
+            <!-- Column 2 -->
+            <StackPanel Grid.Column="2">
+                <!-- Input -->
+                <TextBlock Text="Input" FontWeight="Bold" Margin="0 10"/>
+                <!-- TextBox -->
+                <TextBlock Text="TextBox" Margin="{StaticResource textBlockMargin}" />
+                <TextBox/>
+                <!-- RichTextBox -->
+                <TextBlock Text="RichTextBox" Margin="{StaticResource textBlockMargin}" />
+                <RichTextBox />
+                <!-- PasswordBox -->
+                <TextBlock Text="PasswordBox" Margin="{StaticResource textBlockMargin}" />
+                <PasswordBox />
+
+                <!-- Layout -->
+                <TextBlock Text="Layout" FontWeight="Bold" Margin="0 10"/>
+
+                <!-- Media -->
+                <TextBlock Text="Media" FontWeight="Bold" Margin="0 10"/>
+                <Image />
+
+                <!-- Menus -->
+                <TextBlock Text="Menus" FontWeight="Bold" Margin="0 10"/>
+
+                <!-- Navigation -->
+                <TextBlock Text="Navigation" FontWeight="Bold" Margin="0 10"/>
+
+                <!-- Selection -->
+                <TextBlock Text="Selection" FontWeight="Bold" Margin="0 10"/>
+
+                <!-- User Information -->
+                <TextBlock Text="User Information" FontWeight="Bold" Margin="0 10"/>
+
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>
