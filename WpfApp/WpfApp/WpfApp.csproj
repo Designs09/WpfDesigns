@@ -10,4 +10,10 @@
     <ProjectReference Include="..\WpfApp.Model\WpfApp.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Images\drive.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

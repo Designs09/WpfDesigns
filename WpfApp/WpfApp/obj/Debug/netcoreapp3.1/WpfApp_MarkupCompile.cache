@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 J:\WpfDesigns\Designs09\WpfApp\WpfApp\App.xaml
-3130911252
+41354365758
 
-7773719158
+8812194678
 193952477173
-MainWindow.xaml;WPFBasics.xaml;WPFControls.xaml;
+MainWindow.xaml;WPFBasics.xaml;WPFControls.xaml;WpfTreeView.xaml;
 
 False
 
