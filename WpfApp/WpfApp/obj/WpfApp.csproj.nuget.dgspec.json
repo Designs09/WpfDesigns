@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp\\WpfApp.csproj": {}
+    "F:\\Repository\\WpfDesigns\\WpfApp\\WpfApp\\WpfApp.csproj": {}
   },
   "projects": {
-    "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj": {
+    "F:\\Repository\\WpfDesigns\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj",
+        "projectUniqueName": "F:\\Repository\\WpfDesigns\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj",
         "projectName": "WpfApp.Model",
-        "projectPath": "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj",
-        "packagesPath": "C:\\Users\\l\\.nuget\\packages\\",
-        "outputPath": "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp.Model\\obj\\",
+        "projectPath": "F:\\Repository\\WpfDesigns\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj",
+        "packagesPath": "C:\\Users\\GW-001\\.nuget\\packages\\",
+        "outputPath": "F:\\Repository\\WpfDesigns\\WpfApp\\WpfApp.Model\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\l\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\GW-001\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +25,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\GW-001\\AppData\\Local\\Esri\\NuGet": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -56,17 +60,20 @@
         }
       }
     },
-    "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp\\WpfApp.csproj": {
+    "F:\\Repository\\WpfDesigns\\WpfApp\\WpfApp\\WpfApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp\\WpfApp.csproj",
+        "projectUniqueName": "F:\\Repository\\WpfDesigns\\WpfApp\\WpfApp\\WpfApp.csproj",
         "projectName": "WpfApp",
-        "projectPath": "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp\\WpfApp.csproj",
-        "packagesPath": "C:\\Users\\l\\.nuget\\packages\\",
-        "outputPath": "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp\\obj\\",
+        "projectPath": "F:\\Repository\\WpfDesigns\\WpfApp\\WpfApp\\WpfApp.csproj",
+        "packagesPath": "C:\\Users\\GW-001\\.nuget\\packages\\",
+        "outputPath": "F:\\Repository\\WpfDesigns\\WpfApp\\WpfApp\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\l\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\GW-001\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -74,13 +81,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\GW-001\\AppData\\Local\\Esri\\NuGet": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj": {
-                "projectPath": "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj"
+              "F:\\Repository\\WpfDesigns\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj": {
+                "projectPath": "F:\\Repository\\WpfDesigns\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj"
               }
             }
           }
