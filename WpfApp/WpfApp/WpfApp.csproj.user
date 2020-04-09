@@ -18,6 +18,9 @@
     <Compile Update="WPFControls.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="WpfTreeView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\DataViewDemo.xaml">
@@ -30,6 +33,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="WPFControls.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="WpfTreeView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
