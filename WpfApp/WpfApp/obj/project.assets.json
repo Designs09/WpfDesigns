@@ -1,12 +1,29 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "WpfApp.Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/WpfApp.Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WpfApp.Model.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "WpfApp.Model/1.0.0": {
+      "type": "project",
+      "path": "../WpfApp.Model/WpfApp.Model.csproj",
+      "msbuildProject": "../WpfApp.Model/WpfApp.Model.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj"
+      "WpfApp.Model >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -70,16 +87,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1105",
-      "level": "Error",
-      "message": "找不到“J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj”的项目信息。如果使用 Visual Studio，这可能是因为该项目已被卸载或不属于当前解决方案，因此请从命令行运行还原。否则，项目文件可能无效或缺少还原所需的目标。",
-      "libraryId": "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    }
-  ]
+  }
 }
