@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fasetto.Word"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Icon="Images/Logo/penguin.ico"
+        Title="MainWindow" Height="450" Width="500">
+    <StackPanel>
+        <TextBlock Text="Welcome to the world！" FontSize="40"/>
+        <TextBlock Text="Welcome to the world！" FontSize="40" FontFamily="{StaticResource LatoRegular}"/>
+        <TextBlock Text="Welcome to the world！" FontSize="40" FontFamily="{StaticResource LatoThin}"/>
+    </StackPanel>
 </Window>

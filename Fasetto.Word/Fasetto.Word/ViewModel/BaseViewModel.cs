@@ -18,5 +18,15 @@ namespace Fasetto.Word
         /// The event that fired when any child property changes its value
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
+
+        /// <summary>
+        /// Call this to fire a <see cref="PropertyChanged"/> event
+        /// </summary>
+        /// <param name="name"></param>
+        public void OnPropertyChanged(string name)
+        {
+            // Rise the property change event
+            PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
     }
 }
