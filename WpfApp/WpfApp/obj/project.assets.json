@@ -1,49 +1,28 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {
-      "WpfApp.Model/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "compile": {
-          "bin/placeholder/WpfApp.Model.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/WpfApp.Model.dll": {}
-        }
-      }
-    }
+    ".NETCoreApp,Version=v3.1": {}
   },
-  "libraries": {
-    "WpfApp.Model/1.0.0": {
-      "type": "project",
-      "path": "../WpfApp.Model/WpfApp.Model.csproj",
-      "msbuildProject": "../WpfApp.Model/WpfApp.Model.csproj"
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "WpfApp.Model >= 1.0.0"
+      "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\GW-001\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\l\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Repository\\WpfDesigns\\WpfApp\\WpfApp\\WpfApp.csproj",
+      "projectUniqueName": "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp\\WpfApp.csproj",
       "projectName": "WpfApp",
-      "projectPath": "F:\\Repository\\WpfDesigns\\WpfApp\\WpfApp\\WpfApp.csproj",
-      "packagesPath": "C:\\Users\\GW-001\\.nuget\\packages\\",
-      "outputPath": "F:\\Repository\\WpfDesigns\\WpfApp\\WpfApp\\obj\\",
+      "projectPath": "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp\\WpfApp.csproj",
+      "packagesPath": "C:\\Users\\l\\.nuget\\packages\\",
+      "outputPath": "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\GW-001\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\l\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -51,14 +30,13 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Users\\GW-001\\AppData\\Local\\Esri\\NuGet": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "F:\\Repository\\WpfDesigns\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj": {
-              "projectPath": "F:\\Repository\\WpfDesigns\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj"
+            "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj": {
+              "projectPath": "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj"
             }
           }
         }
@@ -92,5 +70,16 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1105",
+      "level": "Error",
+      "message": "找不到“J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj”的项目信息。如果使用 Visual Studio，这可能是因为该项目已被卸载或不属于当前解决方案，因此请从命令行运行还原。否则，项目文件可能无效或缺少还原所需的目标。",
+      "libraryId": "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }
