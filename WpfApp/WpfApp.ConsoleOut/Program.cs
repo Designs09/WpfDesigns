@@ -16,7 +16,6 @@ namespace WpfApp.ConsoleOut
         [STAThread]
         static void Main(string[] args)
         {
-            CalenderType();
 
         }
 

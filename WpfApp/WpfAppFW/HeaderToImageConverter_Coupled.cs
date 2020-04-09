@@ -13,27 +13,32 @@ namespace WpfAppFW
     /// <summary>
     /// Convert a full path to a specific image type of drive, folder or file
     /// </summary>
-    [ValueConversion(typeof(DirectoryItemType), typeof(BitmapImage))]
-    public class HeaderToImageConverter : IValueConverter
+    [ValueConversion(typeof(string), typeof(BitmapImage))]
+    public class HeaderToImageConverter_Coupled : IValueConverter
     {
-        public static HeaderToImageConverter Instance = new HeaderToImageConverter();
+        public static HeaderToImageConverter_Coupled Instance = new HeaderToImageConverter_Coupled();
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            // Get the full path
+            var path = (string)value;
+
+            // If path is null, ignore
+            if (path == null)
+                return null;
+
+            // Get the name of file/folder
+            var name = DirectoryStructure.GetFileFolderName(path);
+
             // By default, we presume a image
             var image = "Images/file.png";
 
-            switch ((DirectoryItemType)value)
-            {
-                case DirectoryItemType.Drive:
-                    image = "Images/drive.png";
-                    break;
-                case DirectoryItemType.Folder:
-                    image = "Images/folder-close.png";
-                    break;
-                default:
-                    break;
-            }
+            // If the name is blank, we presume it's a drive as we cannot have a blank file or folder name
+            if (string.IsNullOrEmpty(name))
+                image = "Images/drive.png";
+            else if (new FileInfo(path).Attributes.HasFlag(FileAttributes.Directory))
+                image = "Images/folder-close.png";
+
 
             return new BitmapImage(new Uri($"pack://application:,,,/{image}"));
         }
