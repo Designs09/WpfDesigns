@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-J:\WpfDesigns\Designs09\WpfApp\WpfApp\obj\Debug\netcoreapp3.1\
+F:\Repository\WpfDesigns\WpfApp\WpfApp\obj\Debug\netcoreapp3.1\
 WpfApp
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-J:\WpfDesigns\Designs09\WpfApp\WpfApp\App.xaml
-3130911252
+F:\Repository\WpfDesigns\WpfApp\WpfApp\App.xaml
+44786676
 
-7773719158
-193952477173
-MainWindow.xaml;WPFBasics.xaml;WPFControls.xaml;
+8999069365
+193-378314276
+Controls\DataViewDemo.xaml;MainWindow.xaml;WPFBasics.xaml;WPFControls.xaml;
 
 False
 

@@ -20,6 +20,14 @@ namespace WpfApp.ConsoleOut
 
         }
 
+        #region ModelAs
+        static void ModelAs()
+        {
+            var obj = new Object();
+            //int i = obj as int;
+        }
+        #endregion
+
         #region XamlOverview
         static void XamlOverview()
         {
