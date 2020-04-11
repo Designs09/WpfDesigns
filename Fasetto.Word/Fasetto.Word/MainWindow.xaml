@@ -134,8 +134,7 @@
             />
     </WindowChrome.WindowChrome>
 
-    <Grid Background="Red">
-        <Button Content="Test" />
+    <Grid Background="{StaticResource ForegroundLightBrush}">
     </Grid>
 
 </Window>

@@ -157,6 +157,9 @@ namespace Fasetto.Word
             CloseCommand = new RelayCommand(() => mWindow.Close());
             MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(mWindow, GetMousePosition()));
 
+            // Fix window resize issue
+            var resizer = new WindowResizer(mWindow);
+
         }
         #endregion
 
