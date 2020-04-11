@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Fasetto.Word
@@ -25,8 +26,9 @@ namespace Fasetto.Word
         /// <param name="name"></param>
         public void OnPropertyChanged(string name)
         {
+            var temp = Volatile.Read(ref PropertyChanged);
             // Rise the property change event
-            PropertyChanged(this, new PropertyChangedEventArgs(name));
+            temp?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }
