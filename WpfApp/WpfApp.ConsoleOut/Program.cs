@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Baml2006;
 using System.Windows.Controls;
+using System.Windows.Interop;
 using System.Xaml;
 
 namespace WpfApp.ConsoleOut
@@ -16,8 +17,25 @@ namespace WpfApp.ConsoleOut
         [STAThread]
         static void Main(string[] args)
         {
-
+            WPFwindowhandle();
         }
+
+        #region WPFwindowhandle
+        public static void WPFwindowhandle()
+        {
+            var window = new Window();
+            window.Show();
+
+            var helper = new WindowInteropHelper(window);
+            var hwnd = helper.Handle;
+            var ownerHwnd = helper.Owner;
+
+            Console.WriteLine(hwnd);
+            Console.WriteLine(ownerHwnd);
+
+            Console.ReadLine();
+        }
+        #endregion
 
         #region ModelAs
         static void ModelAs()
