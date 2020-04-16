@@ -1,26 +1,49 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "WpfApp.Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/WpfApp.Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WpfApp.Model.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "WpfApp.Model/1.0.0": {
+      "type": "project",
+      "path": "../WpfApp.Model/WpfApp.Model.csproj",
+      "msbuildProject": "../WpfApp.Model/WpfApp.Model.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "WpfApp.Model >= 1.0.0"
+    ]
   },
   "packageFolders": {
-    "C:\\Users\\l\\.nuget\\packages\\": {}
+    "C:\\Users\\GW-001\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp\\WpfApp.csproj",
+      "projectUniqueName": "F:\\Repository\\WpfDesigns\\WpfApp\\WpfApp\\WpfApp.csproj",
       "projectName": "WpfApp",
-      "projectPath": "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp\\WpfApp.csproj",
-      "packagesPath": "C:\\Users\\l\\.nuget\\packages\\",
-      "outputPath": "J:\\WpfDesigns\\Designs09\\WpfApp\\WpfApp\\obj\\",
+      "projectPath": "F:\\Repository\\WpfDesigns\\WpfApp\\WpfApp\\WpfApp.csproj",
+      "packagesPath": "C:\\Users\\GW-001\\.nuget\\packages\\",
+      "outputPath": "F:\\Repository\\WpfDesigns\\WpfApp\\WpfApp\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\l\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\GW-001\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -28,11 +51,16 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\GW-001\\AppData\\Local\\Esri\\NuGet": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "F:\\Repository\\WpfDesigns\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj": {
+              "projectPath": "F:\\Repository\\WpfDesigns\\WpfApp\\WpfApp.Model\\WpfApp.Model.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -61,7 +89,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
