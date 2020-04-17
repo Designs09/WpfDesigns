@@ -18,14 +18,24 @@ namespace Fasetto.Word
         private Window mWindow;
 
         /// <summary>
+        /// The window resizer helper that keeps the window size correct in various states
+        /// </summary>
+        private WindowResizer mWindowResizer;
+
+        /// <summary>
         /// The margin around the window to allow for a drop shadow
         /// </summary>
-        private int mOuterMarginSize = 10;
+        private Thickness mOuterMarginSize = new Thickness(5);
 
         /// <summary>
         /// The redius of the edges of the window
         /// </summary>
         private int mWindowRadius = 10;
+
+        /// <summary>
+        /// The last known dock position
+        /// </summary>
+        private WindowDockPosition mDockPosition = WindowDockPosition.Undocked;
 
         #endregion
 
@@ -41,33 +51,41 @@ namespace Fasetto.Word
         public double WindowMinimumHeight { get; set; } = 400;
 
         /// <summary>
+        /// True if the window should be borderless beacuse it is docked or maximized
+        /// </summary>
+        public bool Borderless { get { return (mWindow.WindowState == WindowState.Maximized || mDockPosition != WindowDockPosition.Undocked); } }
+
+        /// <summary>
         /// The size of the resize border around the window
         /// </summary>
-        public int ResizeBorder { get; set; } = 6;
+        public int ResizeBorder { get { return Borderless ? 0 : 6; } }
 
         /// <summary>
         /// The size of the resize border around the window, taking into account the outer margin
         /// </summary>
-        public Thickness ResizeBorderThickness { get { return new Thickness(ResizeBorder + OuterMarginSize); } }
+        public Thickness ResizeBorderThickness => new Thickness(OuterMarginSize.Left + ResizeBorder,
+                                                                OuterMarginSize.Top + ResizeBorder,
+                                                                OuterMarginSize.Right + ResizeBorder,
+                                                                OuterMarginSize.Bottom + ResizeBorder);
 
         /// <summary>
         /// The size of the inner border of the main window 
         /// </summary>
-        public Thickness InnerContentPadding { get { return new Thickness(ResizeBorder); } }
+        public Thickness InnerContentPadding { get; set; } = new Thickness(0);
 
         /// <summary>
         /// The margin around the window to allow for a drop shadow
         /// </summary>
-        public Thickness OuterMarginSizeThickness { get { return new Thickness(OuterMarginSize); } }
+        public Thickness OuterMarginSizeThickness { get { return OuterMarginSize; } }
 
         /// <summary>
         /// The margin around the window to allow for a drop shadow
         /// </summary>
-        public int OuterMarginSize
+        public Thickness OuterMarginSize
         {
             get
             {
-                return mWindow.WindowState == WindowState.Maximized ? 0 : mOuterMarginSize;
+                return mWindow.WindowState == WindowState.Maximized ? mWindowResizer.CurrentMonitorMargin : (Borderless ? new Thickness(0) : mOuterMarginSize);
             }
             set
             {
@@ -87,7 +105,7 @@ namespace Fasetto.Word
         {
             get
             {
-                return mWindow.WindowState == WindowState.Maximized ? 0 : mWindowRadius;
+                return Borderless ? 0 : mWindowRadius;
             }
             set
             {
@@ -104,6 +122,10 @@ namespace Fasetto.Word
         /// The height of the title bar / caption of the window
         /// </summary>
         public GridLength TitleHeightGridLength { get { return new GridLength(TitleHeight); } }
+
+        /// The current page of the application
+        /// </summary>
+        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Login;
 
         #endregion
 
@@ -158,7 +180,7 @@ namespace Fasetto.Word
             MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(mWindow, GetMousePosition()));
 
             // Fix window resize issue
-            var resizer = new WindowResizer(mWindow);
+            mWindowResizer = new WindowResizer(mWindow);
 
         }
         #endregion
