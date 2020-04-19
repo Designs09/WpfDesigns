@@ -5,6 +5,7 @@
         <!-- Order is important -->
         <ResourceDictionary Source="Colors.xaml"/>
         <ResourceDictionary Source="Fonts.xaml"/>
+        <ResourceDictionary Source="Texts.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <!-- Hoverless Button -->
@@ -22,7 +23,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <!-- System Icon Button -->
     <Style TargetType="{x:Type Button}" x:Key="SystemIconButton" BasedOn="{StaticResource Hoverless}">
         <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
@@ -51,15 +52,15 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        
+
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{StaticResource BackgroundLightBrush}" />
             </Trigger>
         </Style.Triggers>
-        
+
     </Style>
-    
+
     <!-- Window Close Button -->
     <Style TargetType="{x:Type Button}" x:Key="WindowCloseButton" BasedOn="{StaticResource WindowControlButton}">
         <Style.Triggers>
@@ -80,6 +81,7 @@
         <Setter Property="FontFamily" Value="{StaticResource LatoRegular}" />
         <Setter Property="Padding" Value="50 10" />
         <Setter Property="Margin" Value="0 10" />
+        <Setter Property="local:IsBusyProperty.Value" Value="False" />
 
         <Setter Property="Template">
             <Setter.Value>
@@ -90,13 +92,23 @@
                             BorderThickness="{TemplateBinding BorderThickness}" 
                             Background="{TemplateBinding Background}" 
                             SnapsToDevicePixels="True">
-                        <TextBlock Text="{TemplateBinding Content}" 
+                        <Grid>
+                            <TextBlock Text="{TemplateBinding Content}" 
+                                   Visibility="{TemplateBinding local:IsBusyProperty.Value, Converter={local:BooleanToVisiblityConverter}}"
                                    Focusable="False" 
                                    FontFamily="{TemplateBinding FontFamily}"
                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
                                    Margin="{TemplateBinding Padding}" 
                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <TextBlock 
+                                   Style="{StaticResource SpinningText}"
+                                   FontFamily="{StaticResource FontAwesome}"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   Visibility="{TemplateBinding local:IsBusyProperty.Value, Converter={local:BooleanToVisiblityConverter}, ConverterParameter=True}"
+                                   Text="&#xf110;" />
+                        </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <EventTrigger RoutedEvent="MouseEnter">

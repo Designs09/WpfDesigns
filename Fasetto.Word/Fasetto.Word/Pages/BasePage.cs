@@ -9,8 +9,19 @@ namespace Fasetto.Word
     /// <summary>
     /// A base page for all pages to gain base functionality
     /// </summary>
-    public class BasePage : Page
+    /// <typeparam name="VM">The View Model</typeparam>
+    public class BasePage<VM> : Page
+        where VM : BaseViewModel, new()
     {
+        #region Private Member
+
+        /// <summary>
+        /// The View Model associated with this page
+        /// </summary>
+        private VM mViewModel;
+
+        #endregion
+
         #region Public Properties
 
         /// <summary>
@@ -28,6 +39,27 @@ namespace Fasetto.Word
         /// </summary>
         public float SlideSeconds { get; set; } = 0.8F;
 
+        /// <summary>
+        /// The View Model associated with this page
+        /// </summary>
+        public VM ViewModel
+        {
+            get { return mViewModel; }
+            set
+            {
+                // If nothing has changed, return
+                //This is not able to compiled if there is not a BaseViewModel constraint.
+                if (mViewModel == value)
+                    return;
+
+                // Update the value
+                mViewModel = value;
+
+                // Set the data context for the page
+                this.DataContext = mViewModel;
+            }
+        }
+
         #endregion
 
         #region Constructor
@@ -43,6 +75,9 @@ namespace Fasetto.Word
 
             // Listen out for the page loading
             this.Loaded += BasePage_Loaded;
+
+            // Create a default view model
+            this.ViewModel = new VM();
         }
 
         #endregion

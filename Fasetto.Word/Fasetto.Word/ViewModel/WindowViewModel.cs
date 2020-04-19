@@ -166,11 +166,7 @@ namespace Fasetto.Word
             mWindow.StateChanged += (sender, e) =>
             {
                 // Fire off events for all properties that are affects by a resize
-                OnPropertyChanged(nameof(ResizeBorderThickness));
-                OnPropertyChanged(nameof(OuterMarginSize));
-                OnPropertyChanged(nameof(OuterMarginSizeThickness));
-                OnPropertyChanged(nameof(WindowRadius));
-                OnPropertyChanged(nameof(WindowCornerRadius));
+                WindowResized();
             };
 
             // Create commands
@@ -179,23 +175,35 @@ namespace Fasetto.Word
             CloseCommand = new RelayCommand(() => mWindow.Close());
             MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(mWindow, GetMousePosition()));
 
-            // Fix window resize issue
             mWindowResizer = new WindowResizer(mWindow);
+            // Fix window resize issue
+            var resizer = new WindowResizer(mWindow);
+
+            //// Listen out for dock changes
+            resizer.WindowDockChanged += dock =>
+            {
+                // Store last position
+                mDockPosition = dock;
+
+                // Fire off resize events
+                WindowResized();
+            };
 
         }
         #endregion
 
         #region Private Helpers
-        [DllImport("user32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        internal static extern bool GetCursorPos(ref Win32Point pt);
 
-        [StructLayout(LayoutKind.Sequential)]
-        internal struct Win32Point
-        {
-            public Int32 X;
-            public Int32 Y;
-        }
+        //[DllImport("user32.dll")]
+        //[return: MarshalAs(UnmanagedType.Bool)]
+        //internal static extern bool GetCursorPos(ref Win32Point pt);
+
+        //[StructLayout(LayoutKind.Sequential)]
+        //internal struct Win32Point
+        //{
+        //    public Int32 X;
+        //    public Int32 Y;
+        //}
 
         ///// <summary>
         ///// Gets the current mouse position on the screen
@@ -213,6 +221,22 @@ namespace Fasetto.Word
             var position = Mouse.GetPosition(mWindow);
             return new Point(position.X + mWindow.Left, position.Y + mWindow.Top);
         }
+
+        /// <summary>
+        /// If the window resizes to a special position (docked or maximized)
+        /// this will update all required property change events to set the borders and radius values
+        /// </summary>
+        private void WindowResized()
+        {
+            // Fire off events for all properties that are affected by a resize
+            OnPropertyChanged(nameof(Borderless));
+            //OnPropertyChanged(nameof(FlatBorderThickness));
+            OnPropertyChanged(nameof(ResizeBorderThickness));
+            OnPropertyChanged(nameof(OuterMarginSize));
+            OnPropertyChanged(nameof(WindowRadius));
+            OnPropertyChanged(nameof(WindowCornerRadius));
+        }
+
         #endregion
     }
 }
