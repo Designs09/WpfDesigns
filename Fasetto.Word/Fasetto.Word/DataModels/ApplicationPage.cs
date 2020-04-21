@@ -11,6 +11,14 @@ namespace Fasetto.Word
     /// </summary>
     public enum ApplicationPage
     {
-        Login,
+        /// <summary>
+        /// The initial login page
+        /// </summary>
+        Login = 0,
+
+        /// <summary>
+        /// The main chat page
+        /// </summary>
+        Chat = 1,
     }
 }

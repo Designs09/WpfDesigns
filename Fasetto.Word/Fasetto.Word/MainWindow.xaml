@@ -12,7 +12,7 @@
         Icon="Images/Logo/penguin.ico"
         MinWidth="{Binding WindowMinimumWidth}"
         MinHeight="{Binding WindowMinimumHeight}"
-        Title="Welcome, friend" Height="600" Width="900">
+        Title="Welcome, friend" Height="600" Width="1000">
 
     <Window.Resources>
         <Style TargetType="{x:Type local:MainWindow}">
@@ -117,17 +117,28 @@
     </WindowChrome.WindowChrome>
 
     <Border Background="{StaticResource WordBlueBrush}">
+        
         <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <!-- Blue background image -->
             <Grid.Background>
                 <ImageBrush TileMode="Tile" ViewportUnits="Absolute" Viewport="0 0 500 500" ImageSource="/Images/Backgrounds/emoji-background.png"/>
             </Grid.Background>
+            
+            <Frame Grid.Column="1" x:Name="MainFrame" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}" Grid.ColumnSpan="3"></Frame>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="39*"/>
-                <ColumnDefinition Width="49*"/>
-                <ColumnDefinition Width="11*"/>
-            </Grid.ColumnDefinitions>
-            <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}" Grid.ColumnSpan="3"></Frame>
+            <!-- Side Menu -->
+            <local:SideMenuControl>
+                <StackPanel>
+                    <local:ChatListControl />
+                </StackPanel>
+            </local:SideMenuControl>
+
         </Grid>
     </Border>
 
