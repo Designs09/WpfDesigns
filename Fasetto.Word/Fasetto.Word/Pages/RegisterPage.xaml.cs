@@ -20,9 +20,9 @@ namespace Fasetto.Word
     /// <summary>
     /// LoginPage.xaml 的交互逻辑
     /// </summary>
-    public partial class LoginPage : BasePage<LoginViewModel>, IHasPassword
+    public partial class RegisterPage : BasePage<LoginViewModel>, IHasPassword
     {
-        public LoginPage()
+        public RegisterPage()
         {
             InitializeComponent();
         }

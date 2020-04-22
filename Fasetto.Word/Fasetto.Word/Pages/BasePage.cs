@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fasetto.Word.Core;
+using System;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -44,7 +45,7 @@ namespace Fasetto.Word
         /// </summary>
         public VM ViewModel
         {
-            get { return mViewModel; }
+            get => mViewModel;
             set
             {
                 // If nothing has changed, return
@@ -56,7 +57,7 @@ namespace Fasetto.Word
                 mViewModel = value;
 
                 // Set the data context for the page
-                this.DataContext = mViewModel;
+                DataContext = mViewModel;
             }
         }
 
@@ -74,7 +75,7 @@ namespace Fasetto.Word
                 this.Visibility = Visibility.Collapsed;
 
             // Listen out for the page loading
-            this.Loaded += BasePage_Loaded;
+            this.Loaded += BasePage_LoadedAsync;
 
             // Create a default view model
             this.ViewModel = new VM();
@@ -89,16 +90,16 @@ namespace Fasetto.Word
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void BasePage_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        private async void BasePage_LoadedAsync(object sender, System.Windows.RoutedEventArgs e)
         {
-            await AnimateIn();
+            await AnimateInAsync();
         }
 
         /// <summary>
         /// Animates the page in
         /// </summary>
         /// <returns></returns>
-        protected async Task AnimateIn()
+        protected async Task AnimateInAsync()
         {
             if (this.PageLoadAnimation == PageAnimation.None)
                 return;
@@ -108,7 +109,7 @@ namespace Fasetto.Word
                 case PageAnimation.SlideAndFadeInFromRight:
 
                     // Start the animation
-                    await this.SlideAndFadeInFromRight(this.SlideSeconds);
+                    await this.SlideAndFadeInFromRightAsync(this.SlideSeconds);
                     break;
             }
         }
@@ -117,7 +118,7 @@ namespace Fasetto.Word
         /// Animates the page out
         /// </summary>
         /// <returns></returns>
-        protected async Task AnimateOut()
+        protected async Task AnimateOutAsync()
         {
             if (this.PageUnloadAnimation == PageAnimation.None)
                 return;
@@ -127,7 +128,7 @@ namespace Fasetto.Word
                 case PageAnimation.SlideAndFadeOutToLeft:
 
                     // Start the animation
-                    await this.SlideAndFadeOutToLeft(this.SlideSeconds);
+                    await this.SlideAndFadeOutToLeftAsync(this.SlideSeconds);
                     break;
             }
         }

@@ -107,7 +107,7 @@
                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                    Visibility="{TemplateBinding local:IsBusyProperty.Value, Converter={local:BooleanToVisiblityConverter}, ConverterParameter=True}"
-                                   Text="{StaticResource FontAwesomeChatIcon}" />
+                                   Text="&#xf110;" />
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace Fasetto.Word
+namespace Fasetto.Word.Core
 {
     /// <summary>
     /// The View Model for a login screen
@@ -29,6 +29,11 @@ namespace Fasetto.Word
         public ICommand LoginCommand { get; set; }
 
         /// <summary>
+        /// The command to register for a new account
+        /// </summary>
+        public ICommand RegisterCommand { get; set; }
+
+        /// <summary>
         /// A flag indicating if the login command is running
         /// </summary>
         public bool LoginIsRunning { get; set; }
@@ -43,8 +48,11 @@ namespace Fasetto.Word
         public LoginViewModel()
         {
             // Create commands
-            LoginCommand = new RelayParameterizedCommand(async (parameter) => await Login(parameter));
+            LoginCommand = new RelayParameterizedCommand(async (parameter) => await LoginAsync(parameter));
+
+            RegisterCommand = new RelayCommand(async () => await RegisterAsync());
         }
+
         #endregion
 
         /// <summary>
@@ -52,9 +60,9 @@ namespace Fasetto.Word
         /// </summary>
         /// <param name="parameter"></param>
         /// <returns></returns>
-        private async Task Login(object parameter)
+        private async Task LoginAsync(object parameter)
         {
-            await RunCommand(() => this.LoginIsRunning, async () =>
+            await RunCommandAsync(() => this.LoginIsRunning, async () =>
             {
                 await Task.Delay(5000);
 
@@ -63,6 +71,17 @@ namespace Fasetto.Word
                 // IMPORTANT: never store unsecure password in variable like this
                 var password = (parameter as IHasPassword).SecurePassword.Unsecure();
             });
+        }
+
+        /// <summary>
+        /// Take the user to the register page
+        /// </summary>
+        /// <returns></returns>
+        private async Task RegisterAsync()
+        {
+            IoC.Get<ApplicationViewModel>().CurrentPage = ApplicationPage.Register;
+
+            await Task.Delay(1);
         }
     }
 }
