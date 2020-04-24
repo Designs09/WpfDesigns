@@ -4,10 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Fasetto.Word"
-             xmlns:core="clr-namespace:Fasetto.Word.Core"
+             xmlns:core="clr-namespace:Fasetto.Word.Core;assembly=Fasetto.Word.Core"
              mc:Ignorable="d" 
-             Height="60"
-             d:DesignHeight="60" d:DesignWidth="300">
+             d:DesignWidth="300">
 
     <UserControl.Resources>
         <Style x:Key="ContentStyle" TargetType="{x:Type ContentControl}">
@@ -34,33 +33,40 @@
                                     />
 
                                 <!-- Profile picture padding -->
-                                <Border Grid.Column="0" Padding="8">
+                                <Border Grid.Column="0" 
+                                        Padding="8 15"
+                                        >
                                     <!-- Profile picture background -->
                                     <Border Background="{Binding ProfilePictureRGB, Converter={local:StringRGBToBrushConverter}}"
-                                        Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
-                                        CornerRadius="{Binding ActualHeight, RelativeSource={RelativeSource Self}}">
+                                            Height="40"
+                                            Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
+                                            CornerRadius="{Binding ActualHeight, RelativeSource={RelativeSource Self}}">
                                         <!-- Profile picture text -->
                                         <TextBlock Text="{Binding Initials}" 
                                                HorizontalAlignment="Center" 
                                                VerticalAlignment="Center"
                                                Foreground="{StaticResource ForegroundLightBrush}"
-                                               FontSize="{StaticResource FontSizeAverage}"
+                                               FontSize="{StaticResource FontSizeLarge}"
                                                FontFamily="{StaticResource LatoRegular}"
                                                     />
                                     </Border>
                                 </Border>
 
                                 <!-- Main content -->
-                                <Border Grid.Column="1" Padding="8">
+                                <Border Grid.Column="1" 
+                                        Padding="0 0 8 0"
+                                        >
                                     <StackPanel VerticalAlignment="Center">
                                         <!-- Name -->
                                         <TextBlock Text="{Binding Name}"
+                                                   Padding="0 0 0 3"
                                                TextTrimming="CharacterEllipsis"
                                                Foreground="{StaticResource WordBlueBrush}"
                                                FontFamily="{StaticResource LatoRegular}"
                                                />
                                         <!-- Message -->
                                         <TextBlock Text="{Binding Message}"
+                                                   Padding="0 2 0 0"
                                                Foreground="{StaticResource ForegroundDarkBrush}"
                                                TextTrimming="CharacterEllipsis"
                                                FontFamily="{StaticResource LatoRegular}"
