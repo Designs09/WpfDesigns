@@ -11,6 +11,6 @@
       Title="LoginPage">
 
     <Border>
-        
+        <TextBlock Text="Hello Fasseto" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" />
     </Border>
 </local:BasePage>
