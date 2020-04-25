@@ -1,9 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Fasetto.Word",
-    "\\WpfApp"
+    "\\resources",
+    "\\source",
+    "\\source\\Fasetto.Word",
+    "\\source\\Fasetto.Word\\Fasetto.Word"
   ],
-  "SelectedNode": "\\Fasetto.Word\\Fasetto.Word.sln",
+  "SelectedNode": "\\source\\Fasetto.Word\\Fasetto.Word\\MainWindow.xaml.cs",
   "PreviewInSolutionExplorer": false
 }
