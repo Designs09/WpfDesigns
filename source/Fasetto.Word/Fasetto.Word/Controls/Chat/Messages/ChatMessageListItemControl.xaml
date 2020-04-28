@@ -97,7 +97,6 @@
                 <StackPanel Name="ExtraDetails"
                             Grid.Row="2"
                             Orientation="Horizontal"
-                            Opacity="0"
                             >
 
                     <!-- Sent time  -->

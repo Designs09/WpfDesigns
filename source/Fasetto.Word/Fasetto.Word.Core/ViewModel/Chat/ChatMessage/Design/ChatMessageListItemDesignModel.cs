@@ -30,7 +30,6 @@ namespace Fasetto.Word.Core
             ProfilePictureRGB = "3099c5";
             SendByMe = true;
             MessageSentTime = DateTimeOffset.UtcNow;
-            MessageReadTime = DateTimeOffset.UtcNow.Subtract(TimeSpan.FromDays(1.3));
         }
 
         #endregion
