@@ -8,9 +8,52 @@
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="700"
       x:Name="Page"
-      Title="LoginPage">
+                >
 
-    <Border>
-        <local:ChatMessageListControl />
-    </Border>
+    <Grid>
+
+        <Grid.RowDefinitions>
+
+            <!-- Title bar -->
+            <RowDefinition Height="Auto"/>
+
+            <!-- Chat List -->
+            <RowDefinition Height="*" />
+
+            <!-- Message Send Text Box -->
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Bar -->
+        <Grid Height="50">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Title text -->
+            <TextBlock Text="Parnell"
+                       Grid.ColumnSpan="2"
+                       Foreground="{StaticResource ForegroundLightBrush}"
+                       FontSize="{StaticResource FontSizeXLarge}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       />
+
+            <!-- Main buttons -->
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeSearchIcon}" />
+                <Button Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeEllipsisVerticalIcon}" />
+            </StackPanel>
+
+        </Grid>
+
+        <Border Grid.Row="1">
+            <local:ChatMessageListControl />
+        </Border>
+
+    </Grid>
+
+
 </local:BasePage>

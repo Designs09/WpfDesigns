@@ -138,7 +138,7 @@
                    DataContext="{Binding ApplicationViewModel.CurrentPage,
                                          Converter={local:ApplicationPageValueConverter},
                                          Source={x:Static local:ViewModelLocator.Instance}}" 
-                   CurrentPage="{Binding}"></local:PageHost>
+                   CurrentPage="{Binding}" />
 
             <!-- Side Menu -->
             <local:SideMenuControl 

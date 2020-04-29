@@ -1,11 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\resources",
-    "\\source",
     "\\source\\Fasetto.Word",
     "\\source\\Fasetto.Word\\Fasetto.Word"
   ],
-  "SelectedNode": "\\source\\Fasetto.Word\\Fasetto.Word\\MainWindow.xaml.cs",
+  "SelectedNode": "\\source",
   "PreviewInSolutionExplorer": false
 }
