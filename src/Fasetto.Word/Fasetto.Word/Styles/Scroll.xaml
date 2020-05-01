@@ -188,8 +188,19 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Rectangle x:Name="Corner" Grid.Column="1" Fill="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Grid.Row="1"/>
-                        <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}" CanHorizontallyScroll="False" CanVerticallyScroll="False" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Grid.Column="0" Margin="{TemplateBinding Padding}" Grid.Row="0"/>
+                        <Rectangle x:Name="Corner" 
+                                   Grid.Column="1" 
+                                   Fill="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" 
+                                   Grid.Row="1"/>
+                        <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" 
+                                                CanContentScroll="{TemplateBinding CanContentScroll}" 
+                                                CanHorizontallyScroll="False" 
+                                                CanVerticallyScroll="False" 
+                                                ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                                Content="{TemplateBinding Content}" 
+                                                Grid.Column="0" 
+                                                Margin="{TemplateBinding Padding}" 
+                                                Grid.Row="0"/>
                         <ScrollBar x:Name="PART_VerticalScrollBar" 
                                    Opacity="0.2"
                                    AutomationProperties.AutomationId="VerticalScrollBar" 
