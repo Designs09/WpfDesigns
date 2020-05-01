@@ -35,7 +35,6 @@ namespace Fasetto.Word.Core
                     Initials = "LM",
                     Message = "This chat app is awesome! I bet it will be fast too",
                     ProfilePictureRGB = "3099c5",
-                    NewContentAvaliable = true,
                 },
                 new ChatListItemViewModel()
                 {
@@ -43,7 +42,7 @@ namespace Fasetto.Word.Core
                     Initials = "JA",
                     Message = "Hey dude, here are the new icons",
                     ProfilePictureRGB = "ffa800",
-                    NewContentAvaliable = false,
+                    NewContentAvaliable = true,
                 },
                 new ChatListItemViewModel()
                 {
@@ -51,7 +50,6 @@ namespace Fasetto.Word.Core
                     Initials = "PL",
                     Message = "The new server is up, got 192.168.1.1",
                     ProfilePictureRGB = "00d405",
-                    NewContentAvaliable = false,
                     IsSelected = true,
                 },
                 new ChatListItemViewModel()
@@ -60,7 +58,6 @@ namespace Fasetto.Word.Core
                     Initials = "LM",
                     Message = "This chat app is awesome! I bet it will be fast too",
                     ProfilePictureRGB = "3099c5",
-                    NewContentAvaliable = true,
                 },
                 new ChatListItemViewModel()
                 {
@@ -76,8 +73,6 @@ namespace Fasetto.Word.Core
                     Initials = "PL",
                     Message = "The new server is up, got 192.168.1.1",
                     ProfilePictureRGB = "00d405",
-                    NewContentAvaliable = false,
-                    IsSelected = true,
                 },
                 new ChatListItemViewModel()
                 {
@@ -85,24 +80,13 @@ namespace Fasetto.Word.Core
                     Initials = "LM",
                     Message = "This chat app is awesome! I bet it will be fast too",
                     ProfilePictureRGB = "3099c5",
-                    NewContentAvaliable = true,
                 },
                 new ChatListItemViewModel()
                 {
-                    Name = "Jesse",
-                    Initials = "JA",
-                    Message = "Hey dude, here are the new icons",
-                    ProfilePictureRGB = "ffa800",
-                    NewContentAvaliable = false,
-                },
-                new ChatListItemViewModel()
-                {
-                    Name = "Parnell",
-                    Initials = "PL",
-                    Message = "The new server is up, got 192.168.1.1",
-                    ProfilePictureRGB = "00d405",
-                    NewContentAvaliable = false,
-                    IsSelected = true,
+                    Name = "Luke",
+                    Initials = "LM",
+                    Message = "This chat app is awesome! I bet it will be fast too",
+                    ProfilePictureRGB = "3099c5",
                 },
             };
         }

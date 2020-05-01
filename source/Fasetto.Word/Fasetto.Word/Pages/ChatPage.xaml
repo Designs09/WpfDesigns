@@ -52,6 +52,70 @@
         <Border Grid.Row="1">
             <local:ChatMessageListControl />
         </Border>
+        
+        <Grid Grid.Row="2"
+              MinHeight="50"
+              MaxHeight="110"
+              Background="{StaticResource ForegroundLightBrush}"
+            >
+  
+            <!-- Message Send Text Box -->
+            <Grid.ColumnDefinitions>
+
+                <!-- Attach button -->
+                <ColumnDefinition Width="Auto" />
+
+                <!-- Text entry box -->
+                <ColumnDefinition Width="*" />
+
+                <!-- Additional buttons -->
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Attach button -->
+            <Button Style="{StaticResource IconGrowButton}"
+                    Height="{Binding MinHeight, RelativeSource={RelativeSource AncestorType=Grid}}"
+                    Content="{StaticResource FontAwesomePapericlipIcon}"
+                    VerticalAlignment="Top"
+                    Foreground="{StaticResource ForegroundDarkBrush}"
+                    />
+
+            <!-- Message box -->
+            <TextBox Grid.Column="1"
+                     Tag="Write a message..."
+                     Padding="0 10"
+                     FontSize="{StaticResource FontSizeRegular}"
+                     BorderThickness="0"
+                     VerticalAlignment="Center"
+                     AcceptsReturn="True"
+                     AcceptsTab="True"
+                     VerticalScrollBarVisibility="Auto"
+                     />
+
+            <!-- Additional buttons -->
+            <StackPanel Grid.Column="2"
+                        VerticalAlignment="Top"
+                        Orientation="Horizontal"
+                        Margin="0 0 8 0"
+                        >
+
+                <!-- Emoji button -->
+                <Button Style="{StaticResource IconGrowButton}"
+                        Height="{Binding MinHeight, RelativeSource={RelativeSource AncestorType=Grid}}"
+                        Content="{StaticResource FontAwesomeEmojiIcon}"
+                        Foreground="{StaticResource WordOrangeBrush}"
+                    />
+
+                <!-- Send button -->
+                <Button Content="Send"
+                        Padding="8"
+                        Background="{StaticResource WordGreenBrush}"
+                        FontSize="{StaticResource FontSizeRegular}"
+                    />
+
+            </StackPanel>
+
+        </Grid>
 
     </Grid>
 

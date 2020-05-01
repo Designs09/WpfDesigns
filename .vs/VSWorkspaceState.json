@@ -1,9 +1,14 @@
 {
   "ExpandedNodes": [
     "",
+    "\\resources",
+    "\\source",
     "\\source\\Fasetto.Word",
-    "\\source\\Fasetto.Word\\Fasetto.Word"
+    "\\source\\Fasetto.Word\\Fasetto.Word",
+    "\\source\\Fasetto.Word\\Fasetto.Word\\Controls",
+    "\\source\\Fasetto.Word\\Fasetto.Word\\Controls\\Chat",
+    "\\source\\Fasetto.Word\\Fasetto.Word\\Styles"
   ],
-  "SelectedNode": "\\source",
+  "SelectedNode": "\\source\\Fasetto.Word\\Fasetto.Word.sln",
   "PreviewInSolutionExplorer": false
 }
