@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignWidth="300">
     <Border Padding="5" 
-            Background="{StaticResource WordBlueBrush}"
+            Background="Transparent"
             d:DataContext="{x:Static core:ChatMessageListItemDesignModel.Instance}"
             >
         <Grid>
@@ -46,7 +46,7 @@
                     <EventTrigger RoutedEvent="MouseEnter">
                         <BeginStoryboard>
                             <Storyboard Storyboard.TargetName="ExtraDetails" Storyboard.TargetProperty="Opacity">
-                                <DoubleAnimation From="0" To="1" Duration="00:00:00.5" />
+                                <DoubleAnimation To="1" Duration="00:00:00.5" />
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
@@ -55,7 +55,7 @@
                     <EventTrigger RoutedEvent="MouseLeave">
                         <BeginStoryboard>
                             <Storyboard Storyboard.TargetName="ExtraDetails" Storyboard.TargetProperty="Opacity">
-                                <DoubleAnimation From="1" To="0" Duration="00:00:00.5" />
+                                <DoubleAnimation To="0" Duration="00:00:00.5" />
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
@@ -94,8 +94,11 @@
                       Fill="{Binding SendByMe, Converter={local:SentByMeToBackgroundConverter}}"
                       Data="M 0,0 L 10,10 L 20,0" 
                       />
+                
+                <!-- Time containers -->
                 <StackPanel Name="ExtraDetails"
                             Grid.Row="2"
+                            Opacity="0"
                             Orientation="Horizontal"
                             >
 

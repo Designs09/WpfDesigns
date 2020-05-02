@@ -1,5 +1,4 @@
-﻿using Fasetto.Word.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,15 +16,13 @@ using System.Windows.Shapes;
 namespace Fasetto.Word
 {
     /// <summary>
-    /// MainWindow.xaml 的交互逻辑
+    /// Interaction logic for BubbleContent.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class BubbleContent : UserControl
     {
-        public MainWindow()
+        public BubbleContent()
         {
             InitializeComponent();
-
-            this.DataContext = new WindowViewModel(this);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Fasetto.Word.Core
     /// </summary>
     public class ChatListDesignModel : ChatListViewModel
     {
-        #region Constructor
+        #region Singleton
 
         /// <summary>
         /// A single instance of the design model
