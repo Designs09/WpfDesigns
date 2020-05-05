@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace Fasetto.Word.Core
 {
     /// <summary>

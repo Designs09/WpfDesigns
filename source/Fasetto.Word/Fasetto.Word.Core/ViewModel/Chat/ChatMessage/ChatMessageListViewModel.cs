@@ -25,6 +25,11 @@ namespace Fasetto.Word.Core
         public bool AttachmentMenuVisible { get; set; }
 
         /// <summary>
+        /// True if any popup menus are visible
+        /// </summary>
+        public bool AnyPopupVisible => AttachmentMenuVisible;
+
+        /// <summary>
         /// The view model for the attachment menu
         /// </summary>
         public ChatAttachmentPopupMenuViewModel AttachmentMenu { get; set; }
@@ -38,6 +43,11 @@ namespace Fasetto.Word.Core
         /// </summary>
         public ICommand AttachmentButtonCommand { get; set; }
 
+        /// <summary>
+        /// The command for when the area outside of any popup is clicked
+        /// </summary>
+        public ICommand PopupClickawayCommand { get; set; }
+
         #endregion
 
         #region Constructor
@@ -49,9 +59,11 @@ namespace Fasetto.Word.Core
         {
             // Create commands
             AttachmentButtonCommand = new RelayCommand(AttachmentButton);
+            PopupClickawayCommand = new RelayCommand(PopupClickaway);
 
-            // 
+            // The popup up menu context
             AttachmentMenu = new ChatAttachmentPopupMenuViewModel();
+
         }
 
         #endregion
@@ -65,6 +77,15 @@ namespace Fasetto.Word.Core
         {
             // Toggle menu visibility
             AttachmentMenuVisible ^= true;
+        }
+
+        /// <summary>
+        /// When the popup clickaway area is clicked hide any popups
+        /// </summary>
+        private void PopupClickaway()
+        {
+            // Hide attachment menu
+            AttachmentMenuVisible = false;
         }
 
         #endregion
