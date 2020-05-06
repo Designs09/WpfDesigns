@@ -11,7 +11,7 @@ namespace Fasetto.Word.Core
     /// </summary>
     public class ChatListDesignModel : ChatListViewModel
     {
-        #region Constructor
+        #region Singleton
 
         /// <summary>
         /// A single instance of the design model
@@ -35,7 +35,29 @@ namespace Fasetto.Word.Core
                     Initials = "LM",
                     Message = "This chat app is awesome! I bet it will be fast too",
                     ProfilePictureRGB = "3099c5",
+                },
+                new ChatListItemViewModel()
+                {
+                    Name = "Jesse",
+                    Initials = "JA",
+                    Message = "Hey dude, here are the new icons",
+                    ProfilePictureRGB = "ffa800",
                     NewContentAvaliable = true,
+                },
+                new ChatListItemViewModel()
+                {
+                    Name = "Parnell",
+                    Initials = "PL",
+                    Message = "The new server is up, got 192.168.1.1",
+                    ProfilePictureRGB = "00d405",
+                    IsSelected = true,
+                },
+                new ChatListItemViewModel()
+                {
+                    Name = "Luke",
+                    Initials = "LM",
+                    Message = "This chat app is awesome! I bet it will be fast too",
+                    ProfilePictureRGB = "3099c5",
                 },
                 new ChatListItemViewModel()
                 {
@@ -51,8 +73,20 @@ namespace Fasetto.Word.Core
                     Initials = "PL",
                     Message = "The new server is up, got 192.168.1.1",
                     ProfilePictureRGB = "00d405",
-                    NewContentAvaliable = false,
-                    IsSelected = true,
+                },
+                new ChatListItemViewModel()
+                {
+                    Name = "Luke",
+                    Initials = "LM",
+                    Message = "This chat app is awesome! I bet it will be fast too",
+                    ProfilePictureRGB = "3099c5",
+                },
+                new ChatListItemViewModel()
+                {
+                    Name = "Luke",
+                    Initials = "LM",
+                    Message = "This chat app is awesome! I bet it will be fast too",
+                    ProfilePictureRGB = "3099c5",
                 },
             };
         }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fasetto.Word.Core
+namespace UIFramework.Core
 {
     /// <summary>
     /// The IoC container for out application
@@ -31,14 +31,7 @@ namespace Fasetto.Word.Core
         public static void Setup()
         {
             // Bind all required view models
-            BindViewModels();
-        }
 
-        private static void BindViewModels()
-        {
-            // Bind to a single instance of ApplicationViewModel
-            //Kernel.Bind<ApplicationViewModel>().ToSelf().InSingletonScope();
-            Kernel.Bind<ApplicationViewModel>().ToConstant(new ApplicationViewModel());
         }
 
         #endregion

@@ -8,7 +8,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="700"
       x:Name="Page"
-      Title="LoginPage">
+                >
 
     <Border>
         <Grid>
@@ -38,20 +38,21 @@
                             Foreground="{StaticResource WordBlueBrush}"/>
 
                             <!-- Sign up subtext -->
-                            <TextBlock Text="It' about to gt fun"
+                            <TextBlock Text="It' about to get fun"
                                        FontSize="{StaticResource FontSizeLarge}"
                                        Foreground="{StaticResource ForegroundDarkBrush}"
                                        Margin="0 0 0 0"
                                        />
 
                             <!-- Email -->
-                            <TextBox Text="{Binding Email}" Tag="Email" />
+                            <TextBox local:IsFocusedProperty.Value="True"  Text="{Binding Email}" Tag="Email" />
 
                             <!-- Password -->
                             <PasswordBox x:Name="PasswordText" Tag="Password" Margin="0 0 0 30" />
 
-                            <!-- Next step -->
+                            <!-- Login button -->
                             <Button Content="Login" 
+                                    IsDefault="True"
                                     Command="{Binding LoginCommand}" 
                                     CommandParameter="{Binding ElementName=Page}" 
                                     local:IsBusyProperty.Value="{Binding LoginIsRunning}"

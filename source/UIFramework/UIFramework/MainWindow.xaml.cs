@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Fasetto.Word
+namespace UIFramework
 {
     /// <summary>
-    /// ChatListControl.xaml 的交互逻辑
+    /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class ChatListControl : UserControl
+    public partial class MainWindow : Window
     {
-        public ChatListControl()
+        public MainWindow()
         {
             InitializeComponent();
         }

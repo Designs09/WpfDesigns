@@ -4,10 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Fasetto.Word"
+             xmlns:core="clr-namespace:Fasetto.Word.Core;assembly=Fasetto.Word.Core"
              mc:Ignorable="d" 
              d:DesignWidth="300">
     <Border Padding="5" 
-            Background="{StaticResource WordBlueBrush}"
+            Background="Transparent"
+            d:DataContext="{x:Static core:ChatMessageListItemDesignModel.Instance}"
             >
         <Grid>
 
@@ -15,15 +17,16 @@
             <Border VerticalAlignment="Top"
                     HorizontalAlignment="Left"
                     Margin="0 7.5 0 7.5"
+                    Visibility="{Binding SendByMe, Converter={local:BooleanToVisiblityConverter}}"
                     CornerRadius="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
                     Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
                     Width="35"
-                    Background="Green"
+                    Background="{Binding ProfilePictureRGB}"
                     BorderBrush="{StaticResource ForegroundLightBrush}"
                     BorderThickness="1"
                     >
 
-                <TextBlock Text="LM"
+                <TextBlock Text="{Binding Initials}"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            Foreground="{StaticResource ForegroundLightBrush}"
@@ -33,9 +36,33 @@
             </Border>
 
             <!-- Chat message container -->
-            <Grid Margin="25 0 0 0"
-                  HorizontalAlignment="Left"
+            <Grid Margin="25 0 15 0"
+                  HorizontalAlignment="{Binding SendByMe, Converter={local:SentByMeToAlignmentConverter}}"
                   >
+
+                <Grid.Triggers>
+                    
+                    <!-- Mouse over shows time -->
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard Storyboard.TargetName="ExtraDetails" Storyboard.TargetProperty="Opacity">
+                                <DoubleAnimation To="1" Duration="00:00:00.5" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    
+                    <!-- Mouse leave hides time -->
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard Storyboard.TargetName="ExtraDetails" Storyboard.TargetProperty="Opacity">
+                                <DoubleAnimation To="0" Duration="00:00:00.5" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    
+                </Grid.Triggers>
+                
+                
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
@@ -44,7 +71,7 @@
                 <!-- Speech bubble rectangle -->
                 <Border CornerRadius="10"
                         Padding="15"
-                        Background="{StaticResource ForegroundLightBrush}"
+                        Background="{Binding SendByMe, Converter={local:SentByMeToBackgroundConverter}}"
                     >
 
                     <!-- Message text -->
@@ -52,29 +79,48 @@
                            TextWrapping="Wrap"
                            FontFamily="{StaticResource LatoRegular}"
                            Foreground="{StaticResource WordDarkBlueBrush}"
-                           Text="This chat app is awesome! When it is coming out?"
+                           Text="{Binding Message}"
                            />
 
                 </Border>
-                
+
                 <!-- Chat bubble anchor -->
                 <Path Grid.Row="1" 
                       Panel.ZIndex="1"
-                      Fill="{StaticResource ForegroundLightBrush}"
+                      HorizontalAlignment="{Binding SendByMe, Converter={local:SentByMeToAlignmentConverter}}"
                       Margin="15 -1 15 0"
                       Stroke="Black"
                       StrokeThickness="0"
+                      Fill="{Binding SendByMe, Converter={local:SentByMeToBackgroundConverter}}"
                       Data="M 0,0 L 10,10 L 20,0" 
                       />
+                
+                <!-- Time containers -->
+                <StackPanel Name="ExtraDetails"
+                            Grid.Row="2"
+                            Opacity="0"
+                            Orientation="Horizontal"
+                            >
 
-                <TextBlock Grid.Row="2" 
-                           Text="11:45am"
+                    <!-- Sent time  -->
+                    <TextBlock
+                           Text="{Binding MessageSentTime, Converter={local:TimeToDisplayTimeConverter}}"
                            FontFamily="{StaticResource LatoThin}"
                            FontSize="{StaticResource FontSizeSmall}"
                            Foreground="{StaticResource ForegroundLightBrush}"
                            HorizontalAlignment="Right"
+                           Margin="0 0 10 0"
                            />
 
+                    <!-- Read time  -->
+                    <TextBlock
+                           Text="{Binding MessageReadTime, Converter={local:TimeToReadTimeConverter}}"
+                           FontFamily="{StaticResource LatoThin}"
+                           FontSize="{StaticResource FontSizeSmall}"
+                           Foreground="{StaticResource WordDarkBlueBrush}"
+                           HorizontalAlignment="Right"
+                           />
+                </StackPanel>
             </Grid>
         </Grid>
     </Border>
