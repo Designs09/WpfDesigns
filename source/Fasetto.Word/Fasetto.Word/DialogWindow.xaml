@@ -13,7 +13,8 @@
         Icon="Images/Logo/penguin.ico"
         MinWidth="{Binding WindowMinimumWidth}"
         MinHeight="{Binding WindowMinimumHeight}"
-        Title="{Binding Title}">
+        Title="{Binding Title}"
+        >
 
     <Window.Resources>
         <Style TargetType="{x:Type local:DialogWindow}">
@@ -78,6 +79,7 @@
                                         <TextBlock Grid.Column="1"
                                                    Text="{Binding Title}"
                                                    VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center"
                                                    FontSize="{StaticResource FontSizeLarge}"
                                                    FontFamily="{StaticResource LatoRegular}"
                                                    Foreground="{StaticResource ForegroundVeryDarkBrush}"

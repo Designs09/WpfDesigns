@@ -102,4 +102,23 @@ namespace Fasetto.Word
                 await element.SlideAndFadeOutToBottomAsync(FirstLoad ? 0 : 0.3f, false);
         }
     }
+
+    /// <summary>
+    /// Animates a framework element fadding in on show
+    /// and fading out on hide
+    /// </summary>
+    public class AnimateFadeInProperty : AnimateBaseProperty<AnimateFadeInProperty>
+    {
+        protected async override void DoAnimation(FrameworkElement element, bool value)
+        {
+            if (value)
+            {
+                // Animate in
+                await element.FadeInAsync(FirstLoad ? 0 : 0.3f);
+            }
+            else
+                // Animate out
+                await element.FadeOutAsync(FirstLoad ? 0 : 0.3f);
+        }
+    }
 }

@@ -12,7 +12,10 @@
         Icon="Images/Logo/penguin.ico"
         MinWidth="{Binding WindowMinimumWidth}"
         MinHeight="{Binding WindowMinimumHeight}"
-        Title="Welcome, friend" Height="600" Width="1000">
+        Title="Welcome, friend" Height="600" Width="1000"
+        Activated="AppWindow_Activated"
+        Deactivated="AppWindow_Deactivated"
+        >
 
     <Window.Resources>
         <Style TargetType="{x:Type local:MainWindow}">
@@ -141,6 +144,16 @@
                                          Source={x:Static local:ViewModelLocator.Instance}}" 
                    CurrentPage="{Binding}" />
 
+            <!-- Dimmed overlay -->
+            <Border Grid.ColumnSpan="3"
+                    Panel.ZIndex="10"
+                    Opacity="0.3"
+                    >
+                <Border Background="{StaticResource ForegroundVeryDarkBrush}"
+                        local:AnimateFadeInProperty.Value="{Binding DimmableOverlayVisible}"
+                        />
+            </Border>
+            
             <!-- Side Menu -->
             <local:SideMenuControl 
                 Width="300" 

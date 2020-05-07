@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Fasetto.Word
 {
@@ -47,7 +48,16 @@ namespace Fasetto.Word
         /// <summary>
         /// The title for this dialog
         /// </summary>
-        public string Title { get; set; }
+        public string Title { get; set; } = "Default Title";
+
+        #endregion
+
+        #region Public Commands
+
+        /// <summary>
+        /// Closes this dialog
+        /// </summary>
+        public ICommand CloseCommand { get; private set; }
 
         #endregion
 
@@ -60,8 +70,10 @@ namespace Fasetto.Word
         {
             // Create a new dialog window
             mDialogWindow = new DialogWindow();
-
             mDialogWindow.ViewModel = new DialogWindowViewModel(mDialogWindow);
+
+            // Create close command
+            CloseCommand = new RelayCommand(mDialogWindow.Close);
         }
 
         #endregion
@@ -75,7 +87,7 @@ namespace Fasetto.Word
         /// <typeparam name="T">The view model type for this control</typeparam>
         /// <returns></returns>
         public Task ShowDialog<T>(T viewModel)
-            where T : BaseViewModel
+            where T : BaseDialogViewModel
         {
             // Create a task the await the dialog closing
             var tcs = new TaskCompletionSource<bool>();
@@ -89,7 +101,7 @@ namespace Fasetto.Word
                     mDialogWindow.ViewModel.WindowMinimumWidth = WindowMinimumWidth;
                     mDialogWindow.ViewModel.WindowMinimumHeight = WindowMinimumHeight;
                     mDialogWindow.ViewModel.TitleHeight = TitleHeight;
-                    mDialogWindow.ViewModel.Title = Title;
+                    mDialogWindow.ViewModel.Title = string.IsNullOrEmpty(viewModel.Title) ? Title : viewModel.Title;
 
                     // Set this control to dialog window content
                     mDialogWindow.ViewModel.Content = this;
