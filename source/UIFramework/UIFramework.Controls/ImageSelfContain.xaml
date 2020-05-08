@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="UIFramework.Controls.ImageSelfContain"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UIFramework.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Image Source="Images/停车场入口.png" />
+        <Image Grid.Row="1" Source="Images/停车场入口.png" />
+        <Image Grid.Row="2" Source="Images/停车场入口.png" />
+        <Image Grid.Row="3" Source="Images/停车场入口.png" />
+    </Grid>
+</UserControl>

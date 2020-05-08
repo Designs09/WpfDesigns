@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:UIFramework.Controls">
+
+    <FontFamily x:Key="SourceHanSansCN-Medium">pack://application:,,,/Fonts/#Source Han Sans CN Medium</FontFamily>
+    <FontFamily x:Key="SourceHanSansCN-Bold">pack://application:,,,/Fonts/#Source Han Sans CN Bold</FontFamily>
+    <FontFamily x:Key="SourceHanSansCN-Regular">pack://application:,,,/Fonts/#Source Han Sans CN Regular</FontFamily>
+    <FontFamily x:Key="FontAwesome">pack://application:,,,/Fonts/#FontAwesome</FontFamily>
+    <FontFamily x:Key="LatoRegular">pack://application:,,,/Fonts/#Lato Regular</FontFamily>
+    <FontFamily x:Key="LatoThin">pack://application:,,,/Fonts/#Lato Thin</FontFamily>
+    <FontFamily x:Key="LatoBold">pack://application:,,,/Fonts/#Lato Bold</FontFamily>
+    
+</ResourceDictionary>
