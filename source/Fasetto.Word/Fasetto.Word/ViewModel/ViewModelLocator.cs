@@ -17,6 +17,11 @@ namespace Fasetto.Word
         /// <summary>
         /// The application view model
         /// </summary>
-        public ApplicationViewModel ApplicationViewModel => IoC.Get<ApplicationViewModel>();
+        public ApplicationViewModel ApplicationViewModel => IoC.Application;
+
+        /// <summary>
+        /// The settings view model
+        /// </summary>
+        public SettingsViewModel SettingsViewModel => IoC.Settings;
     }
 }

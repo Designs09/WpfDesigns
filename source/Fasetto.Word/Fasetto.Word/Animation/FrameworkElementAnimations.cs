@@ -69,6 +69,9 @@ namespace Fasetto.Word
 
             // Wait for it to finish
             await Task.Delay(TimeSpan.FromSeconds(seconds));
+
+            // Make element invisible
+            element.Visibility = Visibility.Hidden;
         }
 
         #endregion
@@ -131,6 +134,9 @@ namespace Fasetto.Word
 
             // Wait for it to finish
             await Task.Delay(TimeSpan.FromSeconds(seconds));
+
+            // Make element invisible
+            element.Visibility = Visibility.Hidden;
         }
 
         #endregion
@@ -164,6 +170,8 @@ namespace Fasetto.Word
 
             // Wait for it to finish
             await Task.Delay(TimeSpan.FromSeconds(seconds));
+
+
         }
 
         /// <summary>
@@ -193,6 +201,9 @@ namespace Fasetto.Word
 
             // Wait for it to finish
             await Task.Delay(TimeSpan.FromSeconds(seconds));
+
+            // Make element invisible
+            element.Visibility = Visibility.Hidden;
         }
 
         #endregion
@@ -246,7 +257,8 @@ namespace Fasetto.Word
             // Wait for it to finish
             await Task.Delay(TimeSpan.FromSeconds(seconds));
 
-            element.Visibility = Visibility.Collapsed;
+            // Make element invisible
+            element.Visibility = Visibility.Hidden;
         }
 
         #endregion

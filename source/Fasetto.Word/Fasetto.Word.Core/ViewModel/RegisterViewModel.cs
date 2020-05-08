@@ -74,7 +74,7 @@ namespace Fasetto.Word.Core
         /// <returns></returns>
         private async Task LoginAsync()
         {
-            IoC.Get<ApplicationViewModel>().GoToPage(ApplicationPage.Login);
+            IoC.Application.GoToPage(ApplicationPage.Login);
 
             await Task.Delay(1);
         }
