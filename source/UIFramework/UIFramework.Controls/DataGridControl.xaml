@@ -48,6 +48,7 @@
                   AutoGenerateColumns="False"
                   RowHeaderWidth="0"
                   CanUserAddRows="False"
+                  BorderThickness="0"
                   >
             
             <!-- 设置列头部数据 -->
