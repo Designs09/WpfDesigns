@@ -64,6 +64,8 @@ namespace LiveChartsDemo
                 {
                     MaxColumnWidth = 32,
                     Title="驶出车辆",
+                    DataLabels = true,
+                    DataLabelsTemplate = dataTemplate,
                     Fill = linearYellowBrush,
                     Values = new ChartValues<int> { 86, 38, 31, 65, 53, 35, 53, 25, 78, 31, 31, 31, 31, 31, 64 },
                 },

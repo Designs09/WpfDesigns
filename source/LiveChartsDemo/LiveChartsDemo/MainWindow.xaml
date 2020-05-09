@@ -30,7 +30,12 @@
 
             <local:BasicColumn Grid.Row="1" Grid.Column="1"/>-->
 
-            <local:BasePillarControl Grid.Row="1" Grid.Column="2"/>
+            <!--<local:BasePillarControl Grid.Row="1" Grid.Column="2"/>-->
+
+            <!--<local:TimeEnergyControl />-->
+
+            <local:CarEnterOutChartControl d:DataContext="{x:Static local:CarEnterOutChartDesignModel.Instance}"/>
+
         </Grid>
     </Border>
 </Window>

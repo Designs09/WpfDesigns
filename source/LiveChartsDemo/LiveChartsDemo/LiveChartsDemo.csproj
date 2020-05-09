@@ -73,12 +73,23 @@
     <Compile Include="Official\BasePillarControl.xaml.cs">
       <DependentUpon>BasePillarControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CarEnterOutChartControl.xaml.cs">
+      <DependentUpon>CarEnterOutChartControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Official\TimeEnergyControl.xaml.cs">
+      <DependentUpon>TimeEnergyControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ValueConverters\BaseValueConverter.cs" />
+    <Compile Include="ValueConverters\IntArrayToChartValuesConverter.cs" />
+    <Compile Include="ValueConverters\TimeSpanToFormatStrConverter.cs" />
     <Compile Include="ViewModel\Base\BaseViewModel.cs" />
     <Compile Include="ViewModel\Base\ExpressionHelpers.cs" />
-    <Compile Include="ViewModel\Design\BasePillarDesignModel.cs" />
-    <Compile Include="ViewModel\Design\StackedPillarDesignModel.cs" />
-    <Compile Include="ViewModel\BasePillarViewModel.cs" />
-    <Compile Include="ViewModel\StackedPillarViewModel.cs" />
+    <Compile Include="ViewModel\Pillar\Design\CarEnterOutChartDesignModel.cs" />
+    <Compile Include="ViewModel\Pillar\Design\BasePillarDesignModel.cs" />
+    <Compile Include="ViewModel\Pillar\Design\StackedPillarDesignModel.cs" />
+    <Compile Include="ViewModel\Pillar\BasePillarViewModel.cs" />
+    <Compile Include="ViewModel\Pillar\CarEnterOutChartViewModel.cs" />
+    <Compile Include="ViewModel\Pillar\StackedPillarViewModel.cs" />
     <Page Include="Controls\Pip.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -110,11 +121,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\CarEnterOutChartControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Official\PipeChartControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Official\StackedPillarControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Official\TimeEnergyControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -155,6 +174,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LiveChartsDemo.Controls\LiveChartsDemo.Controls.csproj">
+      <Project>{3bb2de52-405b-4ce4-8ea8-fd2ff0637273}</Project>
+      <Name>LiveChartsDemo.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LiveChartsDemo.Customize\LiveChartsDemo.Customize.csproj">
+      <Project>{b8ed4b59-b653-460d-bed6-c5bde77a57d8}</Project>
+      <Name>LiveChartsDemo.Customize</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.1.1\build\Fody.targets" Condition="Exists('..\packages\Fody.6.1.1\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
