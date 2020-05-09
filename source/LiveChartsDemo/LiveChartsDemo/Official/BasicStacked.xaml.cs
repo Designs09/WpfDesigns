@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LiveChartsDemo.Official
+namespace LiveChartsDemo
 {
     /// <summary>
     /// BasicStacked.xaml 的交互逻辑

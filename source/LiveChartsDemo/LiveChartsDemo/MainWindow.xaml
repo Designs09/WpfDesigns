@@ -4,11 +4,33 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LiveChartsDemo"
-        xmlns:official="clr-namespace:LiveChartsDemo.Official"
+        xmlns:ctrl="clr-namespace:LiveChartsDemo.Controls"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="1155.5" Width="1990.5">
+    <Border Background="Black">
+        <Grid>
+            <!--<Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ctrl:Pip />
+
+            <local:PipeChartControl Grid.Column="1"/>
+
+            <local:BasicStacked Grid.Column="3"/>
+
+            <local:StackedPillarControl Grid.Row="1"/>
+
+            <local:BasicColumn Grid.Row="1" Grid.Column="1"/>-->
+
+            <local:BasePillarControl Grid.Row="1" Grid.Column="2"/>
+        </Grid>
+    </Border>
 </Window>
