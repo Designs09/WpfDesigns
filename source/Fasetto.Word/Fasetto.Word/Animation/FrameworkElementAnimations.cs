@@ -35,8 +35,9 @@ namespace Fasetto.Word
             // Start animating
             sb.Begin(element);
 
-            // Make page visible
-            element.Visibility = Visibility.Visible;
+            // Make page visible only if we are animating
+            if (seconds != 0)
+                element.Visibility = Visibility.Visible;
 
             // Wait for it to finish
             await Task.Delay(TimeSpan.FromSeconds(seconds));
@@ -64,8 +65,9 @@ namespace Fasetto.Word
             // Start animating
             sb.Begin(element);
 
-            // Make page visible
-            element.Visibility = Visibility.Visible;
+            // Make page visible only if we are animating
+            if (seconds != 0)
+                element.Visibility = Visibility.Visible;
 
             // Wait for it to finish
             await Task.Delay(TimeSpan.FromSeconds(seconds));
@@ -100,8 +102,9 @@ namespace Fasetto.Word
             // Start animating
             sb.Begin(element);
 
-            // Make page visible
-            element.Visibility = Visibility.Visible;
+            // Make page visible only if we are animating
+            if (seconds != 0)
+                element.Visibility = Visibility.Visible;
 
             // Wait for it to finish
             await Task.Delay(TimeSpan.FromSeconds(seconds));
@@ -129,8 +132,9 @@ namespace Fasetto.Word
             // Start animating
             sb.Begin(element);
 
-            // Make page visible
-            element.Visibility = Visibility.Visible;
+            // Make page visible only if we are animating
+            if (seconds != 0)
+                element.Visibility = Visibility.Visible;
 
             // Wait for it to finish
             await Task.Delay(TimeSpan.FromSeconds(seconds));
@@ -165,8 +169,9 @@ namespace Fasetto.Word
             // Start animating
             sb.Begin(element);
 
-            // Make page visible
-            element.Visibility = Visibility.Visible;
+            // Make page visible only if we are animating
+            if (seconds != 0)
+                element.Visibility = Visibility.Visible;
 
             // Wait for it to finish
             await Task.Delay(TimeSpan.FromSeconds(seconds));
@@ -196,8 +201,9 @@ namespace Fasetto.Word
             // Start animating
             sb.Begin(element);
 
-            // Make page visible
-            element.Visibility = Visibility.Visible;
+            // Make page visible only if we are animating
+            if (seconds != 0)
+                element.Visibility = Visibility.Visible;
 
             // Wait for it to finish
             await Task.Delay(TimeSpan.FromSeconds(seconds));
@@ -227,8 +233,9 @@ namespace Fasetto.Word
             // Start animating
             sb.Begin(element);
 
-            // Make page visible
-            element.Visibility = Visibility.Visible;
+            // Make page visible only if we are animating
+            if (seconds != 0)
+                element.Visibility = Visibility.Visible;
 
             // Wait for it to finish
             await Task.Delay(TimeSpan.FromSeconds(seconds));
@@ -251,8 +258,9 @@ namespace Fasetto.Word
             // Start animating
             sb.Begin(element);
 
-            // Make page visible
-            element.Visibility = Visibility.Visible;
+            // Make page visible only if we are animating
+            if (seconds != 0)
+                element.Visibility = Visibility.Visible;
 
             // Wait for it to finish
             await Task.Delay(TimeSpan.FromSeconds(seconds));

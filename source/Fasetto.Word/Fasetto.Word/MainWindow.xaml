@@ -147,7 +147,7 @@
             <!-- Settings page -->
             <local:SettingControl Grid.ColumnSpan="2"
                                   Panel.ZIndex="9"
-                                  local:AnimateSlideInFromBottomMarginProperty.Value="{Binding ApplicationViewModel.SettingsMenuVisible, Source={x:Static local:ViewModelLocator.Instance}, FallbackValue=false}"
+                                  local:AnimateSlideInFromBottomMarginProperty.Value="{Binding ApplicationViewModel.SettingsMenuVisible, Source={x:Static local:ViewModelLocator.Instance}}"
                 />
 
             <!-- Dimmed overlay -->
@@ -156,7 +156,7 @@
                     Opacity="0.3"
                     >
                 <Border Background="{StaticResource ForegroundVeryDarkBrush}"
-                        local:AnimateFadeInProperty.Value="{Binding DimmableOverlayVisible, FallbackValue=false}"
+                        local:AnimateFadeInProperty.Value="{Binding DimmableOverlayVisible}"
                         />
             </Border>
             

@@ -34,6 +34,11 @@ namespace Fasetto.Word
             // On first load...
             if (FirstLoad)
             {
+                // Start off the hidden before we decide how to animate
+                // if we are to be animated out initially
+                if (!(bool)value)
+                    element.Visibility = Visibility.Hidden;
+
                 // Create a single self-unhookable event
                 // for the elements Loaded event
                 RoutedEventHandler onLoaded = null;
