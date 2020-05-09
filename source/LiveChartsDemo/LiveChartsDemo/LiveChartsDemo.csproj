@@ -114,11 +114,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-<<<<<<< HEAD
-    <Page Include="Practice\PipChartControl.xaml">
-=======
     <Page Include="Official\StackedPillarControl.xaml">
->>>>>>> 5ec41b7aeec07c0358db8e7d843daaf977589ef4
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -130,13 +126,8 @@
     <Compile Include="Official\PipeChartControl.xaml.cs">
       <DependentUpon>PipeChartControl.xaml</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-    <Compile Include="Practice\PipChartControl.xaml.cs">
-      <DependentUpon>PipChartControl.xaml</DependentUpon>
-=======
     <Compile Include="Official\StackedPillarControl.xaml.cs">
       <DependentUpon>StackedPillarControl.xaml</DependentUpon>
->>>>>>> 5ec41b7aeec07c0358db8e7d843daaf977589ef4
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
