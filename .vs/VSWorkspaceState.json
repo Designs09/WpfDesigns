@@ -4,13 +4,12 @@
     "\\source",
     "\\source\\Fasetto.Word",
     "\\source\\ListDemo",
-    "\\source\\UIFramework",
-    "\\WpfApp",
+    "\\source\\LiveChartsDemo",
     "\\WpfApp\\WpfApp",
     "\\WpfApp\\WpfApp.ConsoleOut",
     "\\WpfApp\\WpfApp.Model",
     "\\WpfApp\\WpfAppFW"
   ],
-  "SelectedNode": "\\source\\Fasetto.Word\\Fasetto.Word.sln",
+  "SelectedNode": "\\source\\LiveChartsDemo\\LiveChartsDemo.sln",
   "PreviewInSolutionExplorer": false
 }
