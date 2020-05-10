@@ -53,9 +53,8 @@
                      Grid.Column="1"
                      FontSize="{StaticResource FontSizeRegular}"
                      Padding="2"
-                     local:FocusAndSelectProperty.Value="{Binding Editing}"
-                     local:FocusProperty.Value="{Binding Editing}"
                      local:AnimateFadeInProperty.Value="{Binding Editing}"
+                     local:FocusAndSelectProperty.Value="{Binding Editing}"
                      Margin="10 10 15 8"
                      />
 
