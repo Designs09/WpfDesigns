@@ -11,6 +11,11 @@
             BorderThickness="0 0 0 0.4">
         <Grid Background="{StaticResource ForegroundLightBrush}">
 
+            <!-- Double click to binding-->
+            <Grid.InputBindings>
+                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding EditCommand}" />
+            </Grid.InputBindings>
+            
             <!-- Hover over to show edit button-->
             <Grid.Triggers>
                 <EventTrigger RoutedEvent="MouseEnter">
