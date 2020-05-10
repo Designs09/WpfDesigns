@@ -49,7 +49,7 @@
                        />
             
             <!-- Edit Content -->
-            <TextBox Text="{Binding EditedText}" 
+            <TextBox Text="{Binding EditedText, UpdateSourceTrigger=PropertyChanged}" 
                      Grid.Column="1"
                      FontSize="{StaticResource FontSizeRegular}"
                      Padding="2"
