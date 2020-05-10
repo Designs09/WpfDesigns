@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace Fasetto.Word
 {
@@ -15,6 +16,7 @@ namespace Fasetto.Word
     {
         public override void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
+            // Is we don't have a control, return
             if (!(sender is Control control))
                 return;
 
@@ -23,5 +25,42 @@ namespace Fasetto.Word
         }
     }
 
+    /// <summary>
+    /// Focuses (keyboard focus) this element if true
+    /// </summary>
+    public class FocusProperty : BaseAttachedProperty<FocusProperty, bool>
+    {
+        public override void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            // Is we don't have a control, return
+            if (!(sender is Control control))
+                return;
 
+            if ((bool)e.NewValue)
+                // Focus this control
+                control.Focus();
+        }
+    }
+
+    /// <summary>
+    /// Focuses (keyboard focus) and selects all text in this element if true
+    /// </summary>
+    public class FocusAndSelectProperty : BaseAttachedProperty<FocusAndSelectProperty, bool>
+    {
+        public override void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            // Is we don't have a control, return
+            if (!(sender is TextBoxBase control))
+                return;
+
+            if ((bool)e.NewValue)
+            {
+                // Focus this control
+                control.Focus();
+
+                // Select all text
+                control.SelectAll();
+            }
+        }
+    }
 }

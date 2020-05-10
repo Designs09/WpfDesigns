@@ -145,7 +145,7 @@
                    CurrentPage="{Binding}" />
 
             <!-- Settings page -->
-            <local:SettingControl Grid.ColumnSpan="2"
+            <local:SettingsControl Grid.ColumnSpan="2"
                                   Panel.ZIndex="9"
                                   local:AnimateSlideInFromBottomMarginProperty.Value="{Binding ApplicationViewModel.SettingsMenuVisible, Source={x:Static local:ViewModelLocator.Instance}}"
                 />

@@ -19,9 +19,9 @@ namespace Fasetto.Word
     /// <summary>
     /// Interaction logic for SettingControl.xaml
     /// </summary>
-    public partial class SettingControl : UserControl
+    public partial class SettingsControl : UserControl
     {
-        public SettingControl()
+        public SettingsControl()
         {
             InitializeComponent();
 
