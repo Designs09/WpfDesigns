@@ -63,6 +63,7 @@
     <Compile Include="IoC\Base\IoC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\SecureStringHelper.cs" />
+    <Compile Include="ViewModel\Application\Design\SettingsViewModel.cs" />
     <Compile Include="ViewModel\Application\SettingsViewModel.cs" />
     <Compile Include="ViewModel\Application\ApplicationViewModel.cs" />
     <Compile Include="ViewModel\Dialog\BaseDialogViewModel.cs" />
