@@ -164,8 +164,8 @@ namespace Fasetto.Word
             // Wait for it to finish
             await Task.Delay(TimeSpan.FromSeconds(seconds));
 
-            // Make element invisible
-            element.Visibility = Visibility.Hidden;
+            // Fully hide the element
+            element.Visibility = Visibility.Collapsed;
         }
 
         #endregion

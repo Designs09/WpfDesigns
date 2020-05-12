@@ -50,16 +50,29 @@ namespace Fasetto.Word
         public override void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             // Is we don't have a control, return
-            if (!(sender is TextBoxBase control))
-                return;
-
-            if ((bool)e.NewValue)
+            if ((sender is TextBoxBase control))
             {
-                // Focus this control
-                control.Focus();
+                if ((bool)e.NewValue)
+                {
+                    // Focus this control
+                    control.Focus();
 
-                // Select all text
-                control.SelectAll();
+                    // Select all text
+                    control.SelectAll();
+                }
+            }
+
+            // Is we don't have a control, return
+            if ((sender is PasswordBox password))
+            {
+                if ((bool)e.NewValue)
+                {
+                    // Focus this control
+                    password.Focus();
+
+                    // Select all text
+                    password.SelectAll();
+                }
             }
         }
     }

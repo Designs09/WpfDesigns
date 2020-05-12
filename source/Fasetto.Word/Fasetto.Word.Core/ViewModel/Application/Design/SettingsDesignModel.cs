@@ -30,7 +30,7 @@ namespace Fasetto.Word.Core
         {
             Name = new TextEntryViewModel() { Label = "Name", OriginalText = "Luke Malpass" };
             Username = new TextEntryViewModel() { Label = "Username", OriginalText = "Luke" };
-            Password = new TextEntryViewModel() { Label = "Password", OriginalText = "********" };
+            Password = new PasswordEntryViewModel() { Label = "Password", FakePassword = "fake-design" };
             Email = new TextEntryViewModel() { Label = "Email", OriginalText = "contact@gmail.com" };
         }
 

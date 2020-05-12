@@ -155,10 +155,8 @@ namespace Fasetto.Word
         protected async override void DoAnimation(FrameworkElement element, bool value, bool firstLoad)
         {
             if (value)
-            {
                 // Animate in
                 await element.FadeInAsync(firstLoad, firstLoad ? 0 : 0.3f);
-            }
             else
                 // Animate out
                 await element.FadeOutAsync(firstLoad ? 0 : 0.3f);
