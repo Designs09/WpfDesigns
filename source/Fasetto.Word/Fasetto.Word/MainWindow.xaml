@@ -138,11 +138,11 @@
             </Grid.Background>
 
             <local:PageHost Grid.Column="1" 
-                   d:DataContext=""
-                   DataContext="{Binding ApplicationViewModel.CurrentPage,
-                                         Converter={local:ApplicationPageValueConverter},
+                            CurrentPage="{Binding ApplicationViewModel.CurrentPage,
                                          Source={x:Static local:ViewModelLocator.Instance}}" 
-                   CurrentPage="{Binding}" />
+                            CurrentPageViewModel="{Binding ApplicationViewModel.CurrentPageViewModel,
+                                         Source={x:Static local:ViewModelLocator.Instance}}" 
+                            />
 
             <!-- Settings page -->
             <local:SettingsControl Grid.ColumnSpan="2"

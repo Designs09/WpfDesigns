@@ -22,7 +22,20 @@ namespace Fasetto.Word
     /// </summary>
     public partial class ChatPage : BasePage<ChatMessageListViewModel>
     {
-        public ChatPage()
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="specificViewModel"></param>
+        public ChatPage() : base()
+        {
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// Constructor with specific view model
+        /// </summary>
+        /// <param name="specificViewModel"></param>
+        public ChatPage(ChatMessageListViewModel specificViewModel) : base(specificViewModel)
         {
             InitializeComponent();
         }

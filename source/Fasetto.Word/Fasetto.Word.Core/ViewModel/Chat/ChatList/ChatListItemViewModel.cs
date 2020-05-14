@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Fasetto.Word.Core
 {
@@ -43,6 +44,104 @@ namespace Fasetto.Word.Core
         /// True if this item is selected
         /// </summary>
         public bool IsSelected { get; set; }
+
+        #endregion
+
+        #region Public Commands
+
+        /// <summary>
+        /// Opens the current message thread
+        /// </summary>
+        public ICommand OpenMessageCommand { get; set; }
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public ChatListItemViewModel()
+        {
+            // Create commands
+            OpenMessageCommand = new RelayCommand(OpenMessage);
+        }
+
+        #endregion
+
+        #region Command Methods
+
+        public void OpenMessage()
+        {
+            if (Name == "Jesse")
+            {
+                IoC.Application.GoToPage(ApplicationPage.Login, new LoginViewModel
+                {
+                    Email = "jesse@helloworld.com",
+                });
+                return;
+            }
+            IoC.Application.GoToPage(ApplicationPage.Chat, new ChatMessageListViewModel
+            {
+                Items = new List<ChatMessageListItemViewModel>
+                {
+                    new ChatMessageListItemViewModel
+                    {
+                        Message = Message,
+                        Initials = Initials,
+                        MessageSentTime = DateTime.UtcNow,
+                        ProfilePictureRGB = "FF00FF",
+                        SenderName = "Luke",
+                        SendByMe = true,
+                    },
+                    new ChatMessageListItemViewModel
+                    {
+                        Message = "A received message",
+                        Initials = Initials,
+                        MessageSentTime = DateTime.UtcNow,
+                        ProfilePictureRGB = "FF0000",
+                        SenderName = Name,
+                        SendByMe = false,
+                    },
+                    new ChatMessageListItemViewModel
+                    {
+                        Message = "A received message",
+                        Initials = Initials,
+                        MessageSentTime = DateTime.UtcNow,
+                        ProfilePictureRGB = "FF0000",
+                        SenderName = Name,
+                        SendByMe = false,
+                    },
+                    new ChatMessageListItemViewModel
+                    {
+                        Message = Message,
+                        Initials = Initials,
+                        MessageSentTime = DateTime.UtcNow,
+                        ProfilePictureRGB = "FF00FF",
+                        SenderName = "Luke",
+                        SendByMe = true,
+                    },
+                    new ChatMessageListItemViewModel
+                    {
+                        Message = "A received message",
+                        Initials = Initials,
+                        MessageSentTime = DateTime.UtcNow,
+                        ProfilePictureRGB = "FF0000",
+                        SenderName = Name,
+                        SendByMe = false,
+                    },
+                    new ChatMessageListItemViewModel
+                    {
+                        Message = "A received message",
+                        Initials = Initials,
+                        MessageSentTime = DateTime.UtcNow,
+                        ProfilePictureRGB = "FF0000",
+                        SenderName = Name,
+                        SendByMe = false,
+                    },
+                },
+            });
+        }
 
         #endregion
     }

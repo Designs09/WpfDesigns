@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Fasetto.Word.Core;
+using System;
 using System.Diagnostics;
+using System.Security;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -63,5 +65,38 @@ namespace Fasetto.Word
         }
 
         #endregion
+
+        /// <summary>
+        /// Update the view model value with the new password
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CurrentPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is PasswordEntryViewModel viewModel)
+                viewModel.CurrentlPassword = CurrentPassword.SecurePassword;
+        }
+
+        /// <summary>
+        /// Update the view model value with the new password
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NewPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is PasswordEntryViewModel viewModel)
+                viewModel.NewPassword = NewPassword.SecurePassword;
+        }
+
+        /// <summary>
+        /// Update the view model value with the new password
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ConfirmPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is PasswordEntryViewModel viewModel)
+                viewModel.ConfirmPassword = ConfirmPassword.SecurePassword;
+        }
     }
 }

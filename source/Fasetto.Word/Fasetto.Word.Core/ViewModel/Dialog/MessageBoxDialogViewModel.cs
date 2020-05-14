@@ -19,6 +19,6 @@ namespace Fasetto.Word.Core
         /// <summary>
         /// The text to user for the ok button
         /// </summary>
-        public string OkText { get; set; }
+        public string OkText { get; set; } = "OK";
     }
 }

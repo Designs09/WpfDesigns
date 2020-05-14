@@ -61,7 +61,8 @@
         </Grid>
 
         <Border Grid.Row="1">
-            <local:ChatMessageListControl />
+            <local:ChatMessageListControl d:DataContext="{x:Static core:ChatMessageListDesignModel.Instance}"
+                                          DataContext="{Binding}"/>
         </Border>
 
         <!-- Attachment Menu Popup -->

@@ -103,7 +103,6 @@ namespace Fasetto.Word.Core
             {
                 Title = "Send Message",
                 Message = "Thank you for writing a nice message :",
-                OkText = "OK"
             });
         }
 

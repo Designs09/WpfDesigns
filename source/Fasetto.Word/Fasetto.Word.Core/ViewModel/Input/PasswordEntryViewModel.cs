@@ -43,12 +43,12 @@ namespace Fasetto.Word.Core
         /// <summary>
         /// The current saved password
         /// </summary>
-        public SecureString OriginalPassword { get; set; }
+        public SecureString CurrentlPassword { get; set; }
 
         /// <summary>
-        /// The current non-commit edited password
+        /// The current non-commit edited new password
         /// </summary>
-        public SecureString EditedPassword { get; set; }
+        public SecureString NewPassword { get; set; }
 
         /// <summary>
         /// The current non-commit edited confirmed password
@@ -111,7 +111,7 @@ namespace Fasetto.Word.Core
         private void Edit()
         {
             // Clear all password
-            EditedPassword = new SecureString();
+            NewPassword = new SecureString();
             ConfirmPassword = new SecureString();
 
             // Go to edit mode
@@ -138,23 +138,50 @@ namespace Fasetto.Word.Core
 
             // Confirm current password is a match
             // NOTE: Typically this isn't done here, it's done on the server
-            if (storedPassword != OriginalPassword.Unsecure())
+            if (storedPassword != CurrentlPassword.Unsecure())
             {
                 // Let user know
                 IoC.UI.ShowMessage(new MessageBoxDialogViewModel()
                 {
-                    Title = "Password mismatch",
+                    Title = "Wrong password",
                     Message = "The current password is invalid",
-                    OkText = "OK",
                 });
 
                 return;
             }
 
+            // Check actually we have a password
+            if (NewPassword.Unsecure().Length == 0)
+            {
+                // Let user know
+                IoC.UI.ShowMessage(new MessageBoxDialogViewModel()
+                {
+                    Title = "Password too short",
+                    Message = "You must enter a password!",
+                });
+
+                return;
+            }
+
+            // Now check that the new and confirm password match
+            if (NewPassword.Unsecure() != ConfirmPassword.Unsecure())
+            {
+                // Let user know
+                IoC.UI.ShowMessage(new MessageBoxDialogViewModel()
+                {
+                    Title = "Password mismatch",
+                    Message = "The new and confirm password do not match",
+                });
+
+                return;
+            }
+
+
+
             // Set the edited password to the current value
-            OriginalPassword = new SecureString();
-            foreach (var c in EditedPassword.Unsecure().ToCharArray())
-                OriginalPassword.AppendChar(c);
+            CurrentlPassword = new SecureString();
+            foreach (var c in NewPassword.Unsecure().ToCharArray())
+                CurrentlPassword.AppendChar(c);
 
             Editing = false;
         }

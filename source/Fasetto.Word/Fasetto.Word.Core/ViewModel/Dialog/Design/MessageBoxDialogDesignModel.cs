@@ -24,7 +24,6 @@ namespace Fasetto.Word.Core
 
         public MessageBoxDialogDesignModel()
         {
-            OkText = "OK";
             Message = "Design time message are there";
         }
 
