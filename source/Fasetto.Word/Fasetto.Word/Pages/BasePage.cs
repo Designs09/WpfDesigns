@@ -61,6 +61,9 @@ namespace Fasetto.Word
                 // Update the value
                 mViewModel = value;
 
+                // Fire the view model changed method
+                OnViewModelChanged();
+
                 // Set the data context for the page
                 DataContext = mViewModel;
             }
@@ -145,6 +148,14 @@ namespace Fasetto.Word
         }
 
         #endregion
+
+        /// <summary>
+        /// Fired when the view model changes
+        /// </summary>
+        protected virtual void OnViewModelChanged()
+        {
+
+        }
     }
 
     /// <summary>

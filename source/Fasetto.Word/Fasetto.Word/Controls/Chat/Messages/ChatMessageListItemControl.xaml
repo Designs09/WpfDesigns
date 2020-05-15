@@ -41,7 +41,7 @@
                   >
 
                 <Grid.Triggers>
-                    
+
                     <!-- Mouse over shows time -->
                     <EventTrigger RoutedEvent="MouseEnter">
                         <BeginStoryboard>
@@ -50,7 +50,7 @@
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
-                    
+
                     <!-- Mouse leave hides time -->
                     <EventTrigger RoutedEvent="MouseLeave">
                         <BeginStoryboard>
@@ -59,10 +59,10 @@
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
-                    
+
                 </Grid.Triggers>
-                
-                
+
+
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
@@ -94,11 +94,12 @@
                       Fill="{Binding SendByMe, Converter={local:SentByMeToBackgroundConverter}}"
                       Data="M 0,0 L 10,10 L 20,0" 
                       />
-                
+
                 <!-- Time containers -->
                 <StackPanel Name="ExtraDetails"
                             Grid.Row="2"
                             Opacity="0"
+                            HorizontalAlignment="{Binding SendByMe, Converter={local:SentByMeToAlignmentConverter}, ConverterParameter=True}"
                             Orientation="Horizontal"
                             >
 
