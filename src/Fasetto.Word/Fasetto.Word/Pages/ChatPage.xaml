@@ -106,6 +106,7 @@
 
             <!-- Message box -->
             <TextBox Grid.Column="1"
+                     Text="{Binding PendingMessageText, UpdateSourceTrigger=PropertyChanged}"
                      Tag="Write a message..."
                      Padding="0 10"
                      FontSize="{StaticResource FontSizeRegular}"

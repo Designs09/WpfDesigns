@@ -59,6 +59,12 @@ namespace Fasetto.Word.Core
         /// </summary>
         public DateTimeOffset MessageSentTime { get; set; }
 
+        /// <summary>
+        /// A flag indicating if this item was added since the first mail list of items was created
+        /// Used as flag for animating in
+        /// </summary>
+        public bool NewItem { get; set; }
+
         #endregion
     }
 }
