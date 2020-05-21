@@ -75,14 +75,27 @@ namespace Fasetto.Word
             var textbox = sender as TextBox;
 
             // Check if we have pressed enter
-            //if (e.Key == Key.Enter)
-            //{
-            //    // Send the message
-            //    ViewModel.Send();
+            if (e.Key == Key.Enter)
+            {
+                if (Keyboard.Modifiers.HasFlag(ModifierKeys.Control))
+                {
+                    // Add a new line at the point where the cursor is
+                    var index = textbox.CaretIndex;
 
-            //    // Make this key as handled by us
-            //    e.Handled = true;
-            //}
+                    // Insert the new line
+                    textbox.Text = textbox.Text.Insert(index, Environment.NewLine);
+
+                    // Shift the caret forward to the newline
+                    textbox.CaretIndex = index + Environment.NewLine.Length;
+
+                }
+                else
+                    // Send the message
+                    ViewModel.Send();
+
+                // Make this key as handled by us
+                e.Handled = true;
+            }
         }
     }
 }
