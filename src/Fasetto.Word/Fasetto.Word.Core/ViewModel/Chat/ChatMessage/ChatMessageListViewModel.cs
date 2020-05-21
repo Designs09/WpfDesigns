@@ -103,7 +103,7 @@ namespace Fasetto.Word.Core
         /// <summary>
         /// When the user clicks the send button, sends the message
         /// </summary>
-        private void Send()
+        public void Send()
         {
             if (Items == null)
                 Items = new ObservableCollection<ChatMessageListItemViewModel>();
@@ -117,6 +117,8 @@ namespace Fasetto.Word.Core
                 SenderName = "Luke Malpass",
                 NewItem = true,
             });
+
+            PendingMessageText = string.Empty;
         }
 
         #endregion
