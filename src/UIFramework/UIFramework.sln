@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIFramework.Core", "UIFrame
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIFramework.Controls", "UIFramework.Controls\UIFramework.Controls.csproj", "{63BEB4B6-4ECD-4874-B411-77EB56BBC982}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIFramework.Controls1", "UIFramework.Controls1\UIFramework.Controls1.csproj", "{57039292-2BFB-4FEF-9112-A41E22CDFB1B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{63BEB4B6-4ECD-4874-B411-77EB56BBC982}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63BEB4B6-4ECD-4874-B411-77EB56BBC982}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63BEB4B6-4ECD-4874-B411-77EB56BBC982}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57039292-2BFB-4FEF-9112-A41E22CDFB1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57039292-2BFB-4FEF-9112-A41E22CDFB1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57039292-2BFB-4FEF-9112-A41E22CDFB1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57039292-2BFB-4FEF-9112-A41E22CDFB1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,7 +12,7 @@ namespace Fasetto.Word
     /// </summary>
     /// <typeparam name="Parent"></typeparam>
     public abstract class AnimateBaseProperty<Parent> : BaseAttachedProperty<Parent, bool>
-        where Parent: BaseAttachedProperty<Parent, bool>, new()
+        where Parent : BaseAttachedProperty<Parent, bool>, new()
     {
         #region Public Properties
 
@@ -46,9 +46,7 @@ namespace Fasetto.Word
                 mAlreadyLoaded[sender] = false;
 
                 // Start off the hidden before we decide how to animate
-                // if we are to be animated out initially
-                if (!(bool)value)
-                    element.Visibility = Visibility.Hidden;
+                element.Visibility = Visibility.Hidden;
 
                 // Create a single self-unhookable event
                 // for the elements Loaded event
@@ -123,6 +121,19 @@ namespace Fasetto.Word
             else
                 // Animate out
                 await element.SlideAndFadeOutAsync(AnimationSlideInDirection.Bottom, firstLoad ? 0 : 0.3f, false);
+        }
+    }
+
+    /// <summary>
+    /// Animates a framework element sliding up from the bottom on load
+    /// if the value is true
+    /// </summary>
+    public class AnimateSlideInFromBottomOnLoadProperty : AnimateBaseProperty<AnimateSlideInFromBottomOnLoadProperty>
+    {
+        protected async override void DoAnimation(FrameworkElement element, bool value, bool firstLoad)
+        {
+            // Animate in
+            await element.SlideAndFadeInAsync(AnimationSlideInDirection.Bottom, !value, !value ? 0 : 0.3f, false);
         }
     }
 

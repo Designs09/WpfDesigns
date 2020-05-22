@@ -31,4 +31,31 @@ namespace Fasetto.Word
             (sender as ScrollViewer).ScrollToBottom();
         }
     }
+
+    /// <summary>
+    /// Automatically keep the scroll at the bottom of the screen when we are already close to the bottom
+    /// </summary>
+    public class AutoScrollToBottomProperty : BaseAttachedProperty<AutoScrollToBottomProperty, bool>
+    {
+        public override void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            // Is we don't have a ScrollViewer, return
+            if (!(sender is ScrollViewer control))
+                return;
+
+            // Scroll content to bottom when scroll changes
+            control.ScrollChanged -= Control_ScrollChanged;
+            control.ScrollChanged += Control_ScrollChanged;
+        }
+
+        private void Control_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            var scroll = sender as ScrollViewer;
+
+            // If we are close enough to the bottom...
+            if (scroll.ScrollableHeight - scroll.VerticalOffset < 20)
+                // Scroll to the bottom
+                scroll.ScrollToBottom();
+        }
+    }
 }

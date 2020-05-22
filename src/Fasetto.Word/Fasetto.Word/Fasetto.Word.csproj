@@ -88,7 +88,7 @@
     <Compile Include="Animation\PageAnimations.cs" />
     <Compile Include="Animation\StoryboardHelper.cs" />
     <Compile Include="AttachedProperties\BaseAttachedProperty.cs" />
-    <Compile Include="AttachedProperties\ScrollToBottomOnLoadProperty.cs" />
+    <Compile Include="AttachedProperties\ScrollViewerAttachedProperties.cs" />
     <Compile Include="AttachedProperties\TextEntryWidthMatcherProperty.cs" />
     <Compile Include="AttachedProperties\PanelChildMarginProperty.cs" />
     <Compile Include="AttachedProperties\TextAttachedProperties.cs" />
@@ -319,7 +319,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Profile\a23495db9a3a3008bff2b11a0c8f57c1.jpg" />
+    <Resource Include="Images\Profile\Jay.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Profile\Luffy.jpg" />
