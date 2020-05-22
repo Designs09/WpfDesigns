@@ -51,12 +51,12 @@
     <Compile Include="LinearBrushControl.xaml.cs">
       <DependentUpon>LinearBrushControl.xaml</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Model\AlarmHandleStatus.cs" />
     <Compile Include="ValueConverter\AlarmHandleStatusToColorConverter.cs" />
     <Compile Include="ValueConverter\BaseValueConverter.cs" />
-=======
->>>>>>> 3f449fd763f82e1d3f79e4ad2d5cd33d5e6090bb
+    <Compile Include="StyleFireOrder.xaml.cs">
+      <DependentUpon>StyleFireOrder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\DataGridViewModel.cs" />
     <Page Include="DataGridControl.xaml">
       <SubType>Designer</SubType>
@@ -89,6 +89,10 @@
       <DependentUpon>FontFamilies.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="StyleFireOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ImageSelfContain.xaml.cs">
@@ -124,6 +128,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\UIFramework.Controls1\UIFramework.Controls1.csproj">
+      <Project>{57039292-2bfb-4fef-9112-a41e22cdfb1b}</Project>
+      <Name>UIFramework.Controls1</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UIFramework.Core\UIFramework.Core.csproj">
       <Project>{4b5d331b-0d0f-4b35-b529-0a5bf945088c}</Project>
       <Name>UIFramework.Core</Name>
