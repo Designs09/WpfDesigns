@@ -100,7 +100,7 @@
                 </lv:CartesianChart.Series>
 
                 <!-- X轴 -->
-                <lv:CartesianChart.AxisX >
+                <lv:CartesianChart.AxisX>
                     <lv:Axis Labels="{Binding Times, Converter={local:TimeSpansToFormatStrsConverter}}">
                         <lv:Axis.Separator>
                             <lv:Separator Step="1" IsEnabled="False"/>

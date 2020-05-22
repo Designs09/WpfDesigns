@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace LiveChartsDemo
 {
     /// <summary>
-    /// BasePillarControl.xaml 的交互逻辑
+    /// CurveGraphControl.xaml 的交互逻辑
     /// </summary>
-    public partial class BasePillarControl : UserControl
+    public partial class CurveGraphControl : UserControl
     {
-        public BasePillarControl()
+        public CurveGraphControl()
         {
             InitializeComponent();
         }

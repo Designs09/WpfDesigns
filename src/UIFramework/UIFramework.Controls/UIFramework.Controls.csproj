@@ -51,6 +51,9 @@
     <Compile Include="LinearBrushControl.xaml.cs">
       <DependentUpon>LinearBrushControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\AlarmHandleStatus.cs" />
+    <Compile Include="ValueConverter\AlarmHandleStatusToColorConverter.cs" />
+    <Compile Include="ValueConverter\BaseValueConverter.cs" />
     <Compile Include="ViewModel\DataGridViewModel.cs" />
     <Page Include="DataGridControl.xaml">
       <SubType>Designer</SubType>

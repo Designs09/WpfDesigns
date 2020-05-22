@@ -120,6 +120,10 @@
     <Folder Include="UI\Windows\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\UIFramework.Controls\UIFramework.Controls.csproj">
+      <Project>{63beb4b6-4ecd-4874-b411-77eb56bbc982}</Project>
+      <Name>UIFramework.Controls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UIFramework.Core\UIFramework.Core.csproj">
       <Project>{4B5D331B-0D0F-4B35-B529-0A5BF945088C}</Project>
       <Name>UIFramework.Core</Name>

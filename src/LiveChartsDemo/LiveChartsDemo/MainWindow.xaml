@@ -34,7 +34,11 @@
 
             <!--<local:TimeEnergyControl />-->
 
-            <local:CarEnterOutChartControl d:DataContext="{x:Static local:CarEnterOutChartDesignModel.Instance}"/>
+            <!--<local:CarEnterOutChartControl d:DataContext="{x:Static local:CarEnterOutChartDesignModel.Instance}"/>-->
+
+            <!--<local:CurveGraphControl />-->
+
+            <WebBrowser Source="http://localhost" />
 
         </Grid>
     </Border>

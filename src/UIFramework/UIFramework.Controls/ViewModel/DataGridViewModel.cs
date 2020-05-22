@@ -30,11 +30,13 @@ namespace UIFramework.Controls
     {
         public int Value { get; set; }
         public string Name { get; set; }
+        public AlarmHandleStatus Status { get; set; }
 
         public DataGridItemViewModel()
         {
             Value = 5;
             Name = "Miki";
+            Status = AlarmHandleStatus.已处理;
         }
     }
 }
