@@ -7,14 +7,7 @@
         xmlns:controls="clr-namespace:UIFramework.Controls;assembly=UIFramework.Controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-<<<<<<< HEAD
-    <Grid>
-        <controls:StyleFireOrder1 />
-=======
     <Grid Background="Black">
-
-        
-        
->>>>>>> 9327a1df6f37f7f4c5bb3581e9b9c289888ce1e0
+        <controls:StyleFireOrder1 />
     </Grid>
 </Window>
