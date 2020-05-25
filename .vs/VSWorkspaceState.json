@@ -2,8 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\LiveChartsDemo"
+    "\\src\\ListDemo",
+    "\\src\\LiveChartsDemo",
+    "\\src\\UIFramework"
   ],
-  "SelectedNode": "\\src\\LiveChartsDemo\\LiveChartsDemo.sln",
+  "SelectedNode": "\\src\\UIFramework\\UIFramework.sln",
   "PreviewInSolutionExplorer": false
 }
