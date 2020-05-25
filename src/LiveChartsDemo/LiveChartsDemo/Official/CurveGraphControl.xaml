@@ -21,7 +21,9 @@
                    FontSize="10"
                    Foreground="#FF9EA2C0"
                    />
-        <lv:CartesianChart Margin="11 30 10 20">
+        <lv:CartesianChart Margin="11 30 10 20" 
+                           
+                           >
             <lv:CartesianChart.Series>
                 <lv:LineSeries Values="{Binding Values1, Converter={local:DoubleArrayToChartValuesConverter}}"
                                Stroke="{StaticResource OrangeLinearBrush}"
