@@ -12,11 +12,8 @@ namespace Fasetto.Word
     {
         public override void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            // Get the caller
-            var passwordBox = d as PasswordBox;
-
             // Make sure it is a password box
-            if (passwordBox == null)
+            if (!(d is PasswordBox passwordBox))
                 return;
 
             // Remove any previous events

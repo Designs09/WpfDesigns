@@ -8,12 +8,17 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Texts.xaml" />
+                <ResourceDictionary Source="Styles/Fonts.xaml" />
+            </ResourceDictionary.MergedDictionaries>
             <Style TargetType="TextBlock">
                 <Setter Property="Foreground" Value="LightGreen" />
             </Style>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid>
-        <TextBlock x:Name="MessageText" Text="Hello World!" />
-    </Grid>
+    <StackPanel>
+        <TextBlock x:Name="MessageText" Text="Hello World!" FontFamily="{StaticResource FontAwesome}"/>
+        <TextBlock Text="Hello World!" />
+    </StackPanel>
 </UserControl>

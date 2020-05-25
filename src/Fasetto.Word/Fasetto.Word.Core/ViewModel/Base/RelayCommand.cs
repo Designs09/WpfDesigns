@@ -12,7 +12,7 @@ namespace Fasetto.Word.Core
         /// <summary>
         /// The action to run
         /// </summary>
-        private Action mAction;
+        private readonly Action mAction;
         #endregion
 
         #region Public Events

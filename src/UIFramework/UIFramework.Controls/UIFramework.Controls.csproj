@@ -52,6 +52,9 @@
       <DependentUpon>LinearBrushControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\AlarmHandleStatus.cs" />
+    <Compile Include="StyleFireOrder1.xaml.cs">
+      <DependentUpon>StyleFireOrder1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValueConverter\AlarmHandleStatusToColorConverter.cs" />
     <Compile Include="ValueConverter\BaseValueConverter.cs" />
     <Compile Include="StyleFireOrder.xaml.cs">
@@ -67,6 +70,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LinearBrushControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StyleFireOrder1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

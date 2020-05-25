@@ -57,7 +57,7 @@ namespace Fasetto.Word
         /// <summary>
         /// The window to handle the resizing for
         /// </summary>
-        private Window mWindow;
+        private readonly Window mWindow;
 
         /// <summary>
         /// The last calculated available screen size
@@ -67,17 +67,12 @@ namespace Fasetto.Word
         /// <summary>
         /// How close to the edge the window has to be to be detected as at the edge of the screen
         /// </summary>
-        private int mEdgeTolerance = 1;
+        private readonly int mEdgeTolerance = 1;
 
         /// <summary>
         /// The transform matrix used to convert WPF sizes to screen pixels
         /// </summary>
         private DpiScale? mMonitorDpi;
-
-        /// <summary>
-        /// The last screen the window was on
-        /// </summary>
-        private IntPtr mLastScreen;
 
         /// <summary>
         /// The last known dock position
@@ -239,7 +234,7 @@ namespace Fasetto.Word
             var edgedRight = windowBottomRight.X >= (mScreenSize.Right - mEdgeTolerance) && windowBottomRight.X <= (mScreenSize.Right + mEdgeTolerance);
 
             // Get docked position
-            var dock = WindowDockPosition.Undocked;
+            WindowDockPosition dock;
 
             // Left docking
             if (edgedTop && edgedBottom && edgedLeft)
@@ -348,26 +343,14 @@ namespace Fasetto.Word
             if (GetMonitorInfo(lPrimaryScreen, lPrimaryScreenInfo) == false)
                 return;
 
-            // NOTE: Always update it
-            // If this has changed from the last one, update the transform
-            //if (lCurrentScreen != mLastScreen || mMonitorDpi == null)
-                mMonitorDpi = VisualTreeHelper.GetDpi(mWindow);
-
-            // Store last know screen
-            mLastScreen = lCurrentScreen;
+            mMonitorDpi = VisualTreeHelper.GetDpi(mWindow);
 
             // Get work area sizes and rations
             var currentX = lCurrentScreenInfo.RCWork.Left - lCurrentScreenInfo.RCMonitor.Left;
             var currentY = lCurrentScreenInfo.RCWork.Top - lCurrentScreenInfo.RCMonitor.Top;
             var currentWidth = (lCurrentScreenInfo.RCWork.Right - lCurrentScreenInfo.RCWork.Left);
             var currentHeight = (lCurrentScreenInfo.RCWork.Bottom - lCurrentScreenInfo.RCWork.Top);
-            var currentRatio = (float)currentWidth / (float)currentHeight;
 
-            var primaryX = lPrimaryScreenInfo.RCWork.Left - lPrimaryScreenInfo.RCMonitor.Left;
-            var primaryY = lPrimaryScreenInfo.RCWork.Top - lPrimaryScreenInfo.RCMonitor.Top;
-            var primaryWidth = (lPrimaryScreenInfo.RCWork.Right - lPrimaryScreenInfo.RCWork.Left);
-            var primaryHeight = (lPrimaryScreenInfo.RCWork.Bottom - lPrimaryScreenInfo.RCWork.Top);
-            var primaryRatio = (float)primaryWidth / (float)primaryHeight;
 
             if (lParam != IntPtr.Zero)
             {

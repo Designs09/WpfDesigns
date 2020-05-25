@@ -20,7 +20,7 @@ namespace Fasetto.Word
         /// <summary>
         /// The dialog window we will be contained within
         /// </summary>
-        private DialogWindow mDialogWindow;
+        private readonly DialogWindow mDialogWindow;
 
         #endregion
 
