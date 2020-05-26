@@ -140,6 +140,19 @@ namespace Fasetto.Word.Core
                         SenderName = Name,
                         SendByMe = false,
                     },
+                    new ChatMessageListItemViewModel
+                    {
+                        Message = "A received message",
+                        ImageAttachment = new ChatMessageListItemImageAttachmentViewModel
+                        {
+                            ThumbnailUrl = "http://anywhere",
+                        },
+                        Initials = Initials,
+                        MessageSentTime = DateTime.UtcNow,
+                        ProfilePictureRGB = "FF0000",
+                        SenderName = Name,
+                        SendByMe = false,
+                    },
                 },
             });
         }

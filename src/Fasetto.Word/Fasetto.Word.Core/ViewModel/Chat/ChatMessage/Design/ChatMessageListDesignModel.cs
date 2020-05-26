@@ -58,7 +58,6 @@ namespace Fasetto.Word.Core
                     MessageSentTime = DateTimeOffset.UtcNow,
                     SendByMe = false,
                 },
-
             };
         }
 

@@ -59,7 +59,8 @@ namespace Fasetto.Word.Core
                 //       Set LocalFilePath value
                 //
                 //       For now, just set the file path directly
-                LocalFilePath = "Images/Profile/Jay.jpg";
+
+                Task.Delay(2000).ContinueWith(t => LocalFilePath = "/Images/Profile/Jay.jpg");
             }
         }
 
