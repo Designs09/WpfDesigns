@@ -77,15 +77,27 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     
+                    <!-- Image Loading Glyph -->
+                    <Border HorizontalAlignment="{Binding SendByMe, Converter={local:SentByMeToAlignmentConverter}}">
+                        <TextBlock Style="{StaticResource SpinningText}"
+                                   VerticalAlignment="Top"
+                                   Foreground="{StaticResource ForegroundLightBrush}"
+                                   Padding="20"
+                                   DataContext="{Binding ImageAttachment}"
+                                   Visibility="{Binding ImageLoaded, Converter={local:BooleanToVisiblityGoneConverter}, ConverterParameter=True, FallbackValue=Collapsed}"
+                                   />
+                    </Border>
+
                     <!-- Image attachment -->
                     <Border CornerRadius="10"
                             Margin="0 0 0 15"
                             >
 
                         <Image DataContext="{Binding ImageAttachment}"
-                               Source="{Binding LocalFilePath}"
+                               Source="{Binding LocalFilePath, NotifyOnTargetUpdated=True}"
                                MaxWidth="600"
                                local:ClipFromBorderProperty.Value="True"
+                               local:FadeInImageOnLoadProperty.Value="True"
                                />
 
                     </Border>

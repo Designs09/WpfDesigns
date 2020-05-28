@@ -42,5 +42,8 @@
     <system:String x:Key="FontAwesomeArrowLeftIcon">&#xf060;</system:String>
     <system:String x:Key="FontAwesomeTickIcon">&#xf00c;</system:String>
     <system:String x:Key="FontAwesomeCloseIcon">&#xf00d;</system:String>
+    <system:String x:Key="FontAwesomeSpinIcon">&#xf110;</system:String>
+
     
+
 </ResourceDictionary>

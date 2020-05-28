@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Fasetto.Word
 {
@@ -84,6 +85,30 @@ namespace Fasetto.Word
         /// <param name="element">The elemetn</param>
         /// <param name="value">The new value</param>
         protected virtual void DoAnimation(FrameworkElement element, bool value, bool firstLoad) { }
+    }
+
+    /// <summary>
+    /// Fade in an image once the source changes
+    /// </summary>
+    public class FadeInImageOnLoadProperty : AnimateBaseProperty<FadeInImageOnLoadProperty>
+    {
+        public override void OnValueUpdated(DependencyObject sender, object value)
+        {
+            // Make sure we have a image
+            if (!(sender is Image image))
+                return;
+
+            // If we want to animate in...
+            if ((bool)value)
+                image.TargetUpdated += Image_TargetUpdated;
+            else
+                image.TargetUpdated -= Image_TargetUpdated;
+        }
+
+        private async void Image_TargetUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
+        {
+            await (sender as Image).FadeInAsync(false);
+        }
     }
 
     /// <summary>

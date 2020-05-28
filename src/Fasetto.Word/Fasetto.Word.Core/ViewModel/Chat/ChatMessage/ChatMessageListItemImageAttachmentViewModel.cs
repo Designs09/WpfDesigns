@@ -69,6 +69,11 @@ namespace Fasetto.Word.Core
         /// </summary>
         public string LocalFilePath { get; set; }
 
+        /// <summary>
+        /// Indicates if an image has loaded
+        /// </summary>
+        public bool ImageLoaded => LocalFilePath != null;
+
         #endregion
     }
 }

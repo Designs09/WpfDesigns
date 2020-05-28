@@ -137,6 +137,7 @@
                 <!-- Send button -->
                 <Button Name="SendButton"
                         Focusable="False"
+                        IsDefault="True"
                         Content="Send"
                         Padding="8"
                         Background="{StaticResource WordGreenBrush}"

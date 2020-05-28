@@ -109,7 +109,7 @@
                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                    Visibility="{TemplateBinding local:IsBusyProperty.Value, Converter={local:BooleanToVisiblityConverter}, ConverterParameter=True}"
-                                   Text="&#xf110;" />
+                                   Text="{StaticResource FontAwesomeSpinIcon}" />
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
