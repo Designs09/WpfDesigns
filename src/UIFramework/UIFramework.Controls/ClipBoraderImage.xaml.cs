@@ -1,5 +1,4 @@
-﻿using LiveCharts.Wpf;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,18 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LiveChartsDemo
+namespace UIFramework.Controls
 {
     /// <summary>
-    /// CurveGraphControl.xaml 的交互逻辑
+    /// ClipBoraderImage.xaml 的交互逻辑
     /// </summary>
-    public partial class CurveGraphControl : UserControl
+    public partial class ClipBoraderImage : UserControl
     {
-        public CurveGraphControl()
+        public ClipBoraderImage()
         {
             InitializeComponent();
-
-            CartesianChart chart;
         }
     }
 }

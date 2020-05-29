@@ -6,13 +6,13 @@
              xmlns:local="clr-namespace:LiveChartsDemo"
              xmlns:lv="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             d:DesignHeight="461" d:DesignWidth="872"
              DataContext="{x:Static local:CurveGraphDesignModel.Instance}"
              >
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Styles/Colors.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/LiveChartsDemo;component/Styles/Colors.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -21,9 +21,39 @@
                    FontSize="10"
                    Foreground="#FF9EA2C0"
                    />
+        <Grid Margin="11 57 10 48" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Line Panel.ZIndex="1"
+                  X1="0"
+                  X2="0"
+                  Y1="0"
+                  Y2="5000"
+                  Grid.Column="1" 
+                  Stroke="#FF49A9FF"
+                  StrokeDashArray="1 2"
+                  StrokeThickness="2"
+                  />
+        </Grid>
         <lv:CartesianChart Margin="11 30 10 20" 
-                           
+                           Padding="10"
                            >
+
+            <!-- 旋转角度 -->
+            <lv:CartesianChart.LayoutTransform>
+                <RotateTransform Angle="1" />
+            </lv:CartesianChart.LayoutTransform>
+
+            <!-- 裁剪范围 -->
+            <lv:CartesianChart.Clip>
+                <RectangleGeometry Rect="0 0 1000 1000" />
+            </lv:CartesianChart.Clip>
+
+
+
             <lv:CartesianChart.Series>
                 <lv:LineSeries Values="{Binding Values1, Converter={local:DoubleArrayToChartValuesConverter}}"
                                Stroke="{StaticResource OrangeLinearBrush}"
@@ -49,18 +79,39 @@
                                Fill="Transparent"
                                PointGeometrySize="0"
                     />
-                
             </lv:CartesianChart.Series>
+
             <lv:CartesianChart.AxisX>
                 <lv:Axis Labels="{Binding Times, Converter={local:DateTimeToFormatStrsConverter}}"
                          FontSize="12"
+                         Foreground="Red"
                          >
+                    <lv:Axis.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Margin" Value="20" />
+                            <Setter Property="Padding" Value="20" />
+                            <Setter Property="Foreground" Value="Red" />
+                        </Style>
+                    </lv:Axis.Resources>
                     <lv:Axis.Separator>
                         <lv:Separator Step="1" 
+                                      StrokeDashArray="2 10"
+                                      StrokeThickness="0.5"
+                                      Stroke="Transparent"
                                       />
                     </lv:Axis.Separator>
                 </lv:Axis>
+
+                <!-- X轴占位内容 -->
+                <lv:Axis Foreground="Transparent">
+                    <lv:Axis.Separator>
+                        <lv:Separator Stroke="Transparent" />
+                    </lv:Axis.Separator>
+                </lv:Axis>
+
+
             </lv:CartesianChart.AxisX>
+
             <lv:CartesianChart.AxisY>
                 <lv:Axis MaxValue="20" MinValue="-20">
                     <lv:Axis.Separator>
@@ -70,7 +121,16 @@
                                       StrokeThickness="0.5"/>
                     </lv:Axis.Separator>
                 </lv:Axis>
+
+                <!-- Y轴占位内容 -->
+                <lv:Axis Labels="1" Foreground="Transparent">
+                    <lv:Axis.Separator>
+                        <lv:Separator Stroke="Transparent" />
+                    </lv:Axis.Separator>
+                </lv:Axis>
+
             </lv:CartesianChart.AxisY>
+
         </lv:CartesianChart>
     </Grid>
 </UserControl>
