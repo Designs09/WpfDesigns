@@ -78,9 +78,10 @@
                     </Grid.RowDefinitions>
 
                     <!-- Image Loading Glyph -->
-                    <Border HorizontalAlignment="{Binding SendByMe, Converter={local:SentByMeToAlignmentConverter}}">
+                    <Border HorizontalAlignment="{Binding SendByMe, Converter={local:SentByMeToAlignmentConverter}}"
+                            VerticalAlignment="Top"
+                            >
                         <TextBlock Style="{StaticResource SpinningText}"
-                                   VerticalAlignment="Top"
                                    Foreground="{StaticResource ForegroundLightBrush}"
                                    Padding="20"
                                    DataContext="{Binding ImageAttachment}"
@@ -90,7 +91,6 @@
 
                     <!-- Image attachment -->
                     <Border CornerRadius="10"
-                            HorizontalAlignment="{Binding SentByMe, Converter={local:SentByMeToAlignmentConverter}}"
                             Margin="0 0 0 15"
                             >
 

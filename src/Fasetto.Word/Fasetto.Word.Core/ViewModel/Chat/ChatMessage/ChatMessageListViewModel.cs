@@ -224,10 +224,18 @@ namespace Fasetto.Word.Core
         /// </summary>
         public void Send()
         {
+            // Don't send a blank message
+            if (string.IsNullOrEmpty(PendingMessageText))
+                return;
+
+            // Ensure lists are not null
             if (Items == null)
                 Items = new ObservableCollection<ChatMessageListItemViewModel>();
-            
-            Items.Add(new ChatMessageListItemViewModel
+            if (FilteredItems == null)
+                FilteredItems = new ObservableCollection<ChatMessageListItemViewModel>();
+
+            // Fake send a new message
+            var message = new ChatMessageListItemViewModel
             {
                 Initials = "LM",
                 Message = PendingMessageText,
@@ -235,8 +243,13 @@ namespace Fasetto.Word.Core
                 SendByMe = true,
                 SenderName = "Luke Malpass",
                 NewItem = true,
-            });
+            };
 
+            // Add message to both lists
+            Items.Add(message);
+            FilteredItems.Add(message);
+
+            // Clear the pending message text
             PendingMessageText = string.Empty;
         }
 
@@ -245,6 +258,30 @@ namespace Fasetto.Word.Core
         /// </summary>
         public void Search()
         {
+            // Make sure we don't re-search the same text
+            if ((string.IsNullOrEmpty(mLastSearchText) && string.IsNullOrEmpty(SearchText)) ||
+                string.Equals(mLastSearchText, mSearchText))
+                return;
+
+            // If we have no search text, or no items
+            if (string.IsNullOrEmpty(SearchText) || Items == null || Items.Count <= 0)
+            {
+                // Make filtered list the same
+                FilteredItems = new ObservableCollection<ChatMessageListItemViewModel>(Items);
+
+                // Set last search
+                mLastSearchText = SearchText;
+
+                return;
+            }
+
+            // Find all items that contain the given text
+            // TODO: Make more efficient search
+            FilteredItems = new ObservableCollection<ChatMessageListItemViewModel>(
+                Items.Where(item => item.Message.ToLower().Contains(SearchText)));
+
+            // Set last search text
+            mLastSearchText = SearchText;
         }
 
         /// <summary>
