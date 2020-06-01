@@ -76,6 +76,7 @@
   <ItemGroup>
     <Compile Include="AttachedProperties\BaseAttachedProperty.cs" />
     <Compile Include="AttachedProperties\ClipFromBorderProperty.cs" />
+    <Compile Include="AttachedProperties\ClipFromBorderSizeProperty.cs" />
     <Compile Include="ChromeBrowserControl.xaml.cs">
       <DependentUpon>ChromeBrowserControl.xaml</DependentUpon>
     </Compile>
