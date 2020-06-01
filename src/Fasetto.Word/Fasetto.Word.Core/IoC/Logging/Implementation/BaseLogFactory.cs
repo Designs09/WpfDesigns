@@ -31,7 +31,7 @@ namespace Fasetto.Word.Core
         /// <summary>
         /// The level of logging to output
         /// </summary>
-        public LogFactoryLevel LogOutputLevel { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public LogFactoryLevel LogOutputLevel { get; set; }
 
         /// <summary>
         /// If true, includes the origin of where the log message was logged from
@@ -46,7 +46,7 @@ namespace Fasetto.Word.Core
         /// <summary>
         /// Fires whenever a new log arrives
         /// </summary>
-        public event Action<(string Message, LogFactoryLevel Level)> NewLog = (details) => { };
+        public event Action<(string Message, LogLevel Level)> NewLog = (details) => { };
 
         #endregion
 
@@ -104,11 +104,15 @@ namespace Fasetto.Word.Core
         /// <param name="lineNumber">The line of code in the filename this message was logged from</param>
         public void Log(
             string message,
-            LogFactoryLevel level = LogFactoryLevel.Information,
+            LogLevel level = LogLevel.Informative,
             [CallerMemberName] string origin = "",
             [CallerFilePath] string filePath = "",
             [CallerLineNumber] int lineNumber = 0)
         {
+            // If we should not log the message as the log level is too low...
+            if ((int)level < (int)LogOutputLevel)
+                return;
+
             // If the user wants to know where the log originated from...
             if (IncludeLogOriginDetails)
                 message = $"[{Path.GetFileName(filePath)} > {origin}() > {lineNumber}]{System.Environment.NewLine}{message}";

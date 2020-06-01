@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace Fasetto.Word.Core
 {
@@ -27,7 +28,7 @@ namespace Fasetto.Word.Core
         /// <summary>
         /// Fires whenever a new log arrives
         /// </summary>
-        event Action<(string Message, LogFactoryLevel Level)> NewLog;
+        event Action<(string Message, LogLevel Level)> NewLog;
 
         #endregion
 
@@ -53,7 +54,7 @@ namespace Fasetto.Word.Core
         /// <param name="origin">The method/function this message was logged in</param>
         /// <param name="filePath">The code filename that this message was logged from</param>
         /// <param name="lineNumber">The line of code in the filename this message was logged from</param>
-        void Log(string message, LogFactoryLevel level = LogFactoryLevel.Information, string origin = "", string filePath = "", int lineNumber = 0);
+        void Log(string message, LogLevel level = LogLevel.Informative, [CallerMemberName] string origin = "", [CallerFilePath] string filePath = "", [CallerLineNumber] int lineNumber = 0);
 
         #endregion
     }

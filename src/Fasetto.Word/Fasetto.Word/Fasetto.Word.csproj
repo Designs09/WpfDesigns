@@ -303,12 +303,6 @@
     <Resource Include="Images\Logo\penguin.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Fasetto.Word.Core\Fasetto.Word.Core.csproj">
-      <Project>{e9b3d4b2-ad8b-4e77-8e3c-6abb8a4109bc}</Project>
-      <Name>Fasetto.Word.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
@@ -325,6 +319,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Profile\Luffy.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fasetto.Word.Core\Fasetto.Word.Core.csproj">
+      <Project>{e9b3d4b2-ad8b-4e77-8e3c-6abb8a4109bc}</Project>
+      <Name>Fasetto.Word.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.1.1\build\Fody.targets" Condition="Exists('..\packages\Fody.6.1.1\build\Fody.targets')" />

@@ -18,21 +18,16 @@
         /// <summary>
         /// Logs all informative message, ignoring any debug and verbose messages
         /// </summary>
-        Information = 3,
+        Informative = 3,
 
         /// <summary>
-        /// Logs only warnings, errors and standard messages
+        /// Log only critical erroes and warnings and success, but no general information
         /// </summary>
-        Normal = 4,
-
-        /// <summary>
-        /// Log only critical erroes and warnings, no general information
-        /// </summary>
-        Critical = 5,
+        Critical = 4,
 
         /// <summary>
         /// The logger will never output anything
         /// </summary>
-        Nothing = 6,
+        Nothing = 7,
     }
 }
