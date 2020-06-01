@@ -76,26 +76,42 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    
+
+                    <!-- Image Loading Glyph -->
+                    <Border HorizontalAlignment="{Binding SendByMe, Converter={local:SentByMeToAlignmentConverter}}"
+                            VerticalAlignment="Top"
+                            >
+                        <TextBlock Style="{StaticResource SpinningText}"
+                                   Foreground="{StaticResource ForegroundLightBrush}"
+                                   Padding="20"
+                                   DataContext="{Binding ImageAttachment}"
+                                   Visibility="{Binding ImageLoaded, Converter={local:BooleanToVisiblityGoneConverter}, ConverterParameter=True, FallbackValue=Collapsed}"
+                                   />
+                    </Border>
+
                     <!-- Image attachment -->
                     <Border CornerRadius="10"
                             Margin="0 0 0 15"
                             >
 
                         <Image DataContext="{Binding ImageAttachment}"
-                               Source="{Binding LocalFilePath}"
+                               Source="{Binding LocalFilePath, NotifyOnTargetUpdated=True}"
                                MaxWidth="600"
                                local:ClipFromBorderProperty.Value="True"
+                               local:FadeInImageOnLoadProperty.Value="True"
                                />
 
                     </Border>
-                    
+
                     <!-- Chat message Text Bubble -->
                     <Grid Grid.Row="1"
+                          HorizontalAlignment="{Binding SentByMe, Converter={local:SentByMeToAlignmentConverter}}"
                           Visibility="{Binding HasMessage, Converter={local:BooleanToVisiblityGoneConverter}}"
                           >
+                        <!--HorizontalAlignment="{Binding SentByMe, Converter={local:SentByMeToAlignmentConverter}}"-->
 
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
@@ -103,6 +119,7 @@
                         <!-- Speech bubble rectangle -->
                         <Border CornerRadius="10"
                                 Padding="15"
+                                HorizontalAlignment="{Binding SendByMe, Converter={local:SentByMeToAlignmentConverter}}"
                                 Background="{Binding SendByMe, Converter={local:SentByMeToBackgroundConverter}}"
                                 >
 
@@ -119,47 +136,44 @@
                         <!-- Chat bubble anchor -->
                         <Path Grid.Row="1" 
                               Panel.ZIndex="1"
-                              HorizontalAlignment="{Binding SendByMe, Converter={local:SentByMeToAlignmentConverter}}"
                               Margin="15 -1 15 0"
                               Stroke="Black"
                               StrokeThickness="0"
+                              HorizontalAlignment="{Binding SendByMe, Converter={local:SentByMeToAlignmentConverter}}"
                               Fill="{Binding SendByMe, Converter={local:SentByMeToBackgroundConverter}}"
                               Data="M 0,0 L 10,10 L 20,0" 
                              />
 
+                        <!-- Time containers -->
+                        <StackPanel Name="ExtraDetails"
+                                    Grid.Row="2"
+                                    Opacity="0"
+                                    HorizontalAlignment="{Binding SendByMe, Converter={local:SentByMeToAlignmentConverter}, ConverterParameter=True}"
+                                    Orientation="Horizontal"
+                                        >
+
+                            <!-- Sent time  -->
+                            <TextBlock Text="{Binding MessageSentTime, Converter={local:TimeToDisplayTimeConverter}}"
+                                       FontFamily="{StaticResource LatoThin}"
+                                       FontSize="{StaticResource FontSizeSmall}"
+                                       Foreground="{StaticResource ForegroundLightBrush}"
+                                       Margin="0 0 10 0"
+                                        />
+
+                            <!-- Read time  -->
+                            <TextBlock Text="{Binding MessageReadTime, Converter={local:TimeToReadTimeConverter}}"
+                                       FontFamily="{StaticResource LatoThin}"
+                                       FontSize="{StaticResource FontSizeSmall}"
+                                       Foreground="{StaticResource WordDarkBlueBrush}"
+                                        />
+                        </StackPanel>
+
                     </Grid>
 
                 </Grid>
-                
-                <!-- Time containers -->
-                <StackPanel Name="ExtraDetails"
-                            Grid.Row="2"
-                            Opacity="0"
-                            HorizontalAlignment="{Binding SendByMe, Converter={local:SentByMeToAlignmentConverter}, ConverterParameter=True}"
-                            Orientation="Horizontal"
-                            >
 
-                    <!-- Sent time  -->
-                    <TextBlock
-                           Text="{Binding MessageSentTime, Converter={local:TimeToDisplayTimeConverter}}"
-                           FontFamily="{StaticResource LatoThin}"
-                           FontSize="{StaticResource FontSizeSmall}"
-                           Foreground="{StaticResource ForegroundLightBrush}"
-                           HorizontalAlignment="Right"
-                           Margin="0 0 10 0"
-                           />
-
-                    <!-- Read time  -->
-                    <TextBlock
-                           Text="{Binding MessageReadTime, Converter={local:TimeToReadTimeConverter}}"
-                           FontFamily="{StaticResource LatoThin}"
-                           FontSize="{StaticResource FontSizeSmall}"
-                           Foreground="{StaticResource WordDarkBlueBrush}"
-                           HorizontalAlignment="Right"
-                           />
-                </StackPanel>
-                
             </Grid>
+
         </Grid>
     </Border>
 </UserControl>

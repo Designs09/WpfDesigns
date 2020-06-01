@@ -28,6 +28,8 @@ namespace Fasetto.Word.Core
         /// </summary>
         public ChatMessageListDesignModel()
         {
+            DisplayTitle = "Parnell, Me";
+
             Items = new ObservableCollection<ChatMessageListItemViewModel>
             {
                 new ChatMessageListItemViewModel

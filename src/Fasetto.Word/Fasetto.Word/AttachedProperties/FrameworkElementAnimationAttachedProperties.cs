@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Fasetto.Word
 {
@@ -87,6 +88,30 @@ namespace Fasetto.Word
     }
 
     /// <summary>
+    /// Fade in an image once the source changes
+    /// </summary>
+    public class FadeInImageOnLoadProperty : AnimateBaseProperty<FadeInImageOnLoadProperty>
+    {
+        public override void OnValueUpdated(DependencyObject sender, object value)
+        {
+            // Make sure we have a image
+            if (!(sender is Image image))
+                return;
+
+            // If we want to animate in...
+            if ((bool)value)
+                image.TargetUpdated += Image_TargetUpdated;
+            else
+                image.TargetUpdated -= Image_TargetUpdated;
+        }
+
+        private async void Image_TargetUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
+        {
+            await (sender as Image).FadeInAsync(false);
+        }
+    }
+
+    /// <summary>
     /// Animates a framework element sliding it in from the left on show
     /// and sliding out to the left on hide
     /// </summary>
@@ -102,6 +127,44 @@ namespace Fasetto.Word
             else
                 // Animate out
                 await element.SlideAndFadeOutAsync(AnimationSlideInDirection.Left, firstLoad ? 0 : 0.3f, false);
+        }
+    }
+
+    /// <summary>
+    /// Animates a framework element sliding it in from the right on show
+    /// and sliding out to the right on hide
+    /// </summary>
+    public class AnimateSlideInFromRightProperty : AnimateBaseProperty<AnimateSlideInFromRightProperty>
+    {
+        protected async override void DoAnimation(FrameworkElement element, bool value, bool firstLoad)
+        {
+            if (value)
+            {
+                // Animate in
+                await element.SlideAndFadeInAsync(AnimationSlideInDirection.Right, firstLoad, firstLoad ? 0 : 0.3f, false);
+            }
+            else
+                // Animate out
+                await element.SlideAndFadeOutAsync(AnimationSlideInDirection.Right, firstLoad ? 0 : 0.3f, false);
+        }
+    }
+
+    /// <summary>
+    /// Animates a framework element sliding it in from the right on show
+    /// and sliding out to the right on hide
+    /// </summary>
+    public class AnimateSlideInFromRightMarginProperty : AnimateBaseProperty<AnimateSlideInFromRightMarginProperty>
+    {
+        protected async override void DoAnimation(FrameworkElement element, bool value, bool firstLoad)
+        {
+            if (value)
+            {
+                // Animate in
+                await element.SlideAndFadeInAsync(AnimationSlideInDirection.Right, firstLoad, firstLoad ? 0 : 0.3f, keepMargin: true);
+            }
+            else
+                // Animate out
+                await element.SlideAndFadeOutAsync(AnimationSlideInDirection.Right, firstLoad ? 0 : 0.3f, keepMargin: true);
         }
     }
 

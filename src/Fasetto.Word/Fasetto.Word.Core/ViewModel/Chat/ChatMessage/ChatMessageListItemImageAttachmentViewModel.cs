@@ -60,7 +60,7 @@ namespace Fasetto.Word.Core
                 //
                 //       For now, just set the file path directly
 
-                Task.Delay(2000).ContinueWith(t => LocalFilePath = "/Images/Profile/Jay.jpg");
+                Task.Delay(10000).ContinueWith(t => LocalFilePath = "/Images/Profile/Jay.jpg");
             }
         }
 
@@ -68,6 +68,11 @@ namespace Fasetto.Word.Core
         /// The local file path on this machine to the downloaded thumbnail
         /// </summary>
         public string LocalFilePath { get; set; }
+
+        /// <summary>
+        /// Indicates if an image has loaded
+        /// </summary>
+        public bool ImageLoaded => LocalFilePath != null;
 
         #endregion
     }
