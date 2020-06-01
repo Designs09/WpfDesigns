@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,9 @@ namespace Fasetto.Word.Core
         /// </summary>
         public ChatMessageListDesignModel()
         {
-            Items = new List<ChatMessageListItemViewModel>
+            DisplayTitle = "Parnell, Me";
+
+            Items = new ObservableCollection<ChatMessageListItemViewModel>
             {
                 new ChatMessageListItemViewModel
                 {
@@ -57,7 +60,6 @@ namespace Fasetto.Word.Core
                     MessageSentTime = DateTimeOffset.UtcNow,
                     SendByMe = false,
                 },
-
             };
         }
 

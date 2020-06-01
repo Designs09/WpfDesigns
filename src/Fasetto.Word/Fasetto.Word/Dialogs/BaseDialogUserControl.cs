@@ -20,7 +20,7 @@ namespace Fasetto.Word
         /// <summary>
         /// The dialog window we will be contained within
         /// </summary>
-        private DialogWindow mDialogWindow;
+        private readonly DialogWindow mDialogWindow;
 
         #endregion
 
@@ -108,6 +108,10 @@ namespace Fasetto.Word
 
                     // Setup this controls data context binding to view model
                     DataContext = viewModel;
+
+                    // Set the dialog at the center of parent window
+                    mDialogWindow.Owner = Application.Current.MainWindow;
+                    mDialogWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
                     // Show dialog
                     mDialogWindow.ShowDialog();

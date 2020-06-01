@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LiveChartsDemo
+namespace UIFramework.Controls
 {
     /// <summary>
-    /// BasePillarControl.xaml 的交互逻辑
+    /// StyleFireOrder1.xaml 的交互逻辑
     /// </summary>
-    public partial class BasePillarControl : UserControl
+    public partial class StyleFireOrder1 : UserControl
     {
-        public BasePillarControl()
+        public StyleFireOrder1()
         {
             InitializeComponent();
         }

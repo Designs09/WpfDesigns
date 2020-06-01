@@ -70,20 +70,27 @@
     <Compile Include="Official\BaseColumn.xaml.cs">
       <DependentUpon>BaseColumn.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Official\BasePillarControl.xaml.cs">
-      <DependentUpon>BasePillarControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\CarEnterOutChartControl.xaml.cs">
       <DependentUpon>CarEnterOutChartControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Official\CurveGraphControl.xaml.cs">
+      <DependentUpon>CurveGraphControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Official\TimeEnergyControl.xaml.cs">
       <DependentUpon>TimeEnergyControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControl1.xaml.cs">
+      <DependentUpon>UserControl1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValueConverters\BaseValueConverter.cs" />
+    <Compile Include="ValueConverters\DateTimeToFormatStrsConverter.cs" />
     <Compile Include="ValueConverters\IntArrayToChartValuesConverter.cs" />
+    <Compile Include="ValueConverters\DoubleArrayToChartValuesConverter.cs" />
     <Compile Include="ValueConverters\TimeSpanToFormatStrConverter.cs" />
     <Compile Include="ViewModel\Base\BaseViewModel.cs" />
     <Compile Include="ViewModel\Base\ExpressionHelpers.cs" />
+    <Compile Include="ViewModel\Curve\CurveGraphViewModel.cs" />
+    <Compile Include="ViewModel\Curve\Design\CurveGraphDesignModel.cs" />
     <Compile Include="ViewModel\Pillar\Design\CarEnterOutChartDesignModel.cs" />
     <Compile Include="ViewModel\Pillar\Design\BasePillarDesignModel.cs" />
     <Compile Include="ViewModel\Pillar\Design\StackedPillarDesignModel.cs" />
@@ -113,15 +120,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Official\BasePillarControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Official\BasicStacked.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\CarEnterOutChartControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Official\CurveGraphControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -134,6 +141,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Official\TimeEnergyControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Colors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

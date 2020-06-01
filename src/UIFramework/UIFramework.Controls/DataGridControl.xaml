@@ -13,6 +13,8 @@
                 <Setter Property="Background" Value="Gray" />
                 <Setter Property="FontSize" Value="28" />
                 <Setter Property="GridLinesVisibility" Value="None" />
+                <!-- 更换样式的行数 -->
+                <Setter Property="AlternationCount" Value="2" />
                 <!-- 设置列头部样式 -->
                 <Setter Property="ColumnHeaderStyle">
                     <Setter.Value>
@@ -29,6 +31,17 @@
                         <Style TargetType="DataGridRow">
                             <Setter Property="Foreground" Value="DarkBlue" />
                             <Setter Property="Margin" Value="0 0 0 8" />
+
+                            <Style.Triggers>
+                                
+                                <!-- 设置隔行颜色-->
+                                <Trigger Property="AlternationIndex" Value="0">
+                                    <Setter Property="Background" Value="#0D9EA2C0" />
+                                </Trigger>
+                                <Trigger Property="AlternationIndex" Value="1">
+                                    <Setter Property="Background" Value="#FF0A0D33" />
+                                </Trigger>
+                            </Style.Triggers>
                         </Style>
                     </Setter.Value>
                 </Setter>

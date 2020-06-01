@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="UIFramework.Controls.DataGridControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UIFramework.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <!-- 报警数据 -->
+        <DataGrid Grid.Row="2"
+                                  Margin="20 3 0 10"
+                                  Background="Transparent" 
+                                  BorderThickness="0"
+                                  DataContext="{x:Static local:AlarmListDesignModel.Instance}"
+                                  ItemsSource="{Binding Items}"
+                                  AutoGenerateColumns="False"
+                                  RowHeaderWidth="0"
+                                  CanUserAddRows="False"
+                                  GridLinesVisibility="None"
+                                  >
+
+            <!-- 列头部样式 -->
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Foreground" Value="#FFFFFF" />
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Margin" Value="0 8 0 8" />
+                    <Setter Property="HorizontalAlignment" Value="Left" />
+                    <Setter Property="FontSize" Value="13" />
+                    <Setter Property="FontFamily" Value="{StaticResource FontAwesome}" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <!-- 单元格样式 -->
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="FontFamily" Value="{StaticResource FontAwesome}" />
+                    <Setter Property="Foreground" Value="#9EA2C0" />
+                    <Setter Property="FontSize" Value="13" />
+                    <Setter Property="Margin" Value="0 8 0 8" />
+                    <Setter Property="HorizontalAlignment" Value="Left" />
+                </Style>
+            </DataGrid.CellStyle>
+            <!-- 行样式 -->
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="IsEnabled" Value="False" />
+                    <Setter Property="IsHitTestVisible" Value="False" />
+                    <Setter Property="IsSelected" Value="False" />
+                </Style>
+            </DataGrid.RowStyle>
+
+            <!-- 列头部 -->
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="报警设备" Width="93" Binding="{Binding DeviceName}"/>
+                <DataGridTextColumn Header="报警事件" Width="102" Binding="{Binding EventName}"/>
+                <DataGridTextColumn Header="报警时间" Width="153" Binding="{Binding AlarmTime, Converter={local:TimeToStringConverter}}"/>
+                <DataGridTemplateColumn Header="处理状态" Width="72">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding HandleStatus}" Foreground="{Binding HandleStatus, Converter={local:AlarmHandleStatusToColorConverter}}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+    </Grid>
+</UserControl>

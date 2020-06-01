@@ -27,6 +27,14 @@ namespace Fasetto.Word
             // Setup the main application
             ApplicationSetup();
 
+            // Log it
+            IoC.Logger.Log("Application starting up...", LogLevel.Debug);
+            IoC.Logger.Log("Application starting up...", LogLevel.Verbose);
+            IoC.Logger.Log("Application starting up...", LogLevel.Informative);
+            IoC.Logger.Log("Application starting up...", LogLevel.Warning);
+            IoC.Logger.Log("Application starting up...", LogLevel.Error);
+            IoC.Logger.Log("Application starting up...", LogLevel.Success);
+
             // Show the main window
             Current.MainWindow = new MainWindow();
             Current.MainWindow.Show();
@@ -42,6 +50,9 @@ namespace Fasetto.Word
 
             // Bind a UI Manager
             IoC.Kernel.Bind<IUIManager>().ToConstant(new UIManager());
+
+            // Bind a logger
+            IoC.Kernel.Bind<ILogFactory>().ToConstant(new BaseLogFactory());
         }
     }
 }

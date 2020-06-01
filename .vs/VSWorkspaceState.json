@@ -1,16 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\source",
-    "\\source\\Fasetto.Word",
-    "\\source\\ListDemo",
-    "\\source\\UIFramework",
-    "\\WpfApp",
-    "\\WpfApp\\WpfApp",
-    "\\WpfApp\\WpfApp.ConsoleOut",
-    "\\WpfApp\\WpfApp.Model",
-    "\\WpfApp\\WpfAppFW"
+    "\\src",
+    "\\src\\Fasetto.Word",
+    "\\src\\UIFramework"
   ],
-  "SelectedNode": "\\source\\Fasetto.Word\\Fasetto.Word.sln",
+  "SelectedNode": "\\src\\Fasetto.Word\\Fasetto.Word.sln",
   "PreviewInSolutionExplorer": false
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -83,7 +84,9 @@ namespace Fasetto.Word.Core
             }
             IoC.Application.GoToPage(ApplicationPage.Chat, new ChatMessageListViewModel
             {
-                Items = new List<ChatMessageListItemViewModel>
+                DisplayTitle = "Parnell, Me",
+
+                Items = new ObservableCollection<ChatMessageListItemViewModel>
                 {
                     new ChatMessageListItemViewModel
                     {
@@ -133,6 +136,19 @@ namespace Fasetto.Word.Core
                     new ChatMessageListItemViewModel
                     {
                         Message = "A received message",
+                        Initials = Initials,
+                        MessageSentTime = DateTime.UtcNow,
+                        ProfilePictureRGB = "FF0000",
+                        SenderName = Name,
+                        SendByMe = false,
+                    },
+                    new ChatMessageListItemViewModel
+                    {
+                        Message = "A received message",
+                        ImageAttachment = new ChatMessageListItemImageAttachmentViewModel
+                        {
+                            ThumbnailUrl = "http://anywhere",
+                        },
                         Initials = Initials,
                         MessageSentTime = DateTime.UtcNow,
                         ProfilePictureRGB = "FF0000",

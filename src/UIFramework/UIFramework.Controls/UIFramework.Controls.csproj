@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\CefSharp.Wpf.79.1.360\build\CefSharp.Wpf.props" Condition="Exists('..\packages\CefSharp.Wpf.79.1.360\build\CefSharp.Wpf.props')" />
+  <Import Project="..\packages\CefSharp.Common.79.1.360\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.79.1.360\build\CefSharp.Common.props')" />
+  <Import Project="..\packages\cef.redist.x86.79.1.36\build\cef.redist.x86.props" Condition="Exists('..\packages\cef.redist.x86.79.1.36\build\cef.redist.x86.props')" />
+  <Import Project="..\packages\cef.redist.x64.79.1.36\build\cef.redist.x64.props" Condition="Exists('..\packages\cef.redist.x64.79.1.36\build\cef.redist.x64.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -13,6 +17,8 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,6 +37,26 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -48,11 +74,48 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttachedProperties\BaseAttachedProperty.cs" />
+    <Compile Include="AttachedProperties\ClipFromBorderProperty.cs" />
+    <Compile Include="AttachedProperties\ClipFromBorderSizeProperty.cs" />
+    <Compile Include="ChromeBrowserControl.xaml.cs">
+      <DependentUpon>ChromeBrowserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClipBoraderImage.xaml.cs">
+      <DependentUpon>ClipBoraderImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataGridControl1.xaml.cs">
+      <DependentUpon>DataGridControl1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LinearBrushControl.xaml.cs">
       <DependentUpon>LinearBrushControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\AlarmHandleStatus.cs" />
+    <Compile Include="StyleFireOrder1.xaml.cs">
+      <DependentUpon>StyleFireOrder1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ValueConverter\AlarmHandleStatusToColorConverter.cs" />
+    <Compile Include="ValueConverter\BaseValueConverter.cs" />
+    <Compile Include="StyleFireOrder.xaml.cs">
+      <DependentUpon>StyleFireOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ValueConverter\TimeToStringConverter.cs" />
+    <Compile Include="ViewModel\Alarm\AlarmListItemViewModel.cs" />
+    <Compile Include="ViewModel\Alarm\AlarmListViewModel.cs" />
+    <Compile Include="ViewModel\Alarm\Design\AlarmListDesignModel.cs" />
     <Compile Include="ViewModel\DataGridViewModel.cs" />
+    <Page Include="ChromeBrowserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClipBoraderImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DataGridControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DataGridControl1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -61,6 +124,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LinearBrushControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StyleFireOrder1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -83,6 +150,10 @@
       <DependentUpon>FontFamilies.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="StyleFireOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ImageSelfContain.xaml.cs">
@@ -118,6 +189,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\UIFramework.Controls1\UIFramework.Controls1.csproj">
+      <Project>{57039292-2bfb-4fef-9112-a41e22cdfb1b}</Project>
+      <Name>UIFramework.Controls1</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UIFramework.Core\UIFramework.Core.csproj">
       <Project>{4b5d331b-0d0f-4b35-b529-0a5bf945088c}</Project>
       <Name>UIFramework.Core</Name>
@@ -126,5 +201,14 @@
   <ItemGroup>
     <Resource Include="Images\停车场入口.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\4262912c57b2ef59a20154a8bc66b8b1.jpg" />
+    <Content Include="Lib\CefSharp.Core.dll" />
+    <Content Include="Lib\CefSharp.dll" />
+    <Content Include="Lib\CefSharp.Wpf.dll" />
+    <Content Include="Lib\ICSharpCode.Core.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\CefSharp.Common.79.1.360\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.79.1.360\build\CefSharp.Common.targets')" />
+  <Import Project="..\packages\CefSharp.Wpf.79.1.360\build\CefSharp.Wpf.targets" Condition="Exists('..\packages\CefSharp.Wpf.79.1.360\build\CefSharp.Wpf.targets')" />
 </Project>

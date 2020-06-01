@@ -16,12 +16,12 @@ namespace Fasetto.Word
         /// <summary>
         /// The window this view model controls
         /// </summary>
-        private Window mWindow;
+        private readonly Window mWindow;
 
         /// <summary>
         /// The window resizer helper that keeps the window size correct in various states
         /// </summary>
-        private WindowResizer mWindowResizer;
+        private readonly WindowResizer mWindowResizer;
 
         /// <summary>
         /// The margin around the window to allow for a drop shadow
