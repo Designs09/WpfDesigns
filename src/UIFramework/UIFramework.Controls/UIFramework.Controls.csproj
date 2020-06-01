@@ -74,8 +74,14 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttachedProperties\BaseAttachedProperty.cs" />
+    <Compile Include="AttachedProperties\ClipFromBorderProperty.cs" />
+    <Compile Include="AttachedProperties\ClipFromBorderSizeProperty.cs" />
     <Compile Include="ChromeBrowserControl.xaml.cs">
       <DependentUpon>ChromeBrowserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClipBoraderImage.xaml.cs">
+      <DependentUpon>ClipBoraderImage.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataGridControl1.xaml.cs">
       <DependentUpon>DataGridControl1.xaml</DependentUpon>
@@ -98,6 +104,10 @@
     <Compile Include="ViewModel\Alarm\Design\AlarmListDesignModel.cs" />
     <Compile Include="ViewModel\DataGridViewModel.cs" />
     <Page Include="ChromeBrowserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClipBoraderImage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -192,6 +202,7 @@
     <Resource Include="Images\停车场入口.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\4262912c57b2ef59a20154a8bc66b8b1.jpg" />
     <Content Include="Lib\CefSharp.Core.dll" />
     <Content Include="Lib\CefSharp.dll" />
     <Content Include="Lib\CefSharp.Wpf.dll" />

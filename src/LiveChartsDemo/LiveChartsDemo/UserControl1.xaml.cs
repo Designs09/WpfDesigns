@@ -1,5 +1,4 @@
-﻿using LiveCharts.Wpf;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,15 +16,13 @@ using System.Windows.Shapes;
 namespace LiveChartsDemo
 {
     /// <summary>
-    /// CurveGraphControl.xaml 的交互逻辑
+    /// UserControl1.xaml 的交互逻辑
     /// </summary>
-    public partial class CurveGraphControl : UserControl
+    public partial class UserControl1 : UserControl
     {
-        public CurveGraphControl()
+        public UserControl1()
         {
             InitializeComponent();
-
-            CartesianChart chart;
         }
     }
 }

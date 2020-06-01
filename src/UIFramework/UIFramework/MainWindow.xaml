@@ -8,6 +8,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="Black">
-        <controls:StyleFireOrder1 />
+        <!--<controls:StyleFireOrder1 />-->
+
+        <controls:ClipBoraderImage />
     </Grid>
 </Window>
