@@ -7,9 +7,11 @@
         xmlns:controls="clr-namespace:UIFramework.Controls;assembly=UIFramework.Controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid Background="Black">
+    <Grid Background="DarkBlue">
         <!--<controls:StyleFireOrder1 />-->
 
-        <controls:ClipBoraderImage />
+        <controls:DateRangeControl Margin="50"/>
+
+        <!--<controls:ClipBoraderImage />-->
     </Grid>
 </Window>

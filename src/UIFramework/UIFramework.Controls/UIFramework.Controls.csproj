@@ -46,6 +46,7 @@
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -86,10 +87,17 @@
     <Compile Include="DataGridControl1.xaml.cs">
       <DependentUpon>DataGridControl1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DateRangeControl.xaml.cs">
+      <DependentUpon>DateRangeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DateRangeItemControl.xaml.cs">
+      <DependentUpon>DateRangeItemControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LinearBrushControl.xaml.cs">
       <DependentUpon>LinearBrushControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\AlarmHandleStatus.cs" />
+    <Compile Include="Model\DateType.cs" />
     <Compile Include="StyleFireOrder1.xaml.cs">
       <DependentUpon>StyleFireOrder1.xaml</DependentUpon>
     </Compile>
@@ -103,6 +111,8 @@
     <Compile Include="ViewModel\Alarm\AlarmListViewModel.cs" />
     <Compile Include="ViewModel\Alarm\Design\AlarmListDesignModel.cs" />
     <Compile Include="ViewModel\DataGridViewModel.cs" />
+    <Compile Include="ViewModel\Date\DateRangeViewModel.cs" />
+    <Compile Include="ViewModel\Date\Design\DateRangeDesignModel.cs" />
     <Page Include="ChromeBrowserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -118,6 +128,14 @@
     <Page Include="DataGridControl1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DateRangeControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DateRangeItemControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="ImageSelfContain.xaml">
       <SubType>Designer</SubType>
