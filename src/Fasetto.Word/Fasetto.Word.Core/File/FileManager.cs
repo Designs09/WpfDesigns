@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 namespace Fasetto.Word.Core
@@ -16,11 +17,11 @@ namespace Fasetto.Word.Core
         {
             // TODO: Add exception catching
 
-            // C:\text/some file.txt
-            // C:\text\some file.txt
-            // TODO: Normalize and resolve path
-            // For Windows, replace forward slash with backslash. For Mac, replace backslash with forward slash.
-            //path = Path.GetFullPath(path.Replace('/', '\\').Trim());
+            // Normalize  path
+            path = NormalizePath(path);
+
+            // Resolve to absolute path
+            path = ResolvePath(path);
 
             // Lock the task 
             await AsyncAwaiter.AwaitAsync(nameof(FileManager) + path, async () =>
@@ -34,6 +35,35 @@ namespace Fasetto.Word.Core
                         fileStream.Write(text);
                 });
             });
+        }
+
+        /// <summary>
+        /// Normalizing a path based on the curretn operating system
+        /// For Windows, replace forward slash with backslash. For Mac, replace backslash with forward slash.
+        /// </summary>
+        /// <param name="path">The path to normalize</param>
+        /// <returns></returns>
+        public string NormalizePath(string path)
+        {
+            // If on Windows...
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                // Replace any / with \
+                return path?.Replace('/', '\\').Trim();
+            // If on Linux or Mac
+            else
+                // Replace any \ with /
+                return path?.Replace('\\', '/').Trim();
+        }
+
+        /// <summary>
+        /// Resolves any relative elements of the path to absolute
+        /// </summary>
+        /// <param name="path">The path to resolve</param>
+        /// <returns></returns>
+        public string ResolvePath(string path)
+        {
+            // Resolve the path to absolute
+            return Path.GetFullPath(path);
         }
     }
 }

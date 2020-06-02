@@ -16,5 +16,20 @@ namespace Fasetto.Word.Core
         /// <param name="append">If true, write the text to the end of the file, otherwise overrides any existing file</param>
         /// <returns></returns>
         Task WriteAllTextToFileAsync(string text, string path, bool append = false);
+
+        /// <summary>
+        /// Normalizing a path based on the current operating system
+        /// For Windows, replace forward slash with backslash. For Mac, replace backslash with forward slash.
+        /// </summary>
+        /// <param name="path">The path to normalize</param>
+        /// <returns></returns>
+        string NormalizePath(string path);
+
+        /// <summary>
+        /// Resolves any relative elements of the path to absolute
+        /// </summary>
+        /// <param name="path">The path to resolve</param>
+        /// <returns></returns>
+        string ResolvePath(string path);
     }
 }
