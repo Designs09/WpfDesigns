@@ -30,6 +30,11 @@ namespace Fasetto.Word
             // Log it
             IoC.Logger.Log("Application starting up...", LogLevel.Debug);
 
+            IoC.Task.Run(() =>
+            {
+                throw new ArgumentNullException("ooops");
+            });
+
             // Show the main window
             Current.MainWindow = new MainWindow();
             Current.MainWindow.Show();
@@ -50,6 +55,9 @@ namespace Fasetto.Word
                 //       For now just log to the path where this application is running
                 new FileLogger("log.txt"),
             }));
+
+            // Add our task manager
+            IoC.Kernel.Bind<ITaskManager>().ToConstant(new TaskManager());
 
             // Bind a file manager
             IoC.Kernel.Bind<IFileManager>().ToConstant(new FileManager());

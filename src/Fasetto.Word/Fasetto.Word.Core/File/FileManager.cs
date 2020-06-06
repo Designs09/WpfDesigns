@@ -26,9 +26,8 @@ namespace Fasetto.Word.Core
             // Lock the task 
             await AsyncAwaiter.AwaitAsync(nameof(FileManager) + path, async () =>
             {
-                // TODO: Add IoC.Task.Run that logs to logger on failure
                 // Run the synchronous file access as a new task
-                await Task.Run(() =>
+                await IoC.Task.Run(() =>
                 {
                     // Write the log message to file
                     using (var fileStream = (TextWriter)new StreamWriter(File.Open(path, append ? FileMode.Append : FileMode.Create, FileAccess.Write)))

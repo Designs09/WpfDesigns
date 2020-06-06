@@ -1,10 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src",
-    "\\src\\Fasetto.Word",
-    "\\src\\UIFramework"
+    "\\src"
   ],
-  "SelectedNode": "\\src\\Fasetto.Word\\Fasetto.Word.sln",
+  "SelectedNode": "\\src\\Fasetto.Word",
   "PreviewInSolutionExplorer": false
 }
