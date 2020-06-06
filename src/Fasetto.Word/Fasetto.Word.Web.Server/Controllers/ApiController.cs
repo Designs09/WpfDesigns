@@ -97,16 +97,13 @@ namespace Fasetto.Word.Web.Server
             // If we got here we have a user...
             // Let's validate the password
             var isValidPassword = await mUserManager.CheckPasswordAsync(user, loginCreadentials.Password);
-
+            
             // If the password was wrong
             if (!isValidPassword)
                 // Return error message to user
                 return errorResponse;
 
             // If we get here, we are valid and the user passed the correct login details
-
-            // Get username
-            var username = "angelsix";
 
             // Set our tokens claims
             var claims = new[]
@@ -115,7 +112,7 @@ namespace Fasetto.Word.Web.Server
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),
 
                 // The username using the Identity name so it fills out the HttpContext.User.Identity.Name value
-                new Claim(ClaimsIdentity.DefaultNameClaimType, username),
+                new Claim(ClaimsIdentity.DefaultNameClaimType, user.UserName),
             };
 
             // Creat the credentials used to generate the token
@@ -143,9 +140,28 @@ namespace Fasetto.Word.Web.Server
                 {
                     FirstName = user.FirstName,
                     LastName = user.LastName,
+                    Email = user.Email,
+                    Username = user.UserName,
                     Token = new JwtSecurityTokenHandler().WriteToken(token),
                 }
             };
+        }
+
+        [Route("create")]
+        public async Task<IActionResult> CreateUserAsync()
+        {
+            var result = await mUserManager.CreateAsync(new ApplicationUser
+            {
+                UserName = "angelsix",
+                Email = "contact@angelsix.com",
+                FirstName = "Luke",
+                LastName = "Malpass",
+            }, "password");
+
+            if (result.Succeeded)
+                return Content("User was created", "text/html");
+
+            return Content("User creation failed", "text/html");
         }
     }
 }

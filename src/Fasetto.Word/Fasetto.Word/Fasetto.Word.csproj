@@ -18,6 +18,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <PublishUrl>publish\</PublishUrl>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -166,7 +167,6 @@
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\DialogWindowViewModel.cs" />
     <Compile Include="ViewModel\WindowViewModel.cs" />
-    <Compile Include="Window\WindowPresenter.cs" />
     <Compile Include="Window\WindowResizer.cs" />
     <Page Include="Controls\BubbleContent.xaml">
       <SubType>Designer</SubType>
@@ -322,7 +322,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fasetto.Word.Core\Fasetto.Word.Core.csproj">
-      <Project>{e9b3d4b2-ad8b-4e77-8e3c-6abb8a4109bc}</Project>
+      <Project>{85adfe89-6c07-4073-bbff-7ea7ab762ff0}</Project>
       <Name>Fasetto.Word.Core</Name>
     </ProjectReference>
   </ItemGroup>
