@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dna;
+using System;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Threading.Tasks;
@@ -64,25 +65,58 @@ namespace Fasetto.Word.Core
         {
             await RunCommandAsync(() => this.LoginIsRunning, async () =>
             {
-                // TODO: Fake a login...
-                await Task.Delay(1000);
+                // Call the server and attempt to login with credentials
+                // TODO: Move all URLs and API routes to static class in core
+                var result = await WebRequests.PostAsync<ApiResponse<LoginResultApiModel>>("https://localhost:44325/api/login",
+                    new LoginCredentialsApiModel
+                    {
+                        UsernameOrEmail = Email,
+                        //// IMPORTANT: never store unsecure password in variable like this
+                        Password = (parameter as IHasPassword).SecurePassword.Unsecure(),
+                    });
+
+                // If there was no respones, bad data, or a response with a error message...
+                if (result == null || result.ServerResponse == null || !result.ServerResponse.Successful)
+                {
+                    // Default error message
+                    var message = "Unknow error from server call";
+
+                    // If we got response from the server...
+                    if (result?.ServerResponse != null)
+                        // Set message to servers response
+                        message = result.ServerResponse.ErrorMessage;
+                    // If we have a result but deserialize failed...
+                    else if (!string.IsNullOrWhiteSpace(result?.RawServerResponse))
+                        // Set error message
+                        message = $"Unexcepted response from server. {result.RawServerResponse}";
+                    // If we have no result at all
+                    else if (result != null)
+                        // Set message to standard HTTP server response details
+                        message = $"Failed to communicate with server. Status code {result.StatusCode}. {result.StatusDescription}";
+
+                    // Display error
+                    await IoC.UI.ShowMessage(new MessageBoxDialogViewModel
+                    {
+                        // TODO: Localize strings
+                        Title = "Login failed",
+                        Message = message,
+                    });
+
+                    return;
+                }
 
                 // OK successfully logged in... now get users data
-                // TODO: Ask server for users info
+                var userData = result.ServerResponse.Response;
 
-                // TODO: Remove this with real information pulled from our database in future
-                IoC.Settings.Name = new TextEntryViewModel() { Label = "Name", OriginalText = $"Luke Malpass {DateTime.Now.ToLocalTime()}" };
-                IoC.Settings.Username = new TextEntryViewModel() { Label = "Username", OriginalText = "Luke" };
+                IoC.Settings.Name = new TextEntryViewModel() { Label = "Name", OriginalText = $"{userData.FirstName} {userData.LastName}" };
+                IoC.Settings.Username = new TextEntryViewModel() { Label = "Username", OriginalText = userData.Username };
                 IoC.Settings.Password = new PasswordEntryViewModel() { Label = "Password", FakePassword = "********" };
-                IoC.Settings.Email = new TextEntryViewModel() { Label = "Email", OriginalText = "contact@gmail.com" };
+                IoC.Settings.Email = new TextEntryViewModel() { Label = "Email", OriginalText = userData.Email };
 
                 // Go to chat page
                 IoC.Application.GoToPage(ApplicationPage.Chat);
 
                 //var email = this.Email;
-
-                //// IMPORTANT: never store unsecure password in variable like this
-                //var password = (parameter as IHasPassword).SecurePassword.Unsecure();
 
 
             });

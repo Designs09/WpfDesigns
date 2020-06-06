@@ -1,4 +1,5 @@
-﻿using Ninject;
+﻿using Dna;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,16 @@ namespace Fasetto.Word.Core
         public static ILogFactory Logger => IoC.Get<ILogFactory>();
 
         /// <summary>
+        /// A shortcut to access the <see cref="IFileManager"/>
+        /// </summary>
+        public static IFileManager File => IoC.Get<IFileManager>();
+
+        /// <summary>
+        /// A shortcut to access the <see cref="ITaskManager"/>
+        /// </summary>
+        public static ITaskManager Task => IoC.Get<ITaskManager>();
+
+        /// <summary>
         /// A shortcut to access the <see cref="ApplicationViewModel"/>
         /// </summary>
         public static ApplicationViewModel Application => IoC.Get<ApplicationViewModel>();
@@ -38,6 +49,11 @@ namespace Fasetto.Word.Core
         /// A shortcut to access the <see cref="SettingsViewModel"/>
         /// </summary>
         public static SettingsViewModel Settings => IoC.Get<SettingsViewModel>();
+
+        /// <summary>
+        /// A shortcut to access the <see cref="IClientDataStore"/>
+        /// </summary>
+        public static IClientDataStore ClientDataStore => Framework.Service<IClientDataStore>();
 
         #endregion
 
