@@ -1,4 +1,7 @@
-﻿using Fasetto.Word.Core;
+﻿using Dna;
+using Fasetto.Word.Core;
+using Fasetto.Word.Relational;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -19,13 +22,13 @@ namespace Fasetto.Word
         /// Custom startup sp we load out IoC immediately before anything else
         /// </summary>
         /// <param name="e"></param>
-        protected override void OnStartup(StartupEventArgs e)
+        protected override async void OnStartup(StartupEventArgs e)
         {
             // Let the base application do what it needs
             base.OnStartup(e);
 
             // Setup the main application
-            ApplicationSetup();
+            await ApplicationSetupAsync();
 
             // Log it
             IoC.Logger.Log("Application starting up...", LogLevel.Debug);
@@ -38,8 +41,13 @@ namespace Fasetto.Word
         /// <summary>
         /// Configures our application ready for use
         /// </summary>
-        private void ApplicationSetup()
+        private async Task ApplicationSetupAsync()
         {
+            // Setup the Dna Framework
+            Framework.Construct<DefaultFrameworkConstruction>()
+                .UseClientDataStore()
+                .Build();
+
             // Setup IoC
             IoC.Setup();
 
@@ -48,7 +56,7 @@ namespace Fasetto.Word
             { 
                 // TODO: Add ApplicationSettings so we can set/edit a log location
                 //       For now just log to the path where this application is running
-                new FileLogger("log.txt"),
+                new Fasetto.Word.Core.FileLogger("log.txt"),
             }));
 
             // Add our task manager
@@ -60,6 +68,8 @@ namespace Fasetto.Word
             // Bind a UI Manager
             IoC.Kernel.Bind<IUIManager>().ToConstant(new UIManager());
 
+            // Ensure the client data store
+            await IoC.ClientDataStore.EnsureDataStoreAsync();
         }
     }
 }
