@@ -44,6 +44,9 @@
                                        Margin="0 0 0 0"
                                        />
 
+                            <!-- Username -->
+                            <TextBox local:IsFocusedProperty.Value="True"  Text="{Binding Username}" Tag="Username" />
+
                             <!-- Email -->
                             <TextBox local:IsFocusedProperty.Value="True"  Text="{Binding Email}" Tag="Email" />
 
