@@ -108,6 +108,17 @@ namespace Fasetto.Word.Core
                 // OK successfully logged in... now get users data
                 var userData = result.ServerResponse.Response;
 
+                // Store this in the client data store
+                await IoC.ClientDataStore.SaveLoginCredentialsAsync(new LoginCredentialsDataModel
+                {
+                    Id = Guid.NewGuid().ToString("N"),
+                    Email = userData.Email,
+                    FirstName = userData.FirstName,
+                    LastName = userData.LastName,
+                    Username = userData.Username,
+                    Token = userData.Token,
+                });
+
                 IoC.Settings.Name = new TextEntryViewModel() { Label = "Name", OriginalText = $"{userData.FirstName} {userData.LastName}" };
                 IoC.Settings.Username = new TextEntryViewModel() { Label = "Username", OriginalText = userData.Username };
                 IoC.Settings.Password = new PasswordEntryViewModel() { Label = "Password", FakePassword = "********" };

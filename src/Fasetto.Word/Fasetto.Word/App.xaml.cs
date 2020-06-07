@@ -33,6 +33,14 @@ namespace Fasetto.Word
             // Log it
             IoC.Logger.Log("Application starting up...", LogLevel.Debug);
 
+            // Setup the application view model based on if we are logged in
+            IoC.Application.GoToPage(
+                await IoC.ClientDataStore.HasCredentialsAsync() ?
+                // If we are logged in...
+                ApplicationPage.Chat : 
+                // Otherwise, goto login page
+                ApplicationPage.Login);
+
             // Show the main window
             Current.MainWindow = new MainWindow();
             Current.MainWindow.Show();
