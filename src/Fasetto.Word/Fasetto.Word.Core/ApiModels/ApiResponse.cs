@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Fasetto.Word.Core
+﻿namespace Fasetto.Word.Core
 {
     /// <summary>
     /// The response for all Web API calls made

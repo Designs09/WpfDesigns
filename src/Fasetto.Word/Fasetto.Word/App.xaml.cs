@@ -78,6 +78,9 @@ namespace Fasetto.Word
 
             // Ensure the client data store
             await IoC.ClientDataStore.EnsureDataStoreAsync();
+
+            // Load settings
+            await IoC.Settings.LoadAsync();
         }
     }
 }
