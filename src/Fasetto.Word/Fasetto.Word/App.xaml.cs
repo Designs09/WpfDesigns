@@ -1,4 +1,7 @@
-﻿using Fasetto.Word.Core;
+﻿using Dna;
+using Fasetto.Word.Core;
+using Fasetto.Word.Relational;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -19,21 +22,24 @@ namespace Fasetto.Word
         /// Custom startup sp we load out IoC immediately before anything else
         /// </summary>
         /// <param name="e"></param>
-        protected override void OnStartup(StartupEventArgs e)
+        protected override async void OnStartup(StartupEventArgs e)
         {
             // Let the base application do what it needs
             base.OnStartup(e);
 
             // Setup the main application
-            ApplicationSetup();
+            await ApplicationSetupAsync();
 
             // Log it
             IoC.Logger.Log("Application starting up...", LogLevel.Debug);
-            IoC.Logger.Log("Application starting up...", LogLevel.Verbose);
-            IoC.Logger.Log("Application starting up...", LogLevel.Informative);
-            IoC.Logger.Log("Application starting up...", LogLevel.Warning);
-            IoC.Logger.Log("Application starting up...", LogLevel.Error);
-            IoC.Logger.Log("Application starting up...", LogLevel.Success);
+
+            // Setup the application view model based on if we are logged in
+            IoC.Application.GoToPage(
+                await IoC.ClientDataStore.HasCredentialsAsync() ?
+                // If we are logged in...
+                ApplicationPage.Chat : 
+                // Otherwise, goto login page
+                ApplicationPage.Login);
 
             // Show the main window
             Current.MainWindow = new MainWindow();
@@ -43,16 +49,38 @@ namespace Fasetto.Word
         /// <summary>
         /// Configures our application ready for use
         /// </summary>
-        private void ApplicationSetup()
+        private async Task ApplicationSetupAsync()
         {
+            // Setup the Dna Framework
+            Framework.Construct<DefaultFrameworkConstruction>()
+                .UseClientDataStore()
+                .Build();
+
             // Setup IoC
             IoC.Setup();
+
+            // Bind a logger
+            IoC.Kernel.Bind<ILogFactory>().ToConstant(new BaseLogFactory(new[] 
+            { 
+                // TODO: Add ApplicationSettings so we can set/edit a log location
+                //       For now just log to the path where this application is running
+                new Fasetto.Word.Core.FileLogger("log.txt"),
+            }));
+
+            // Add our task manager
+            IoC.Kernel.Bind<ITaskManager>().ToConstant(new TaskManager());
+
+            // Bind a file manager
+            IoC.Kernel.Bind<IFileManager>().ToConstant(new FileManager());
 
             // Bind a UI Manager
             IoC.Kernel.Bind<IUIManager>().ToConstant(new UIManager());
 
-            // Bind a logger
-            IoC.Kernel.Bind<ILogFactory>().ToConstant(new BaseLogFactory());
+            // Ensure the client data store
+            await IoC.ClientDataStore.EnsureDataStoreAsync();
+
+            // Load settings
+            await IoC.Settings.LoadAsync();
         }
     }
 }

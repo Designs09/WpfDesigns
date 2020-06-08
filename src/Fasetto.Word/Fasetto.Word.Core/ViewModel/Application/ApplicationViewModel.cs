@@ -13,7 +13,7 @@ namespace Fasetto.Word.Core
     {
         /// The current page of the application
         /// </summary>
-        public ApplicationPage CurrentPage { get; private set; } = ApplicationPage.Chat;
+        public ApplicationPage CurrentPage { get; private set; } = ApplicationPage.Login;
 
         /// <summary>
         /// The view model to use for the current page when the CurrentPage changes
@@ -26,7 +26,7 @@ namespace Fasetto.Word.Core
         /// <summary>
         /// True if the side menu should be shown
         /// </summary>
-        public bool SideMenuVisible { get; set; } = true;
+        public bool SideMenuVisible { get; set; } = false;
 
         /// <summary>
         /// True if the settings menu should be shown
@@ -54,6 +54,30 @@ namespace Fasetto.Word.Core
 
             // Show side menu or not
             SideMenuVisible = page == ApplicationPage.Chat;
+        }
+
+        /// <summary>
+        /// Handles what happends when we have successfully logged in
+        /// </summary>
+        /// <param name="loginResult">The result from the successful login</param>
+        public async Task HandleSuccessfulLoginAsync(LoginResultApiModel loginResult)
+        {
+            // Store this in the client data store
+            await IoC.ClientDataStore.SaveLoginCredentialsAsync(new LoginCredentialsDataModel
+            {
+                Id = Guid.NewGuid().ToString("N"),
+                Email = loginResult.Email,
+                FirstName = loginResult.FirstName,
+                LastName = loginResult.LastName,
+                Username = loginResult.Username,
+                Token = loginResult.Token,
+            });
+
+            // Load new settings
+            await IoC.Settings.LoadAsync();
+
+            // Go to chat page
+            IoC.Application.GoToPage(ApplicationPage.Chat);
         }
     }
 }

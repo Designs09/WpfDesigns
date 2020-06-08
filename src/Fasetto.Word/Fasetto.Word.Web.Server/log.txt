@@ -1,0 +1,12 @@
+WARNING: [2020-06-06 11:05:06] Invalid password for user 0c33ba07-c039-469f-b1fd-b073a62bb11f.
+WARNING: [2020-06-06 11:05:35] Invalid password for user 0c33ba07-c039-469f-b1fd-b073a62bb11f.
+WARNING: [2020-06-06 11:05:53] Invalid password for user 0c33ba07-c039-469f-b1fd-b073a62bb11f.
+WARNING: [2020-06-06 11:06:12] Invalid password for user 0c33ba07-c039-469f-b1fd-b073a62bb11f.
+WARNING: [2020-06-06 11:06:45] Invalid password for user 0c33ba07-c039-469f-b1fd-b073a62bb11f.
+WARNING: [2020-06-06 11:37:51] Invalid password for user 0c33ba07-c039-469f-b1fd-b073a62bb11f.
+WARNING: [2020-06-07 07:54:46] User 1e3dfb85-df63-4080-91c8-4a34db37e2ca validation failed: DuplicateUserName;DuplicateEmail.
+WARNING: [2020-06-07 07:55:38] User fa5ecf8a-3fd0-4592-85ca-0a5ec975ebfe validation failed: DuplicateUserName;DuplicateEmail.
+WARNING: [2020-06-07 07:55:43] User b9f770f7-4e92-4c8c-8f4c-a370859b8558 password validation failed: PasswordTooShort;PasswordRequiresLower;PasswordRequiresUniqueChars.
+WARNING: [2020-06-07 07:55:46] User 2994367a-9193-483f-ad2b-6abf0f0be2c4 password validation failed: PasswordTooShort;PasswordRequiresLower.
+WARNING: [2020-06-07 07:55:53] User a00229ed-c061-4c95-bcd4-b91686baa286 validation failed: DuplicateUserName;DuplicateEmail.
+WARNING: [2020-06-07 08:02:03] Invalid password for user a84ead10-6c7c-4ff1-84ec-f855a73f938c.

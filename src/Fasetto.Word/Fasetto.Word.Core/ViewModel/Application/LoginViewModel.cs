@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dna;
+using System;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Threading.Tasks;
@@ -64,27 +65,27 @@ namespace Fasetto.Word.Core
         {
             await RunCommandAsync(() => this.LoginIsRunning, async () =>
             {
-                // TODO: Fake a login...
-                await Task.Delay(1000);
+                // Call the server and attempt to login with credentials
+                // TODO: Move all URLs and API routes to static class in core
+                var result = await WebRequests.PostAsync<ApiResponse<LoginResultApiModel>>("https://localhost:44325/api/login",
+                    new LoginCredentialsApiModel
+                    {
+                        UsernameOrEmail = Email,
+                        //// IMPORTANT: never store unsecure password in variable like this
+                        Password = (parameter as IHasPassword).SecurePassword.Unsecure(),
+                    });
+
+                // If the response has an error...
+                if (await result.DisplayErrorIfFailedAsync("Login Failed"))
+                    // We are done
+                    return;
 
                 // OK successfully logged in... now get users data
-                // TODO: Ask server for users info
+                var loginResult = result.ServerResponse.Response;
 
-                // TODO: Remove this with real information pulled from our database in future
-                IoC.Settings.Name = new TextEntryViewModel() { Label = "Name", OriginalText = $"Luke Malpass {DateTime.Now.ToLocalTime()}" };
-                IoC.Settings.Username = new TextEntryViewModel() { Label = "Username", OriginalText = "Luke" };
-                IoC.Settings.Password = new PasswordEntryViewModel() { Label = "Password", FakePassword = "********" };
-                IoC.Settings.Email = new TextEntryViewModel() { Label = "Email", OriginalText = "contact@gmail.com" };
-
-                // Go to chat page
-                IoC.Application.GoToPage(ApplicationPage.Chat);
-
-                //var email = this.Email;
-
-                //// IMPORTANT: never store unsecure password in variable like this
-                //var password = (parameter as IHasPassword).SecurePassword.Unsecure();
-
-
+                // Let the application view model handle what happens
+                // with the successful login
+                await IoC.Application.HandleSuccessfulLoginAsync(loginResult);
             });
         }
 

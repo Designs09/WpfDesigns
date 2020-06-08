@@ -45,7 +45,6 @@
                                            FontFamily="{TemplateBinding FontFamily}"
                                            FontSize="{TemplateBinding FontSize}"
                                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                                           Padding="{TemplateBinding Padding}"
                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                            VerticalAlignment="{TemplateBinding VerticalAlignment}"
                                                />
@@ -72,7 +71,7 @@
                         <ControlTemplate.Triggers>
                             
                             <!-- 鼠标进入时，略微放大 -->
-                            <EventTrigger RoutedEvent="MouseEnter">
+                            <!--<EventTrigger RoutedEvent="MouseEnter">
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <ColorAnimation To="Black" Duration="0:0:0" Storyboard.TargetProperty="Foreground.Color"/>
@@ -89,7 +88,7 @@
                                         <DoubleAnimation From="1.1" Duration="0:0:0.1" Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)" />
                                     </Storyboard>
                                 </BeginStoryboard>
-                            </EventTrigger>
+                            </EventTrigger>-->
                             
                             <!-- 未选中时，颜色变淡，同时隐藏选中效果 -->
                             <Trigger Property="IsEnabled" Value="False">
