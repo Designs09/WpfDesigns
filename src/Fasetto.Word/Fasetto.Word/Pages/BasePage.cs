@@ -179,13 +179,18 @@ namespace Fasetto.Word
         #region Constructor
 
         /// <summary>
-        /// Default constructor
+        /// Default constructor for xaml page
         /// </summary>
         /// <param name="viewModel">The specific view model to use, if any</param>
         public BasePage() : base()
         {
-            // Create a default view model
-            ViewModel = Framework.Service<VM>();
+            // If in design time mode...
+            if (DesignerProperties.GetIsInDesignMode(this))
+                // Just use a new instance of the VM
+                ViewModel = new VM();
+            else
+                // Create a default view model
+                ViewModel = Framework.Service<VM>() ?? new VM();
         }
 
         /// <summary>
@@ -198,8 +203,15 @@ namespace Fasetto.Word
             if (specificViewModel != null)
                 ViewModel = specificViewModel;
             else
-                // Create a default view model
-                ViewModel = Framework.Service<VM>();
+            {
+                // If in design time mode...
+                if (DesignerProperties.GetIsInDesignMode(this))
+                    // Just use a new instance of the VM
+                    ViewModel = new VM();
+                else
+                    // Create a default view model
+                    ViewModel = Framework.Service<VM>() ?? new VM();
+            }
         }
 
         #endregion
