@@ -2,6 +2,7 @@
 using Fasetto.Word.Core;
 using Fasetto.Word.Relational;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -31,11 +32,11 @@ namespace Fasetto.Word
             await ApplicationSetupAsync();
 
             // Log it
-            IoC.Logger.Log("Application starting up...", LogLevel.Debug);
+            FrameworkDI.Logger.LogDebugSource("Application starting up...");
 
             // Setup the application view model based on if we are logged in
-            IoC.Application.GoToPage(
-                await IoC.ClientDataStore.HasCredentialsAsync() ?
+            DI.ViewModelApplication.GoToPage(
+                await DI.ClientDataStore.HasCredentialsAsync() ?
                 // If we are logged in...
                 ApplicationPage.Chat : 
                 // Otherwise, goto login page
@@ -53,34 +54,17 @@ namespace Fasetto.Word
         {
             // Setup the Dna Framework
             Framework.Construct<DefaultFrameworkConstruction>()
-                .UseClientDataStore()
+                .AddFileLogger()
+                .AddClientDataStore()
+                .AddFasettoWordViewModels()
+                .AddFasettoWordClientServices()
                 .Build();
 
-            // Setup IoC
-            IoC.Setup();
-
-            // Bind a logger
-            IoC.Kernel.Bind<ILogFactory>().ToConstant(new BaseLogFactory(new[] 
-            { 
-                // TODO: Add ApplicationSettings so we can set/edit a log location
-                //       For now just log to the path where this application is running
-                new Fasetto.Word.Core.FileLogger("log.txt"),
-            }));
-
-            // Add our task manager
-            IoC.Kernel.Bind<ITaskManager>().ToConstant(new TaskManager());
-
-            // Bind a file manager
-            IoC.Kernel.Bind<IFileManager>().ToConstant(new FileManager());
-
-            // Bind a UI Manager
-            IoC.Kernel.Bind<IUIManager>().ToConstant(new UIManager());
-
             // Ensure the client data store
-            await IoC.ClientDataStore.EnsureDataStoreAsync();
+            await DI.ClientDataStore.EnsureDataStoreAsync();
 
             // Load settings
-            await IoC.Settings.LoadAsync();
+            await DI.ViewModelSettings.LoadAsync();
         }
     }
 }

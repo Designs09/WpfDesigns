@@ -1,4 +1,5 @@
-﻿using Fasetto.Word.Core;
+﻿using Dna;
+using Fasetto.Word.Core;
 using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
@@ -184,7 +185,7 @@ namespace Fasetto.Word
         public BasePage() : base()
         {
             // Create a default view model
-            ViewModel = IoC.Get<VM>();
+            ViewModel = Framework.Service<VM>();
         }
 
         /// <summary>
@@ -198,7 +199,7 @@ namespace Fasetto.Word
                 ViewModel = specificViewModel;
             else
                 // Create a default view model
-                ViewModel = IoC.Get<VM>();
+                ViewModel = Framework.Service<VM>();
         }
 
         #endregion

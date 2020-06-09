@@ -27,7 +27,7 @@ namespace Fasetto.Word.Core
             await AsyncAwaiter.AwaitAsync(nameof(FileManager) + path, async () =>
             {
                 // Run the synchronous file access as a new task
-                await IoC.Task.Run(() =>
+                await CoreDI.Task.Run(() =>
                 {
                     // Write the log message to file
                     using (var fileStream = (TextWriter)new StreamWriter(File.Open(path, append ? FileMode.Append : FileMode.Create, FileAccess.Write)))
