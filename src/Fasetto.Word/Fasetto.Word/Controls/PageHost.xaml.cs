@@ -68,7 +68,7 @@ namespace Fasetto.Word
             // If we are in DesignMode, show the current page
             // as the dependency property does not fire
             if (DesignerProperties.GetIsInDesignMode(this))
-                this.NewPage.Content = IoC.Application.CurrentPage.ToBasePage();
+                this.NewPage.Content = DI.ViewModelApplication.CurrentPage.ToBasePage();
         }
 
         #endregion

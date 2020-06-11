@@ -1,4 +1,5 @@
 ﻿
+using Dna;
 using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -19,7 +20,7 @@ namespace Fasetto.Word.Core
             catch (Exception ex)
             {
                 // Log error
-                LogError(ex, origin, filePath, lineNumber);
+                FrameworkDI.Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
 
                 // Throw it as normal
                 throw;
@@ -35,7 +36,7 @@ namespace Fasetto.Word.Core
             catch (Exception ex)
             {
                 // Log error
-                LogError(ex, origin, filePath, lineNumber);
+                FrameworkDI.Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
 
                 // Throw it as normal
                 throw;
@@ -51,7 +52,7 @@ namespace Fasetto.Word.Core
             catch (Exception ex)
             {
                 // Log error
-                LogError(ex, origin, filePath, lineNumber);
+                FrameworkDI.Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
 
                 // Throw it as normal
                 throw;
@@ -67,7 +68,7 @@ namespace Fasetto.Word.Core
             catch (Exception ex)
             {
                 // Log error
-                LogError(ex, origin, filePath, lineNumber);
+                FrameworkDI.Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
 
                 // Throw it as normal
                 throw;
@@ -83,7 +84,7 @@ namespace Fasetto.Word.Core
             catch (Exception ex)
             {
                 // Log error
-                LogError(ex, origin, filePath, lineNumber);
+                FrameworkDI.Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
 
                 // Throw it as normal
                 throw;
@@ -99,7 +100,7 @@ namespace Fasetto.Word.Core
             catch (Exception ex)
             {
                 // Log error
-                LogError(ex, origin, filePath, lineNumber);
+                FrameworkDI.Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
 
                 // Throw it as normal
                 throw;
@@ -115,7 +116,7 @@ namespace Fasetto.Word.Core
             catch (Exception ex)
             {
                 // Log error
-                LogError(ex, origin, filePath, lineNumber);
+                FrameworkDI.Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
 
                 // Throw it as normal
                 throw;
@@ -131,27 +132,11 @@ namespace Fasetto.Word.Core
             catch (Exception ex)
             {
                 // Log error
-                LogError(ex, origin, filePath, lineNumber);
+                FrameworkDI.Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
 
                 // Throw it as normal
                 throw;
             }
-        }
-
-        #endregion
-
-        #region Private Helper Methods
-
-        /// <summary>
-        /// Logs the given error to the log factory
-        /// </summary>
-        /// <param name="ex">The exception to log</param>
-        /// <param name="origin">The method/function this message was logged in</param>
-        /// <param name="filePath">The code filename that this message was logged from</param>
-        /// <param name="lineNumber">The line of code in the filename this message was logged from</param>
-        private void LogError(Exception ex, [CallerMemberName] string origin = "", [CallerFilePath] string filePath = "", [CallerLineNumber] int lineNumber = 0)
-        {
-            IoC.Logger.Log($"An unexcepted error running a IoC.Task.Run. {ex.Message}", LogLevel.Debug, origin, filePath, lineNumber);
         }
 
         #endregion

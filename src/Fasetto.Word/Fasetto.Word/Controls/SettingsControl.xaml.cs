@@ -26,7 +26,7 @@ namespace Fasetto.Word
             InitializeComponent();
 
             // Set data context to settings view model
-            DataContext = IoC.Settings;
+            DataContext = DI.ViewModelSettings;
         }
     }
 }

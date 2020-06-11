@@ -11,7 +11,7 @@ namespace Fasetto.Word.Relational
     /// </summary>
     public static class FrameworkConstructionExtensions
     {
-        public static FrameworkConstruction UseClientDataStore(this FrameworkConstruction construction)
+        public static FrameworkConstruction AddClientDataStore(this FrameworkConstruction construction)
         {
             // Inject our SQLite EF data store
             construction.Services.AddDbContext<ClientDataStoreDbContext>(options =>

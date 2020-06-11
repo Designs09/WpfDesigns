@@ -52,7 +52,7 @@ namespace Fasetto.Word.Core
             var timeLogString = LogTime ? $"[{currentTime}] " : string.Empty;
 
             // Write the message to the log file
-            IoC.File.WriteAllTextToFileAsync($"{timeLogString}{message}{Environment.NewLine}", FilePath, append: true);
+            CoreDI.File.WriteAllTextToFileAsync($"{timeLogString}{message}{Environment.NewLine}", FilePath, append: true);
         }
 
         #endregion

@@ -16,7 +16,8 @@ namespace Fasetto.Word.Web.Server
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+            host.Run();
         }
 
         public static IWebHostBuilder CreateHostBuilder(string[] args) =>
