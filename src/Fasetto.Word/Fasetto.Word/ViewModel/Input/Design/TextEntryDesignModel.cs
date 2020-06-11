@@ -27,6 +27,7 @@ namespace Fasetto.Word
             Label = "Name";
             OriginalText = "Luke Malpass";
             EditedText = "Editing :)";
+            Editing = true;
         }
 
         #endregion

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -33,6 +34,17 @@ namespace Fasetto.Word
         /// Indicates if the current text is in edit mode
         /// </summary>
         public bool Editing { get; set; }
+
+        /// <summary>
+        /// Indicates if the current control is pending an update (in progress)
+        /// </summary>
+        public bool Working { get; set; }
+
+        /// <summary>
+        /// The action to run when saving the text.
+        /// </summary>
+        /// <remarks>Returns true if the commit was successful, or false otherwise</remarks>
+        public Func<Task<bool>> CommitAction { get; set; }
 
         #endregion
 
@@ -98,11 +110,38 @@ namespace Fasetto.Word
         /// </summary>
         private void Save()
         {
-            // TODO: Save content
-            OriginalText = EditedText;
+            // Store the result of a commit call
+            // Defaulting to true (if no CommitAction is declared)
+            var result = default(bool);
 
-            Editing = false;
+            // Save currently saved value
+            var currentSaveValue = OriginalText;
 
+            RunCommandAsync(() => Working, async () =>
+            {
+                // While working, come out of edit mode
+                Editing = false;
+
+                // Commit the change text
+                // So we can see it while it is working
+                OriginalText = EditedText;
+
+                // Try and do the work
+                result = CommitAction == null ? true : await CommitAction();
+            }).ContinueWith(t =>
+            {
+                // If we successded...
+                // Nothing to do
+                // If we fail...
+                if (!result)
+                {
+                    // Restore original value
+                    OriginalText = currentSaveValue;
+
+                    // Go back into edit mode
+                    Editing = true;
+                }
+            });
         }
 
         #endregion
