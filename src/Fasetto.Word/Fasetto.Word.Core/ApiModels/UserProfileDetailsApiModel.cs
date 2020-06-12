@@ -1,4 +1,6 @@
-﻿namespace Fasetto.Word.Core
+﻿using System;
+
+namespace Fasetto.Word.Core
 {
     /// <summary>
     /// The result of a successful login request via API
@@ -31,6 +33,28 @@
         /// The users email
         /// </summary>
         public string Email { get; set; }
+
+        #endregion
+
+        #region Public Helper Methods
+
+        /// <summary>
+        /// Creates a new <see cref="LoginCredentialsDataModel"/>
+        /// from this model
+        /// </summary>
+        /// <returns></returns>
+        public LoginCredentialsDataModel ToLoginCredentialsDataModel()
+        {
+            return new LoginCredentialsDataModel
+            {
+                Id = Guid.NewGuid().ToString("N"),
+                Email = Email,
+                FirstName = FirstName,
+                LastName = LastName,
+                Username = Username,
+                Token = Token,
+            };
+        }
 
         #endregion
     }

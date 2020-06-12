@@ -97,15 +97,7 @@ namespace Fasetto.Word
         public async Task HandleSuccessfulLoginAsync(UserProfileDetailsApiModel loginResult)
         {
             // Store this in the client data store
-            await DI.ClientDataStore.SaveLoginCredentialsAsync(new LoginCredentialsDataModel
-            {
-                Id = Guid.NewGuid().ToString("N"),
-                Email = loginResult.Email,
-                FirstName = loginResult.FirstName,
-                LastName = loginResult.LastName,
-                Username = loginResult.Username,
-                Token = loginResult.Token,
-            });
+            await DI.ClientDataStore.SaveLoginCredentialsAsync(loginResult.ToLoginCredentialsDataModel());
 
             // Load new settings
             await DI.ViewModelSettings.LoadAsync();

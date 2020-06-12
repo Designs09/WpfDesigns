@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dna;
 using Fasetto.Word.Core;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -17,6 +18,7 @@ namespace Fasetto.Word.Web.Server
     /// <summary>
     /// Manages the web API calls
     /// </summary>
+    [AuthorizeToken]
     public class ApiController : Controller
     {
         #region Proceted Members
@@ -64,6 +66,7 @@ namespace Fasetto.Word.Web.Server
         /// <param name="registerCredentials">The registration details</param>
         /// <returns>Returns the result of the register request</returns>
         [Route("api/register")]
+        [AllowAnonymous]
         public async Task<ApiResponse<RegisterResultApiModel>> RegisterAsync([FromBody] RegisterCredentialsApiModel registerCredentials)
         {
             // TODO: Localize all strings
@@ -136,6 +139,7 @@ namespace Fasetto.Word.Web.Server
         }
 
         [Route("api/login")]
+        [AllowAnonymous]
         public async Task<ApiResponse<UserProfileDetailsApiModel>> LogInAsync([FromBody] LoginCredentialsApiModel loginCreadentials)
         {
             // TODO: Localize all strings
@@ -197,7 +201,44 @@ namespace Fasetto.Word.Web.Server
             };
         }
 
+        [Route("api/user/profile")]
+        public async Task<ApiResponse<UserProfileDetailsApiModel>> GetUserProfileDetailsAsync()
+        {
+            // Get user claims
+            var user = await mUserManager.GetUserAsync(HttpContext.User);
+
+            // If we have no user...
+            if (user == null)
+                // Return error
+                return new ApiResponse<UserProfileDetailsApiModel>()
+                {
+                    // TODO: Localization
+                    ErrorMessage = "User not found"
+                };
+
+            // Return token to user
+            return new ApiResponse<UserProfileDetailsApiModel>
+            {
+                // Pass back the user details and the token
+                Response = new UserProfileDetailsApiModel
+                {
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Email = user.Email,
+                    Username = user.UserName,
+                    Token = user.GenerateJwtToken(),
+                }
+            };
+        }
+
+        //[Route("api/user/profile/update")]
+        //public async Task<ApiResponse> UpdateUserProfileAsync([FromBody] UpdateUserProfileApiModel model)
+        //{
+
+        //}
+
         [Route("create")]
+        [AllowAnonymous]
         public async Task<IActionResult> CreateUserAsync()
         {
             var result = await mUserManager.CreateAsync(new ApplicationUser

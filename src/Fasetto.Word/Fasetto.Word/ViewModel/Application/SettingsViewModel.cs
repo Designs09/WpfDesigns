@@ -1,4 +1,5 @@
-﻿using Fasetto.Word.Core;
+﻿using Dna;
+using Fasetto.Word.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Xml.Xsl;
 
 namespace Fasetto.Word
 {
@@ -204,13 +206,38 @@ namespace Fasetto.Word
         /// </summary>
         public async Task LoadAsync()
         {
-            // TODO: Remove once done
-            await Task.Delay(5000);
-
+            // Update values from local cache
             await UpdateValuesFromLocalStoreAsync();
 
-            // TODO: Load from server
+            // Get the user token
+            var token = (await DI.ClientDataStore.GetLoginCredentialsAsync()).Token;
 
+            // If we don't have a token (so we are not logged in...)
+            if (string.IsNullOrEmpty(token))
+                // Then do nothing more
+                return;
+
+            // Load user profile details from server
+            var result = await WebRequests.PostAsync<ApiResponse<UserProfileDetailsApiModel>>(
+                "https://localhost:44325/api/user/profile", 
+                //configureRequest: request => request.Headers.Add("Authorization", "Bearer " + token),
+                bearerToken: token
+                );
+
+            // If it was successful
+            if (result.Successful)
+            {
+                // TODO: Should we check if the values are different before saving?
+
+                // Create data model from the response
+                var dataModel = result.ServerResponse.Response.ToLoginCredentialsDataModel();
+
+                // Save the new information in the data store
+                await DI.ClientDataStore.SaveLoginCredentialsAsync(dataModel);
+
+                // Update values from local cache
+                await UpdateValuesFromLocalStoreAsync();
+            }
         }
 
         /// <summary>
