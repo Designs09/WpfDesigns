@@ -226,7 +226,6 @@ namespace Fasetto.Word.Web.Server
                     LastName = user.LastName,
                     Email = user.Email,
                     Username = user.UserName,
-                    Token = user.GenerateJwtToken(),
                 }
             };
         }

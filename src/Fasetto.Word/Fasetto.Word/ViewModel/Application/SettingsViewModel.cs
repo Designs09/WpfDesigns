@@ -18,10 +18,8 @@ namespace Fasetto.Word
     {
         #region Private Members
 
-        /// <summary>
-        /// A flag indicating if we have loaded any values since being created
-        /// </summary>
-        private bool mLoadedOnce;
+        // The text to show while loading
+        private const string LoadingText = "...";
 
         #endregion
 
@@ -105,21 +103,18 @@ namespace Fasetto.Word
         /// </summary>
         public SettingsViewModel()
         {
-            // The text to show while loading
-            var loadingText = "...";
-
             // Create Name 
             Name = new TextEntryViewModel()
             {
                 Label = "Name",
-                OriginalText = loadingText,
+                OriginalText = LoadingText,
                 CommitAction = SaveNameAsync,
             };
             // Create Username 
             Username = new TextEntryViewModel()
             {
                 Label = "Username",
-                OriginalText = loadingText,
+                OriginalText = LoadingText,
                 CommitAction = SaveUsernameAsync,
             };
             // Create Password 
@@ -133,7 +128,7 @@ namespace Fasetto.Word
             Email = new TextEntryViewModel()
             {
                 Label = "Email",
-                OriginalText = loadingText,
+                OriginalText = LoadingText,
                 CommitAction = SaveEmailAsync,
             };
 
@@ -195,10 +190,9 @@ namespace Fasetto.Word
         public void ClearUserData()
         {
             // Clear all view models containing the users info
-            var loadingText = "...";
-            Name.OriginalText = loadingText;
-            Username.OriginalText = loadingText;
-            Email.OriginalText = loadingText;
+            Name.OriginalText = LoadingText;
+            Username.OriginalText = LoadingText;
+            Email.OriginalText = LoadingText;
         }
 
         /// <summary>
@@ -225,12 +219,15 @@ namespace Fasetto.Word
                 );
 
             // If it was successful
-            if (result.Successful)
+            if (result.Successful && string.IsNullOrEmpty(result.ServerResponse.ErrorMessage))
             {
                 // TODO: Should we check if the values are different before saving?
 
                 // Create data model from the response
                 var dataModel = result.ServerResponse.Response.ToLoginCredentialsDataModel();
+
+                // Re-add our known token
+                dataModel.Token = token;
 
                 // Save the new information in the data store
                 await DI.ClientDataStore.SaveLoginCredentialsAsync(dataModel);
