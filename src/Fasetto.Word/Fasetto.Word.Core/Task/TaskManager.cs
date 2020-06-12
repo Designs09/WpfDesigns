@@ -1,6 +1,7 @@
 ﻿
 using Dna;
 using System;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,6 +11,11 @@ namespace Fasetto.Word.Core
     public class TaskManager : ITaskManager
     {
         #region Task Methods
+
+        public async void RunAndForget(Func<Task> function, [CallerMemberName] string origin = "", [CallerFilePath] string filePath = "", [CallerLineNumber] int lineNumber = 0)
+        {
+            await Run(function, origin, filePath, lineNumber);
+        }
 
         public async Task Run(Func<Task> function, [CallerMemberName] string origin = "", [CallerFilePath] string filePath = "", [CallerLineNumber] int lineNumber = 0)
         {

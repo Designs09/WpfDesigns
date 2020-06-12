@@ -11,3 +11,7 @@ WARNING: [2020-06-07 07:55:46] User 2994367a-9193-483f-ad2b-6abf0f0be2c4 passwor
 WARNING: [2020-06-07 07:55:53] User a00229ed-c061-4c95-bcd4-b91686baa286 validation failed: DuplicateUserName;DuplicateEmail.
 WARNING: [2020-06-07 08:02:03] Invalid password for user a84ead10-6c7c-4ff1-84ec-f855a73f938c.
 WARNING: [2020-06-09 10:09:01] User 4e75d7e9-e21c-42e8-94bf-5482a39e7d5c password validation failed: PasswordRequiresLower.
+WARNING: [2020-06-12 08:43:06] Invalid password for user 18cf0894-dba3-4023-ba63-b4c16c2393bc.
+WARNING: [2020-06-12 08:43:11] Invalid password for user 18cf0894-dba3-4023-ba63-b4c16c2393bc.
+WARNING: [2020-06-12 09:51:32] Invalid password for user 18cf0894-dba3-4023-ba63-b4c16c2393bc.
+WARNING: [2020-06-12 09:51:34] Invalid password for user 18cf0894-dba3-4023-ba63-b4c16c2393bc.

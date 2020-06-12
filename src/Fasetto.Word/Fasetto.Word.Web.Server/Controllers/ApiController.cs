@@ -136,14 +136,14 @@ namespace Fasetto.Word.Web.Server
         }
 
         [Route("api/login")]
-        public async Task<ApiResponse<LoginResultApiModel>> LogInAsync([FromBody] LoginCredentialsApiModel loginCreadentials)
+        public async Task<ApiResponse<UserProfileDetailsApiModel>> LogInAsync([FromBody] LoginCredentialsApiModel loginCreadentials)
         {
             // TODO: Localize all strings
             // The message when we failed to login
             var invalidErrorMessage = "Invalid username or password";
 
             // The error response for a failed login
-            var errorResponse = new ApiResponse<LoginResultApiModel>
+            var errorResponse = new ApiResponse<UserProfileDetailsApiModel>
             {
                 // Set error message
                 ErrorMessage = invalidErrorMessage,
@@ -183,10 +183,10 @@ namespace Fasetto.Word.Web.Server
             // If we get here, we are valid and the user passed the correct login details
 
             // Return token to user
-            return new ApiResponse<LoginResultApiModel>
+            return new ApiResponse<UserProfileDetailsApiModel>
             {
                 // Pass back the user details and the token
-                Response = new LoginResultApiModel
+                Response = new UserProfileDetailsApiModel
                 {
                     FirstName = user.FirstName,
                     LastName = user.LastName,

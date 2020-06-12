@@ -16,11 +16,13 @@ namespace Fasetto.Word.Relational
             // Inject our SQLite EF data store
             construction.Services.AddDbContext<ClientDataStoreDbContext>(options =>
                 // Setup connection string
-                options.UseSqlite(construction.Configuration.GetConnectionString("ClientDataStoreConnection")));
+                options.UseSqlite(construction.Configuration.GetConnectionString("ClientDataStoreConnection")),
+                contextLifetime: ServiceLifetime.Transient
+                );
 
             // Add client data store for easy access/use of the backing data store
             // Make it scoped so we can inject the scoped database
-            construction.Services.AddScoped<IClientDataStore>(
+            construction.Services.AddTransient<IClientDataStore>(
                 provider => new ClientDataStore(provider.GetRequiredService<ClientDataStoreDbContext>()));
 
             // Return framework for chaining

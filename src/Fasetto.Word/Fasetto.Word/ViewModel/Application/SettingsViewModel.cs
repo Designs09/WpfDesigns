@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -13,6 +14,15 @@ namespace Fasetto.Word
     /// </summary>
     public class SettingsViewModel : BaseViewModel
     {
+        #region Private Members
+
+        /// <summary>
+        /// A flag indicating if we have loaded any values since being created
+        /// </summary>
+        private bool mLoadedOnce;
+
+        #endregion
+
         #region Public Properties
 
         /// <summary>
@@ -93,10 +103,42 @@ namespace Fasetto.Word
         /// </summary>
         public SettingsViewModel()
         {
+            // The text to show while loading
+            var loadingText = "...";
+
+            // Create Name 
+            Name = new TextEntryViewModel()
+            {
+                Label = "Name",
+                OriginalText = loadingText,
+                CommitAction = SaveNameAsync,
+            };
+            // Create Username 
+            Username = new TextEntryViewModel()
+            {
+                Label = "Username",
+                OriginalText = loadingText,
+                CommitAction = SaveUsernameAsync,
+            };
+            // Create Password 
+            Password = new PasswordEntryViewModel()
+            {
+                Label = "Password",
+                FakePassword = "********",
+                CommitAction = SavePasswordAsync,
+            };
+            // Create Email 
+            Email = new TextEntryViewModel()
+            {
+                Label = "Email",
+                OriginalText = loadingText,
+                CommitAction = SaveEmailAsync,
+            };
+
             // Create commands
             CloseCommand = new RelayCommand(Close);
             OpenCommand = new RelayCommand(Open);
-            LogoutCommand = new RelayCommand(Logout);
+            LogoutCommand = new RelayCommand(async () => await LogoutAsync());
             ClearUserDataCommand = new RelayCommand(ClearUserData);
             LoadCommand = new RelayCommand(async () => await LoadAsync());
             SaveNameCommand = new RelayCommand(async () => await SaveNameAsync());
@@ -109,7 +151,7 @@ namespace Fasetto.Word
 
         #endregion
 
-        #region Public Methods
+        #region Command Methods
 
         /// <summary>
         /// Closes the setting menu
@@ -130,11 +172,12 @@ namespace Fasetto.Word
         /// <summary>
         /// Logs the user out
         /// </summary>
-        public void Logout()
+        public async Task LogoutAsync()
         {
             // TODO: Confirm the user wants to logout
 
-            // TODO: Clear any user data/cache
+            // Clear any user data/cache
+            await DI.ClientDataStore.ClearAllLoginCredentialsAsync();
 
             // Clear all application level view models that contain
             // any information about the current user
@@ -150,10 +193,10 @@ namespace Fasetto.Word
         public void ClearUserData()
         {
             // Clear all view models containing the users info
-            Name = null;
-            Username = null;
-            Password = null;
-            Email = null;
+            var loadingText = "...";
+            Name.OriginalText = loadingText;
+            Username.OriginalText = loadingText;
+            Email.OriginalText = loadingText;
         }
 
         /// <summary>
@@ -161,34 +204,13 @@ namespace Fasetto.Word
         /// </summary>
         public async Task LoadAsync()
         {
-            // Run as a task so we can await client data store
-            // Get the stored credentials
-            var storedCredentials = await DI.ClientDataStore.GetLoginCredentialsAsync();
+            // TODO: Remove once done
+            await Task.Delay(5000);
 
-            Name = new TextEntryViewModel()
-            {
-                Label = "Name",
-                OriginalText = $"{storedCredentials?.FirstName} {storedCredentials?.LastName}",
-                CommitAction = SaveNameAsync,
-            };
-            Username = new TextEntryViewModel() 
-            {
-                Label = "Username", 
-                OriginalText = storedCredentials?.Username,
-                CommitAction = SaveUsernameAsync,
-            };
-            Password = new PasswordEntryViewModel()
-            {
-                Label = "Password", 
-                FakePassword = "********",
-                CommitAction = SavePasswordAsync,
-            };
-            Email = new TextEntryViewModel() 
-            {
-                Label = "Email",
-                OriginalText = storedCredentials?.Email,
-                CommitAction = SaveEmailAsync,
-            };
+            await UpdateValuesFromLocalStoreAsync();
+
+            // TODO: Load from server
+
         }
 
         /// <summary>
@@ -242,6 +264,31 @@ namespace Fasetto.Word
             // Return success
             return true;
         }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Loads the settings from local data store and binds them 
+        /// to this view model
+        /// </summary>
+        /// <returns></returns>
+        private async Task UpdateValuesFromLocalStoreAsync()
+        {
+            // Get the stored credentials
+            var storedCredentials = await DI.ClientDataStore.GetLoginCredentialsAsync();
+
+            // Set name
+            Name.OriginalText = $"{storedCredentials?.FirstName} {storedCredentials?.LastName}";
+
+            // Set username
+            Username.OriginalText = storedCredentials?.Username;
+
+            // Set email
+            Email.OriginalText = storedCredentials?.Email;
+        }
+
 
         #endregion
     }

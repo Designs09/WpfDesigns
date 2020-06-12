@@ -12,6 +12,17 @@ namespace Fasetto.Word
     /// </summary>
     public class ApplicationViewModel : BaseViewModel
     {
+        #region Private Members
+
+        /// <summary>
+        /// True if the settings menu should be shown
+        /// </summary>
+        private bool mSettingsMenuVisible;
+
+        #endregion
+
+        #region Public Properties
+
         /// The current page of the application
         /// </summary>
         public ApplicationPage CurrentPage { get; private set; } = ApplicationPage.Login;
@@ -32,7 +43,29 @@ namespace Fasetto.Word
         /// <summary>
         /// True if the settings menu should be shown
         /// </summary>
-        public bool SettingsMenuVisible { get; set; } = false;
+        public bool SettingsMenuVisible
+        {
+            get => mSettingsMenuVisible;
+            set
+            {
+                // If property has not changed
+                if (mSettingsMenuVisible == value)
+                    // Ignore
+                    return;
+
+                // Set the backing field
+                mSettingsMenuVisible = value;
+
+                // If the settings menu is now visible
+                if (value)
+                    // Reload settings
+                    CoreDI.Task.RunAndForget(DI.ViewModelSettings.LoadAsync);
+            }
+        }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// Navigate to the specified page
@@ -61,7 +94,7 @@ namespace Fasetto.Word
         /// Handles what happends when we have successfully logged in
         /// </summary>
         /// <param name="loginResult">The result from the successful login</param>
-        public async Task HandleSuccessfulLoginAsync(LoginResultApiModel loginResult)
+        public async Task HandleSuccessfulLoginAsync(UserProfileDetailsApiModel loginResult)
         {
             // Store this in the client data store
             await DI.ClientDataStore.SaveLoginCredentialsAsync(new LoginCredentialsDataModel
@@ -80,5 +113,7 @@ namespace Fasetto.Word
             // Go to chat page
             DI.ViewModelApplication.GoToPage(ApplicationPage.Chat);
         }
+
+        #endregion
     }
 }

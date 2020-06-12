@@ -64,7 +64,7 @@ namespace Fasetto.Word
             await DI.ClientDataStore.EnsureDataStoreAsync();
 
             // Load settings
-            await DI.ViewModelSettings.LoadAsync();
+            CoreDI.Task.RunAndForget(DI.ViewModelSettings.LoadAsync);
         }
     }
 }
