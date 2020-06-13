@@ -18,3 +18,4 @@ WARNING: [2020-06-12 09:51:34] Invalid password for user 18cf0894-dba3-4023-ba63
 WARNING: [2020-06-13 04:15:23] User 18cf0894-dba3-4023-ba63-b4c16c2393bc validation failed: InvalidUserName.
 WARNING: [2020-06-13 04:15:31] User 18cf0894-dba3-4023-ba63-b4c16c2393bc validation failed: InvalidUserName.
 WARNING: [2020-06-13 05:16:44] User 129c84c8-9c31-4b73-bbf3-b032476fe7d7 password validation failed: PasswordTooShort;PasswordRequiresLower.
+WARNING: [2020-06-13 05:21:31] User 18cf0894-dba3-4023-ba63-b4c16c2393bc validation failed: DuplicateUserName.
