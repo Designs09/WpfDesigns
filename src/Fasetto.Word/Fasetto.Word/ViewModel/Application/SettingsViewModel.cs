@@ -1,6 +1,7 @@
 ﻿using Dna;
 using Fasetto.Word.Core;
 using Fasetto.Word.Relational;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -263,8 +264,10 @@ namespace Fasetto.Word
 
             // Load user profile details from server
             var result = await WebRequests.PostAsync<ApiResponse<UserProfileDetailsApiModel>>(
-                "https://localhost:44325/api/user/profile", 
+                // Set URL
+                RouteHelpers.GetAbsoluteRoute(ApiRoutes.GetUserProfile),
                 //configureRequest: request => request.Headers.Add("Authorization", "Bearer " + token),
+                // Pass in user Token
                 bearerToken: token
                 );
 
@@ -375,7 +378,6 @@ namespace Fasetto.Word
                     // Set Api model value
                     (apiModel, newValue) => apiModel.Email = newValue
                     );
-
             });
         }
 
@@ -385,11 +387,61 @@ namespace Fasetto.Word
         /// <returns>Returns true if successful, false otherwise</returns>
         public async Task<bool> SavePasswordAsync()
         {
-            // TODO: Update with server
-            await Task.Delay(3000);
+            // Lock this command to ignore any other requests while processing
+            return await RunCommandAsync(() => PasswordIsChanging, async () =>
+            {
+                // Log it
+                FrameworkDI.Logger.LogDebugSource("Changing password...");
 
-            // Return success
-            return true;
+                // Get the current known credentials
+                var credentials = await DI.ClientDataStore.GetLoginCredentialsAsync();
+
+                // Make sure the user has entered the same password
+                if (Password.NewPassword.Unsecure() != Password.ConfirmPassword.Unsecure())
+                {
+                    // Display error
+                    await DI.UI.ShowMessage(new MessageBoxDialogViewModel
+                    {
+                        // TODO: Localize
+                        Title = "Password Mismatch",
+                        Message = "New password and confirm password must match",
+                    });
+
+                    return false;
+                }
+
+                // Update the server with the new password
+                var result = await WebRequests.PostAsync<ApiResponse>(
+                    // Set URL
+                    RouteHelpers.GetAbsoluteRoute(ApiRoutes.UpdateUserPassword),
+                    // Create API Model
+                    new UpdateUserPasswordApiModel
+                    {
+                        CurrentPassword = Password.CurrentlPassword.Unsecure(),
+                        NewPassword = Password.NewPassword.Unsecure(),
+                    },
+                    // Pass in user token
+                    bearerToken: credentials.Token
+                    );
+
+                // If the response has an error...
+                if (await result.DisplayErrorIfFailedAsync("Change Password"))
+                {
+                    // Log it
+                    FrameworkDI.Logger.LogDebugSource($"Failed to change password. {result.ErrorMessage}");
+
+                    // Return false
+                    return false;
+                }
+
+                // Otherwise, we succeeded...
+
+                // Log it
+                FrameworkDI.Logger.LogDebugSource($"Successfully changed password");
+
+                // Return successful
+                return true;
+            });
         }
 
         #endregion
@@ -432,7 +484,7 @@ namespace Fasetto.Word
         private async Task<bool> UpdateUserCredentialsValueAsync(string displayName, Expression<Func<LoginCredentialsDataModel, string>> propertyToUpdate, string newValue, Action<UpdateUserProfileApiModel, string> setApiModel)
         {
             // Log it 
-            Dna.FrameworkDI.Logger.LogDebugSource($"Saving {displayName}...");
+            FrameworkDI.Logger.LogDebugSource($"Saving {displayName}...");
 
             // Get the current known credentials
             var credentials = await DI.ClientDataStore.GetLoginCredentialsAsync();
@@ -441,7 +493,7 @@ namespace Fasetto.Word
             var toUpdate = propertyToUpdate.GetPropertyValue(credentials);
 
             // Log it 
-            Dna.FrameworkDI.Logger.LogDebugSource($"{displayName} currently {toUpdate}, updating to {newValue}");
+            FrameworkDI.Logger.LogDebugSource($"{displayName} currently {toUpdate}, updating to {newValue}");
 
             // Check if the value is the same. If so...
             if (toUpdate == newValue)
@@ -465,24 +517,25 @@ namespace Fasetto.Word
 
             // Update the server with the details
             var result = await WebRequests.PostAsync<ApiResponse>(
-                // TODO: Move URLs into better place
-                "https://localhost:44325/api/user/profile/update",
-                // Create the user details to send
+                // Set URL
+                RouteHelpers.GetAbsoluteRoute(ApiRoutes.UpdateUserProfile),
+                // Pass in Api model
                 updateApiModel, 
+                // Pass in user Token
                 bearerToken: credentials.Token);
 
             // If the response has an error...
             if (await result.DisplayErrorIfFailedAsync($"Update {displayName} Failed"))
             {
                 // Log it
-                Dna.FrameworkDI.Logger.LogDebugSource($"Failed to update {displayName}. {result.ErrorMessage}");
+                FrameworkDI.Logger.LogDebugSource($"Failed to update {displayName}. {result.ErrorMessage}");
 
                 // Return false
                 return false;
             }
 
             // Log it
-            Dna.FrameworkDI.Logger.LogDebugSource($"Successfully updated {displayName}. Saving to local database cache...");
+            FrameworkDI.Logger.LogDebugSource($"Successfully updated {displayName}. Saving to local database cache...");
 
             // Store the new user credentials to the data store
             await DI.ClientDataStore.SaveLoginCredentialsAsync(credentials);

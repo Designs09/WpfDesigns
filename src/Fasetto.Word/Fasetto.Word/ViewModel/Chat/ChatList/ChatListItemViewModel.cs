@@ -75,14 +75,6 @@ namespace Fasetto.Word
 
         public void OpenMessage()
         {
-            if (Name == "Jesse")
-            {
-                DI.ViewModelApplication.GoToPage(ApplicationPage.Login, new LoginViewModel
-                {
-                    Email = "jesse@helloworld.com",
-                });
-                return;
-            }
             DI.ViewModelApplication.GoToPage(ApplicationPage.Chat, new ChatMessageListViewModel
             {
                 DisplayTitle = "Parnell, Me",

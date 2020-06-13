@@ -65,7 +65,7 @@ namespace Fasetto.Word.Web.Server
         /// </summary>
         /// <param name="registerCredentials">The registration details</param>
         /// <returns>Returns the result of the register request</returns>
-        [Route("api/register")]
+        [Route(ApiRoutes.Register)]
         [AllowAnonymous]
         public async Task<ApiResponse<RegisterResultApiModel>> RegisterAsync([FromBody] RegisterCredentialsApiModel registerCredentials)
         {
@@ -135,7 +135,7 @@ namespace Fasetto.Word.Web.Server
                 };
         }
 
-        [Route("api/login")]
+        [Route(ApiRoutes.Login)]
         [AllowAnonymous]
         public async Task<ApiResponse<UserProfileDetailsApiModel>> LogInAsync([FromBody] LoginCredentialsApiModel loginCreadentials)
         {
@@ -198,7 +198,7 @@ namespace Fasetto.Word.Web.Server
             };
         }
 
-        [Route("api/user/profile")]
+        [Route(ApiRoutes.GetUserProfile)]
         public async Task<ApiResponse<UserProfileDetailsApiModel>> GetUserProfileDetailsAsync()
         {
             // Get user claims
@@ -227,7 +227,7 @@ namespace Fasetto.Word.Web.Server
             };
         }
 
-        [Route("api/user/profile/update")]
+        [Route(ApiRoutes.UpdateUserProfile)]
         public async Task<ApiResponse> UpdateUserProfileAsync([FromBody] UpdateUserProfileApiModel model)
         {
             // Get user claims
@@ -236,7 +236,7 @@ namespace Fasetto.Word.Web.Server
             // If we have no user...
             if (user == null)
                 // Return error
-                return new ApiResponse<UserProfileDetailsApiModel>()
+                return new ApiResponse()
                 {
                     // TODO: Localization
                     ErrorMessage = "User not found"
@@ -254,7 +254,7 @@ namespace Fasetto.Word.Web.Server
             if (model.Username != null)
                 user.UserName = model.Username;
 
-
+            // Try update user profile
             var result = await mUserManager.UpdateAsync(user);
 
             // If the update was successful...
@@ -263,7 +263,37 @@ namespace Fasetto.Word.Web.Server
             // Otherwise if it failed...
             else
                 // Return the failed response
-                return new ApiResponse<RegisterResultApiModel>
+                return new ApiResponse
+                {
+                    ErrorMessage = result.Errors.AggregateErrors(),
+                };
+        }
+
+        [Route(ApiRoutes.UpdateUserPassword)]
+        public async Task<ApiResponse> UpdateUserPassword([FromBody] UpdateUserPasswordApiModel model)
+        {
+            // Get user claims
+            var user = await mUserManager.GetUserAsync(HttpContext.User);
+
+            // If we have no user...
+            if (user == null)
+                // Return error
+                return new ApiResponse()
+                {
+                    // TODO: Localization
+                    ErrorMessage = "User not found"
+                };
+
+            // Try change users password
+            var result = await mUserManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+
+            // If succeeded...
+            if (result.Succeeded)
+                return new ApiResponse();
+            // Otherwise it failed...
+            else
+                // Return the failed response
+                return new ApiResponse
                 {
                     ErrorMessage = result.Errors.AggregateErrors(),
                 };

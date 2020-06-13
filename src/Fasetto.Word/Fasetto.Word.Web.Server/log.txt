@@ -19,3 +19,17 @@ WARNING: [2020-06-13 04:15:23] User 18cf0894-dba3-4023-ba63-b4c16c2393bc validat
 WARNING: [2020-06-13 04:15:31] User 18cf0894-dba3-4023-ba63-b4c16c2393bc validation failed: InvalidUserName.
 WARNING: [2020-06-13 05:16:44] User 129c84c8-9c31-4b73-bbf3-b032476fe7d7 password validation failed: PasswordTooShort;PasswordRequiresLower.
 WARNING: [2020-06-13 05:21:31] User 18cf0894-dba3-4023-ba63-b4c16c2393bc validation failed: DuplicateUserName.
+ERROR: [2020-06-13 10:26:26] An unhandled exception has occurred while executing the request.
+ERROR: [2020-06-13 10:26:44] An unhandled exception has occurred while executing the request.
+ERROR: [2020-06-13 10:26:47] An unhandled exception has occurred while executing the request.
+ERROR: [2020-06-13 10:27:17] An unhandled exception has occurred while executing the request.
+ERROR: [2020-06-13 10:28:53] An unhandled exception has occurred while executing the request.
+ERROR: [2020-06-13 10:30:01] An unhandled exception has occurred while executing the request.
+ERROR: [2020-06-13 10:31:59] An unhandled exception has occurred while executing the request.
+ERROR: [2020-06-13 10:32:25] An unhandled exception has occurred while executing the request.
+ERROR: [2020-06-13 10:32:45] An unhandled exception has occurred while executing the request.
+WARNING: [2020-06-13 10:34:09] Change password failed for user 18cf0894-dba3-4023-ba63-b4c16c2393bc.
+WARNING: [2020-06-13 10:34:33] Change password failed for user 18cf0894-dba3-4023-ba63-b4c16c2393bc.
+WARNING: [2020-06-13 10:34:56] Change password failed for user 18cf0894-dba3-4023-ba63-b4c16c2393bc.
+WARNING: [2020-06-13 10:35:55] User d4ede1f5-e642-4743-88dc-6dec6e44c8c9 password validation failed: PasswordRequiresLower.
+WARNING: [2020-06-13 10:36:21] User d4ede1f5-e642-4743-88dc-6dec6e44c8c9 password validation failed: PasswordTooShort;PasswordRequiresLower;PasswordRequiresUniqueChars.

@@ -73,7 +73,7 @@ namespace Fasetto.Word
             {
                 // Call the server and attempt to register with credentials
                 // TODO: Move all URLs and API routes to static class in core
-                var result = await WebRequests.PostAsync<ApiResponse<RegisterResultApiModel>>("https://localhost:44325/api/register",
+                var result = await WebRequests.PostAsync<ApiResponse<RegisterResultApiModel>>(RouteHelpers.GetAbsoluteRoute(ApiRoutes.Register),
                     new RegisterCredentialsApiModel
                     {
                         Username = Username,
