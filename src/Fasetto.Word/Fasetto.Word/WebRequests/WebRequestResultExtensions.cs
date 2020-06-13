@@ -13,29 +13,30 @@ namespace Fasetto.Word
         /// Checks the web request result for any errors, display them if there are any
         /// </summary>
         /// <typeparam name="T">The type of API Response</typeparam>
-        /// <param name="result">The response to check</param>
+        /// <param name="response">The response to check</param>
         /// <param name="title">The title of the error dialog if there is an error</param>
         /// <returns>Returns true if there was an error, or false if all was Ok</returns>
-        public static async Task<bool> DisplayErrorIfFailedAsync<T>(this WebRequestResult<ApiResponse<T>> result, string title)
+        public static async Task<bool> DisplayErrorIfFailedAsync(this WebRequestResult response, string title)
         {
             // If there was no respones, bad data, or a response with a error message...
-            if (result == null || result.ServerResponse == null || !result.ServerResponse.Successful)
+            if (response == null || response.ServerResponse == null || (response.ServerResponse as ApiResponse)?.Successful == false)
             {
                 // Default error message
+                // TODO: Localize strings
                 var message = "Unknow error from server call";
 
                 // If we got response from the server...
-                if (result?.ServerResponse != null)
+                if (response?.ServerResponse is ApiResponse apiResponse)
                     // Set message to servers response
-                    message = result.ServerResponse.ErrorMessage;
+                    message = apiResponse.ErrorMessage;
                 // If we have a result but deserialize failed...
-                else if (!string.IsNullOrWhiteSpace(result?.RawServerResponse))
+                else if (!string.IsNullOrWhiteSpace(response?.RawServerResponse))
                     // Set error message
-                    message = $"Unexcepted response from server. {result.RawServerResponse}";
+                    message = $"Unexcepted response from server. {response.RawServerResponse}";
                 // If we have no result at all
-                else if (result != null)
+                else if (response != null)
                     // Set message to standard HTTP server response details
-                    message = $"Failed to communicate with server. Status code {result.StatusCode}. {result.StatusDescription}";
+                    message = response.ErrorMessage ?? $"{response.StatusDescription} ({response.StatusCode})";
 
                 // Display error
                 await DI.UI.ShowMessage(new MessageBoxDialogViewModel

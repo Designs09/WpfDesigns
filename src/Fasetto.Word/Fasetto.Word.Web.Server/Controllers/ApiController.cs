@@ -131,10 +131,7 @@ namespace Fasetto.Word.Web.Server
                 // Return the failed response
                 return new ApiResponse<RegisterResultApiModel>
                 {
-                    // Aggregate all errors into a single error string
-                    ErrorMessage = result.Errors?.ToList()
-                        .Select(f => f.Description)
-                        .Aggregate((a, b) => $"{a}{Environment.NewLine}{b}"),
+                    ErrorMessage = result.Errors.AggregateErrors(),
                 };
         }
 
@@ -230,11 +227,47 @@ namespace Fasetto.Word.Web.Server
             };
         }
 
-        //[Route("api/user/profile/update")]
-        //public async Task<ApiResponse> UpdateUserProfileAsync([FromBody] UpdateUserProfileApiModel model)
-        //{
+        [Route("api/user/profile/update")]
+        public async Task<ApiResponse> UpdateUserProfileAsync([FromBody] UpdateUserProfileApiModel model)
+        {
+            // Get user claims
+            var user = await mUserManager.GetUserAsync(HttpContext.User);
 
-        //}
+            // If we have no user...
+            if (user == null)
+                // Return error
+                return new ApiResponse<UserProfileDetailsApiModel>()
+                {
+                    // TODO: Localization
+                    ErrorMessage = "User not found"
+                };
+
+            // Update first name
+            if (model.FirstName != null)
+                user.FirstName = model.FirstName;
+
+            // Update last name
+            if (model.LastName != null)
+                user.LastName = model.LastName;
+
+            // Update last user name
+            if (model.Username != null)
+                user.UserName = model.Username;
+
+
+            var result = await mUserManager.UpdateAsync(user);
+
+            // If the update was successful...
+            if (result.Succeeded)
+                return new ApiResponse();
+            // Otherwise if it failed...
+            else
+                // Return the failed response
+                return new ApiResponse<RegisterResultApiModel>
+                {
+                    ErrorMessage = result.Errors.AggregateErrors(),
+                };
+        }
 
         [Route("create")]
         [AllowAnonymous]
