@@ -254,7 +254,7 @@ namespace Fasetto.Word
             await UpdateValuesFromLocalStoreAsync();
 
             // Get the user token
-            var token = (await DI.ClientDataStore.GetLoginCredentialsAsync()).Token;
+            var token = (await DI.ClientDataStore.GetLoginCredentialsAsync())?.Token;
 
             // If we don't have a token (so we are not logged in...)
             if (string.IsNullOrEmpty(token))
