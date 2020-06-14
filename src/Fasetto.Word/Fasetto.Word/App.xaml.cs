@@ -63,21 +63,8 @@ namespace Fasetto.Word
             // Ensure the client data store
             await DI.ClientDataStore.EnsureDataStoreAsync();
 
-            Task.Run(async () =>
-            {
-                while (true)
-                {
-                    // Load settings
-                    CoreDI.Task.RunAndForget(DI.ViewModelSettings.LoadAsync);
-                    CoreDI.Task.RunAndForget(DI.ViewModelSettings.LoadAsync);
-                    CoreDI.Task.RunAndForget(DI.ViewModelSettings.LoadAsync);
-                    CoreDI.Task.RunAndForget(DI.ViewModelSettings.LoadAsync);
-                    CoreDI.Task.RunAndForget(DI.ViewModelSettings.LoadAsync);
-                    CoreDI.Task.RunAndForget(DI.ViewModelSettings.LoadAsync);
-                    CoreDI.Task.RunAndForget(DI.ViewModelSettings.LoadAsync);
-                    await Task.Delay(50);
-                }
-            });
+            // Load settings
+            CoreDI.Task.RunAndForget(DI.ViewModelSettings.LoadAsync);
         }
     }
 }
