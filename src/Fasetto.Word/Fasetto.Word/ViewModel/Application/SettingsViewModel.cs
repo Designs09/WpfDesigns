@@ -87,6 +87,16 @@ namespace Fasetto.Word
         /// </summary>
         public bool PasswordIsChanging { get; set; }
 
+        /// <summary>
+        /// Indicates if the settings details are currently being loaded
+        /// </summary>
+        public bool SettingsLoading { get; set; }
+
+        /// <summary>
+        /// Indicates if the user is currently logging out
+        /// </summary>
+        public bool LoggingOut { get; set; }
+        
         #endregion
 
         #region Public Commands
@@ -221,17 +231,21 @@ namespace Fasetto.Word
         /// </summary>
         public async Task LogoutAsync()
         {
-            // TODO: Confirm the user wants to logout
+            // Lock this command to ignore any other requests while processing
+            await RunCommandAsync(() => LoggingOut, async () =>
+            {
+                // TODO: Confirm the user wants to logout
 
-            // Clear any user data/cache
-            await DI.ClientDataStore.ClearAllLoginCredentialsAsync();
+                // Clear any user data/cache
+                await DI.ClientDataStore.ClearAllLoginCredentialsAsync();
 
-            // Clear all application level view models that contain
-            // any information about the current user
-            ClearUserData();
+                // Clear all application level view models that contain
+                // any information about the current user
+                ClearUserData();
 
-            // Go to login page
-            DI.ViewModelApplication.GoToPage(ApplicationPage.Login);
+                // Go to login page
+                DI.ViewModelApplication.GoToPage(ApplicationPage.Login);
+            });
         }
 
         /// <summary>
@@ -251,43 +265,47 @@ namespace Fasetto.Word
         /// </summary>
         public async Task LoadAsync()
         {
-            // Update values from local cache
-            await UpdateValuesFromLocalStoreAsync();
-
-            // Get the user token
-            var token = (await DI.ClientDataStore.GetLoginCredentialsAsync())?.Token;
-
-            // If we don't have a token (so we are not logged in...)
-            if (string.IsNullOrEmpty(token))
-                // Then do nothing more
-                return;
-
-            // Load user profile details from server
-            var result = await WebRequests.PostAsync<ApiResponse<UserProfileDetailsApiModel>>(
-                // Set URL
-                RouteHelpers.GetAbsoluteRoute(ApiRoutes.GetUserProfile),
-                //configureRequest: request => request.Headers.Add("Authorization", "Bearer " + token),
-                // Pass in user Token
-                bearerToken: token
-                );
-
-            // If it was successful
-            if (result.Successful && string.IsNullOrEmpty(result.ServerResponse.ErrorMessage))
+            // Lock this command to ignore any other requests while processing
+            await RunCommandAsync(() => SettingsLoading, async () =>
             {
-                // TODO: Should we check if the values are different before saving?
-
-                // Create data model from the response
-                var dataModel = result.ServerResponse.Response.ToLoginCredentialsDataModel();
-
-                // Re-add our known token
-                dataModel.Token = token;
-
-                // Save the new information in the data store
-                await DI.ClientDataStore.SaveLoginCredentialsAsync(dataModel);
-
                 // Update values from local cache
                 await UpdateValuesFromLocalStoreAsync();
-            }
+
+                // Get the user token
+                var token = (await DI.ClientDataStore.GetLoginCredentialsAsync())?.Token;
+
+                // If we don't have a token (so we are not logged in...)
+                if (string.IsNullOrEmpty(token))
+                    // Then do nothing more
+                    return;
+
+                // Load user profile details from server
+                var result = await WebRequests.PostAsync<ApiResponse<UserProfileDetailsApiModel>>(
+                    // Set URL
+                    RouteHelpers.GetAbsoluteRoute(ApiRoutes.GetUserProfile),
+                    //configureRequest: request => request.Headers.Add("Authorization", "Bearer " + token),
+                    // Pass in user Token
+                    bearerToken: token
+                    );
+
+                // If it was successful
+                if (result.Successful && string.IsNullOrEmpty(result.ServerResponse.ErrorMessage))
+                {
+                    // TODO: Should we check if the values are different before saving?
+
+                    // Create data model from the response
+                    var dataModel = result.ServerResponse.Response.ToLoginCredentialsDataModel();
+
+                    // Re-add our known token
+                    dataModel.Token = token;
+
+                    // Save the new information in the data store
+                    await DI.ClientDataStore.SaveLoginCredentialsAsync(dataModel);
+
+                    // Update values from local cache
+                    await UpdateValuesFromLocalStoreAsync();
+                }
+            });
         }
 
         /// <summary>

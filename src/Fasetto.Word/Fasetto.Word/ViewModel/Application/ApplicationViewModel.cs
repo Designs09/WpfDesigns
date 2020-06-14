@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Fasetto.Word
 {
@@ -63,9 +65,79 @@ namespace Fasetto.Word
             }
         }
 
+        /// <summary>
+        /// Determines the currently visible side menu content
+        /// </summary>
+        public SideMenuContent CurrentSideMenuContent { get; set; } = SideMenuContent.Chat;
+
         #endregion
 
-        #region Public Methods
+        #region Public Commands
+
+        /// <summary>
+        /// The command to change the side menu to the chat
+        /// </summary>
+        public ICommand OpenChatCommand { get; set; }
+
+        /// <summary>
+        /// The command to change the side menu to the contacts
+        /// </summary>
+        public ICommand OpenContactsCommand { get; set; }
+
+        /// <summary>
+        /// The command to change the side menu to the media
+        /// </summary>
+        public ICommand OpenMediaCommand { get; set; }
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public ApplicationViewModel()
+        {
+            // Create commands
+            OpenChatCommand = new RelayCommand(OpenChat);
+            OpenContactsCommand = new RelayCommand(OpenContacts);
+            OpenMediaCommand = new RelayCommand(OpenMedia);
+        }
+
+        #endregion
+
+        #region Command Commands
+
+        /// <summary>
+        /// Changes the current side menu to the Chat
+        /// </summary>
+        public void OpenChat()
+        {
+            // Set the current side menu to chat
+            CurrentSideMenuContent = SideMenuContent.Chat;
+        }
+
+        /// <summary>
+        /// Changes the current side menu to the Contacts
+        /// </summary>
+        public void OpenContacts()
+        {
+            // Set the current side menu to contacts
+            CurrentSideMenuContent = SideMenuContent.Contacts;
+        }
+
+        /// <summary>
+        /// Changes the current side menu to the Media
+        /// </summary>
+        public void OpenMedia()
+        {
+            // Set the current side menu to media
+            CurrentSideMenuContent = SideMenuContent.Media;
+        }
+
+        #endregion
+
+        #region Public Helper Methods
 
         /// <summary>
         /// Navigate to the specified page

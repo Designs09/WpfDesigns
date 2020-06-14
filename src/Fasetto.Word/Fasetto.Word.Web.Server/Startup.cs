@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 
@@ -49,6 +50,7 @@ namespace Fasetto.Word.Web.Server
                 // Adds UserStore and RoleStore from this context
                 // That are consumed by the UserManager and RoleManager
                 // https://github.com/aspnet/Identity/blob/dev/src/EF/IdentityEntityFrameworkBuilderExtensions.cs
+                // https://github.com/dotnet/aspnetcore/blob/master/src/Identity/EntityFrameworkCore/src/IdentityEntityFrameworkBuilderExtensions.cs
                 .AddEntityFrameworkStores<ApplicationDbContext>()
 
                 // Adds a provider that generates unique keys and hashes for things like
