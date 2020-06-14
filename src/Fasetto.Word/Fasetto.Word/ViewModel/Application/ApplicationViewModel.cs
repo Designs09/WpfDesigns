@@ -70,6 +70,11 @@ namespace Fasetto.Word
         /// </summary>
         public SideMenuContent CurrentSideMenuContent { get; set; } = SideMenuContent.Chat;
 
+        /// <summary>
+        /// Determines if the application has network across the fasetto word server
+        /// </summary>
+        public bool ServerResponsive { get; set; } = true;
+
         #endregion
 
         #region Public Commands

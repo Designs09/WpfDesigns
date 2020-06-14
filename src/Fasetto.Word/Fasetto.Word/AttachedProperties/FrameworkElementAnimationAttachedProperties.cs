@@ -222,6 +222,25 @@ namespace Fasetto.Word
     }
 
     /// <summary>
+    /// Animates a framework element sliding up from the top on show
+    /// and sliding out to the top on hide
+    /// </summary>
+    public class AnimateSlideInFromTopProperty : AnimateBaseProperty<AnimateSlideInFromBottomProperty>
+    {
+        protected async override void DoAnimation(FrameworkElement element, bool value, bool firstLoad)
+        {
+            if (value)
+            {
+                // Animate in
+                await element.SlideAndFadeInAsync(AnimationSlideInDirection.Top, firstLoad, firstLoad ? 0 : 0.3f, false);
+            }
+            else
+                // Animate out
+                await element.SlideAndFadeOutAsync(AnimationSlideInDirection.Top, firstLoad ? 0 : 0.3f, false);
+        }
+    }
+
+    /// <summary>
     /// Animates a framework element fadding in on show
     /// and fading out on hide
     /// </summary>

@@ -53,6 +53,10 @@
 
                                         <!-- Title Bar -->
                                         <RowDefinition Height="{Binding TitleHeightGridLength, FallbackValue=42}" />
+                                        
+                                        <!-- Internet Connection Bar -->
+                                        <RowDefinition Height="Auto" />
+
                                         <!-- Window content -->
                                         <RowDefinition Height="*" />
 
@@ -95,8 +99,29 @@
 
                                     </Grid>
 
+                                    <!-- No Internet Connection Bar -->
+                                    <Border 
+                                        local:AnimateSlideInFromTopProperty.Value="{Binding 
+                                            ApplicationViewModel.ServerResponsive, 
+                                            Source={x:Static local:ViewModelLocator.Instance},
+                                            Converter={local:BooleanInvertConverter}
+                                        }"
+                                        Background="{StaticResource WordOrangeBrush}"
+                                        Grid.Row="1"
+                                        Padding="10"
+                                        Panel.ZIndex="1">
+
+                                        <Label HorizontalAlignment="Center"
+                                               FontFamily="{StaticResource LatoBold}"
+                                               Foreground="{StaticResource ForegroundLightBrush}"
+                                               >
+                                            No Internet connection. Please check your network
+                                        </Label>
+                                        
+                                    </Border>
+
                                     <!-- Page Content -->
-                                    <Border Grid.Row="1" 
+                                    <Border Grid.Row="2" 
                                             Padding="{Binding InnerContentPadding}"
                                             ClipToBounds="True"
                                             >

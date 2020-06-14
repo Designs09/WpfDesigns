@@ -1,6 +1,7 @@
 ﻿using Dna;
 using Fasetto.Word.Core;
 using Fasetto.Word.Relational;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
@@ -63,8 +64,29 @@ namespace Fasetto.Word
             // Ensure the client data store
             await DI.ClientDataStore.EnsureDataStoreAsync();
 
+            // Monitor for server connection status
+            MonitorServerStatus();
+
             // Load settings
             CoreDI.Task.RunAndForget(DI.ViewModelSettings.LoadAsync);
+        }
+
+        /// <summary>
+        /// Monitors the fasetto website is up, running and reachable
+        /// by periodically hitting it up
+        /// </summary>
+        private void MonitorServerStatus()
+        {
+            // Create a new endpoint watcher
+            var httpWatcher = new HttpEndpointChecker(
+                // Checking indicating endpoint
+                RouteHelpers.Host,
+                // Every 20 seconds
+                interval: 20000,
+                // Pass in the DI logger
+                logger: Framework.Provider.GetService<Microsoft.Extensions.Logging.ILogger>(),
+                // Update the view model property with the new result
+                stateChangedCallback: result => DI.ViewModelApplication.ServerResponsive = result);
         }
     }
 }

@@ -13,6 +13,11 @@ namespace Fasetto.Word.Core
     public static class RouteHelpers
     {
         /// <summary>
+        /// Host URL of fasetto word server
+        /// </summary>
+        public static string Host = Configuration["FasettoWordServer:HostUrl"];
+
+        /// <summary>
         /// Converts a relative URL into an absolute URL
         /// </summary>
         /// <param name="relativeUrl">The relative URL</param>
@@ -20,7 +25,7 @@ namespace Fasetto.Word.Core
         public static string GetAbsoluteRoute(string relativeUrl)
         {
             // Get the host
-            var host = Configuration["FasettoWordServer:HostUrl"];
+            var host = Host;
 
             // If no relative url passed...
             if (string.IsNullOrEmpty(relativeUrl))
