@@ -57,7 +57,7 @@ namespace Fasetto.Word
         protected async Task RunCommandAsync(Expression<Func<bool>> updatingFlag, Func<Task> action)
         {
             // Lock to ensure single access to check
-            lock (updatingFlag)
+            lock (mPropertyValueCheckLock)
             {
                 // Check if the flag property is true (meaning the function is already running)
                 if (updatingFlag.GetPropertyValue())
