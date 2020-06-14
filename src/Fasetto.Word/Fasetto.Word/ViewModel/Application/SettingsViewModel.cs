@@ -272,7 +272,7 @@ namespace Fasetto.Word
                 var scopedClientDataStore = DI.ClientDataStore;
 
                 // Update values from local cache
-                await UpdateValuesFromLocalStoreAsync();
+                await UpdateValuesFromLocalStoreAsync(scopedClientDataStore);
 
                 // Get the user token
                 var token = (await scopedClientDataStore.GetLoginCredentialsAsync())?.Token;
@@ -306,7 +306,7 @@ namespace Fasetto.Word
                     await scopedClientDataStore.SaveLoginCredentialsAsync(dataModel);
 
                     // Update values from local cache
-                    await UpdateValuesFromLocalStoreAsync();
+                    await UpdateValuesFromLocalStoreAsync(scopedClientDataStore);
                 }
             });
         }
@@ -474,10 +474,10 @@ namespace Fasetto.Word
         /// to this view model
         /// </summary>
         /// <returns></returns>
-        private async Task UpdateValuesFromLocalStoreAsync()
+        private async Task UpdateValuesFromLocalStoreAsync(IClientDataStore scopedClientDataStore)
         {
             // Get the stored credentials
-            var storedCredentials = await DI.ClientDataStore.GetLoginCredentialsAsync();
+            var storedCredentials = await scopedClientDataStore.GetLoginCredentialsAsync();
 
             // Set first name
             FirstName.OriginalText = storedCredentials?.FirstName;
@@ -504,11 +504,14 @@ namespace Fasetto.Word
         /// <returns></returns>
         private async Task<bool> UpdateUserCredentialsValueAsync(string displayName, Expression<Func<LoginCredentialsDataModel, string>> propertyToUpdate, string newValue, Action<UpdateUserProfileApiModel, string> setApiModel)
         {
+            // Stores the transcient instance of client data store            
+            var scopedClientDataStore = DI.ClientDataStore;
+
             // Log it 
             FrameworkDI.Logger.LogDebugSource($"Saving {displayName}...");
 
             // Get the current known credentials
-            var credentials = await DI.ClientDataStore.GetLoginCredentialsAsync();
+            var credentials = await scopedClientDataStore.GetLoginCredentialsAsync();
 
             // Get the property to update from the credentials
             var toUpdate = propertyToUpdate.GetPropertyValue(credentials);
@@ -559,7 +562,7 @@ namespace Fasetto.Word
             FrameworkDI.Logger.LogDebugSource($"Successfully updated {displayName}. Saving to local database cache...");
 
             // Store the new user credentials to the data store
-            await DI.ClientDataStore.SaveLoginCredentialsAsync(credentials);
+            await scopedClientDataStore.SaveLoginCredentialsAsync(credentials);
 
             // Return successful
             return true;
