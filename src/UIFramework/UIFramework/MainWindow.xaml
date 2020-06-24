@@ -12,6 +12,8 @@
 
         <controls:DateRangeControl Margin="50"/>
 
+        <controls:DataGridControl />
+        
         <!--<controls:ClipBoraderImage />-->
     </Grid>
 </Window>

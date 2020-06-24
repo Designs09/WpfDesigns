@@ -31,7 +31,6 @@
                         <Style TargetType="DataGridRow">
                             <Setter Property="Foreground" Value="DarkBlue" />
                             <Setter Property="Margin" Value="0 0 0 8" />
-
                             <Style.Triggers>
                                 
                                 <!-- 设置隔行颜色-->
@@ -41,6 +40,11 @@
                                 <Trigger Property="AlternationIndex" Value="1">
                                     <Setter Property="Background" Value="#FF0A0D33" />
                                 </Trigger>
+
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#005090"/>
+                                    <Setter Property="Foreground" Value="White" />
+                                </Trigger>
                             </Style.Triggers>
                         </Style>
                     </Setter.Value>
@@ -49,6 +53,13 @@
                     <Setter.Value>
                         <Style TargetType="DataGridCell">
                             <Setter Property="Margin" Value="40 0 0 0" />
+
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="Transparent" />
+
+                                </Trigger>
+                            </Style.Triggers>
                         </Style>
                     </Setter.Value>
                 </Setter>
@@ -61,7 +72,9 @@
                   AutoGenerateColumns="False"
                   RowHeaderWidth="0"
                   CanUserAddRows="False"
+                  IsReadOnly="True"
                   BorderThickness="0"
+                  SelectionChanged="DataGrid_SelectionChanged"
                   >
             
             <!-- 设置列头部数据 -->
