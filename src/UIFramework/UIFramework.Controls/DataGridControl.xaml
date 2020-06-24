@@ -76,7 +76,6 @@
                   BorderThickness="0"
                   SelectionChanged="DataGrid_SelectionChanged"
                   >
-            
             <!-- 设置列头部数据 -->
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Hello World"  Binding="{Binding Value}" />

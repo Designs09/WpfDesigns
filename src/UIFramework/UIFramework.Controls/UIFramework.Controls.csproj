@@ -84,6 +84,9 @@
     <Compile Include="ClipBoraderImage.xaml.cs">
       <DependentUpon>ClipBoraderImage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataGridControl2.xaml.cs">
+      <DependentUpon>DataGridControl2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DataGridControl1.xaml.cs">
       <DependentUpon>DataGridControl1.xaml</DependentUpon>
     </Compile>
@@ -124,6 +127,10 @@
     <Page Include="DataGridControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DataGridControl2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="DataGridControl1.xaml">
       <SubType>Designer</SubType>

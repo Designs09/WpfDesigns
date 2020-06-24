@@ -28,5 +28,22 @@ namespace UIFramework.Controls
         /// 处理状态
         /// </summary>
         public AlarmHandleStatus HandleStatus { get; set; }
+
+        private bool _isSelected = false;
+        /// <summary>
+        /// 是否选中该条报警
+        /// </summary>
+        public bool IsSelected 
+        {
+            get => _isSelected;
+            set
+            {
+                if (_isSelected == value)
+                    return;
+
+                _isSelected = value;
+                base.OnPropertyChanged(nameof(IsSelected));
+            }
+        }
     }
 }
