@@ -1,0 +1,14 @@
+s
+jJ:\Designs09\WpfDesigns\src\Fasetto.Word\Fasetto.Word.Web.Server\Authentication\AuthorizeTokenAttribute.csutf-8n
+eJ:\Designs09\WpfDesigns\src\Fasetto.Word\Fasetto.Word.Web.Server\Authentication\JwtTokenExtensions.csutf-8f
+]J:\Designs09\WpfDesigns\src\Fasetto.Word\Fasetto.Word.Web.Server\Controllers\ApiController.csutf-8r
+iJ:\Designs09\WpfDesigns\src\Fasetto.Word\Fasetto.Word.Web.Server\Controllers\WeatherForecastController.csutf-8f
+]J:\Designs09\WpfDesigns\src\Fasetto.Word\Fasetto.Word.Web.Server\Data\ApplicationDbContext.csutf-8a
+XJ:\Designs09\WpfDesigns\src\Fasetto.Word\Fasetto.Word.Web.Server\Data\ApplicationUser.csutf-8c
+ZJ:\Designs09\WpfDesigns\src\Fasetto.Word\Fasetto.Word.Web.Server\Data\SettingsDataModel.csutf-8m
+dJ:\Designs09\WpfDesigns\src\Fasetto.Word\Fasetto.Word.Web.Server\Identity\IdentityErrorExtensions.csutf-8T
+KJ:\Designs09\WpfDesigns\src\Fasetto.Word\Fasetto.Word.Web.Server\Program.csutf-8T
+KJ:\Designs09\WpfDesigns\src\Fasetto.Word\Fasetto.Word.Web.Server\Startup.csutf-8\
+SJ:\Designs09\WpfDesigns\src\Fasetto.Word\Fasetto.Word.Web.Server\WeatherForecast.csutf-8“
+‡J:\Designs09\WpfDesigns\src\Fasetto.Word\Fasetto.Word.Web.Server\obj\Debug\netcoreapp3.1\.NETCoreApp,Version=v3.1.AssemblyAttributes.csutf-8Œ
+€J:\Designs09\WpfDesigns\src\Fasetto.Word\Fasetto.Word.Web.Server\obj\Debug\netcoreapp3.1\Fasetto.Word.Web.Server.AssemblyInfo.csutf-8
