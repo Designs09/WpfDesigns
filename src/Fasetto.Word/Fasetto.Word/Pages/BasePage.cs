@@ -209,8 +209,10 @@ namespace Fasetto.Word
                     // Just use a new instance of the VM
                     ViewModel = new VM();
                 else
+                {
                     // Create a default view model
                     ViewModel = Framework.Service<VM>() ?? new VM();
+                }
             }
         }
 

@@ -160,7 +160,7 @@ namespace Fasetto.Word
             // Set the current page
             CurrentPage = page;
 
-            // Fire off a CurrentPage changed event
+            // Fire off a CurrentPage changed event even if it's the same page
             OnPropertyChanged(nameof(CurrentPage));
 
             // Show side menu or not

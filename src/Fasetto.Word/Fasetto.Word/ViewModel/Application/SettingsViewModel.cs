@@ -292,7 +292,7 @@ namespace Fasetto.Word
                     );
 
                 // If it was successful
-                if (result.Successful && string.IsNullOrEmpty(result.ServerResponse.ErrorMessage))
+                if (result.Successful && result.ServerResponse != null && string.IsNullOrEmpty(result.ServerResponse.ErrorMessage))
                 {
                     // TODO: Should we check if the values are different before saving?
 
