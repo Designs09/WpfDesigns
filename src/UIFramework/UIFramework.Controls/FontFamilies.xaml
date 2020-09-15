@@ -9,7 +9,8 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/Fonts.xaml" />
+                <!--<ResourceDictionary Source="Styles/Fonts.xaml" />-->
+                <ResourceDictionary Source="pack://application:,,,/UIFramework.Controls;component/Styles/Fonts.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
