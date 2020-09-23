@@ -61,6 +61,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -101,6 +103,9 @@
     <Compile Include="StyleFireOrder1.xaml.cs">
       <DependentUpon>StyleFireOrder1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TreeViewControl.xaml.cs">
+      <DependentUpon>TreeViewControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValueConverter\AlarmHandleStatusToColorConverter.cs" />
     <Compile Include="ValueConverter\BaseValueConverter.cs" />
     <Compile Include="StyleFireOrder.xaml.cs">
@@ -113,6 +118,8 @@
     <Compile Include="ViewModel\DataGridViewModel.cs" />
     <Compile Include="ViewModel\Date\DateRangeViewModel.cs" />
     <Compile Include="ViewModel\Date\Design\DateRangeDesignModel.cs" />
+    <Compile Include="ViewModel\TV\TreeViewDesignModel.cs" />
+    <Compile Include="ViewModel\TV\TreeViewItemModel.cs" />
     <Page Include="ChromeBrowserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -169,6 +176,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="StyleFireOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TreeViewControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

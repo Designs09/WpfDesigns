@@ -8,9 +8,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="DarkBlue">
+
+        <controls:TreeViewControl />
+
         <!--<controls:StyleFireOrder1 />-->
 
-        <controls:DateRangeControl Margin="50"/>
+        <!--<controls:DateRangeControl Margin="50"/>-->
 
         <!--<controls:ClipBoraderImage />-->
     </Grid>
