@@ -3,17 +3,32 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:UIFramework" 
+        xmlns:local="clr-namespace:UIFramework"
         xmlns:controls="clr-namespace:UIFramework.Controls;assembly=UIFramework.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow"
+        Height="450"
+        Width="800">
     <Grid>
         <!--<controls:StyleFireOrder1 />-->
 
         <!--<controls:DateRangeControl Margin="50"/>-->
 
-        <controls:DataGridControl2 />
-        
+        <!-- 数据网格 -->
+        <!--<controls:DataGridControl2 />-->
+
         <!--<controls:ClipBoraderImage />-->
+
+        <!-- 数据字符 -->
+        <Border>
+            <Border.Resources>
+                <controls:NormalViewModel x:Key="instance">
+                    <controls:NormalViewModel.Value1>5</controls:NormalViewModel.Value1>
+                    <controls:NormalViewModel.Value2>6</controls:NormalViewModel.Value2>
+                    <controls:NormalViewModel.Value3>True</controls:NormalViewModel.Value3>
+                </controls:NormalViewModel>
+            </Border.Resources>
+            <controls:MultiBindingDemo DataContext="{StaticResource instance}" />
+        </Border>
     </Grid>
 </Window>

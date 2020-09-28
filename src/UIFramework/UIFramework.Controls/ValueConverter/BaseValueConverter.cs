@@ -33,9 +33,7 @@ namespace UIFramework.Controls
         /// <param name="serviceProvider"></param>
         /// <returns></returns>
         public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return mConverter ?? (mConverter = new T());
-        }
+            => mConverter ?? (mConverter = new T());
 
         #endregion
 

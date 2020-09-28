@@ -18,7 +18,9 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <StackPanel>
-        <TextBlock x:Name="MessageText" Text="Hello World!" FontFamily="{StaticResource FontAwesome}"/>
+        <TextBlock x:Name="MessageText"
+                   Text="Hello World!"
+                   FontFamily="{StaticResource FontAwesome}" />
         <TextBlock Text="Hello World!" />
     </StackPanel>
 </UserControl>

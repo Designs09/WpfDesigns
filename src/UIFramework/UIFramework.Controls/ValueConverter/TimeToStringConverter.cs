@@ -4,12 +4,14 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 
 namespace UIFramework.Controls
 {
     /// <summary>
     /// 将<see cref="DateTime"/>转换为<see cref="string"/>的转换器
     /// </summary>
+    [ValueConversion(typeof(DateTime), typeof(string))]
     public class TimeToStringConverter : BaseValueConverter<TimeToStringConverter>
     {
         private const string DefaultStyle = "yyyy-MM-dd HH:mm:ss";

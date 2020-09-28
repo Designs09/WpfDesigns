@@ -20,5 +20,16 @@
     <StackPanel>
         <TextBlock Style="{StaticResource BaseText}" Text="Hello World!" />
         <lib:UserControl1 CustomColor="AliceBlue" />
+
+        <Grid Width="500"
+              Height="400"
+              Name="border"
+              Background="#800000FF">
+            <Grid.Clip>
+                <RectangleGeometry Rect="0 0 400 300" RadiusX="50" RadiusY="50">
+                </RectangleGeometry>
+            </Grid.Clip>
+            
+        </Grid>
     </StackPanel>
 </UserControl>

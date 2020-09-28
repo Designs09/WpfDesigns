@@ -101,14 +101,19 @@
     </Compile>
     <Compile Include="Model\AlarmHandleStatus.cs" />
     <Compile Include="Model\DateType.cs" />
+    <Compile Include="MultiBindingDemo.xaml.cs">
+      <DependentUpon>MultiBindingDemo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StyleFireOrder1.xaml.cs">
       <DependentUpon>StyleFireOrder1.xaml</DependentUpon>
     </Compile>
     <Compile Include="ValueConverter\AlarmHandleStatusToColorConverter.cs" />
+    <Compile Include="ValueConverter\BaseMultiValueConverter.cs" />
     <Compile Include="ValueConverter\BaseValueConverter.cs" />
     <Compile Include="StyleFireOrder.xaml.cs">
       <DependentUpon>StyleFireOrder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ValueConverter\MultiValueConverter.cs" />
     <Compile Include="ValueConverter\TimeToStringConverter.cs" />
     <Compile Include="ViewModel\Alarm\AlarmListItemViewModel.cs" />
     <Compile Include="ViewModel\Alarm\AlarmListViewModel.cs" />
@@ -116,6 +121,8 @@
     <Compile Include="ViewModel\DataGridViewModel.cs" />
     <Compile Include="ViewModel\Date\DateRangeViewModel.cs" />
     <Compile Include="ViewModel\Date\Design\DateRangeDesignModel.cs" />
+    <Compile Include="ViewModel\Design\NormalDesignModel.cs" />
+    <Compile Include="ViewModel\NormalViewModel.cs" />
     <Page Include="ChromeBrowserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -149,6 +156,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LinearBrushControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MultiBindingDemo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

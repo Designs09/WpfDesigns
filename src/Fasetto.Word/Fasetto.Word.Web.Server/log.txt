@@ -41,3 +41,4 @@ WARNING: [2020-07-15 09:18:48] Invalid password for user 18cf0894-dba3-4023-ba63
 WARNING: [2020-07-15 09:18:51] Invalid password for user 18cf0894-dba3-4023-ba63-b4c16c2393bc.
 WARNING: [2020-07-15 09:18:58] Invalid password for user d4ede1f5-e642-4743-88dc-6dec6e44c8c9.
 WARNING: [2020-07-15 09:24:50] Invalid password for user d4ede1f5-e642-4743-88dc-6dec6e44c8c9.
+CRITICAL: [2020-09-29 12:17:22] Application startup exception
