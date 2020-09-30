@@ -11,5 +11,7 @@
     </Window.Resources>
     <StackPanel>
         <Button Height="50"/>
+        <DatePicker />
+        <ScrollViewer />
     </StackPanel>
 </Window>
