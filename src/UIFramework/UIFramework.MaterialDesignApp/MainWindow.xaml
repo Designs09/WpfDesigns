@@ -22,6 +22,12 @@
                                  Margin="16">
                 <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}">My First Material Design App</TextBlock>
             </materialDesign:Card>
+            <ComboBox Width="60" HorizontalAlignment="Left" Margin="20">
+                <ComboBoxItem Content="1"/>
+                <ComboBoxItem Content="1"/>
+                <ComboBoxItem Content="1"/>
+                <ComboBoxItem Content="1"/>
+            </ComboBox>
         </StackPanel>
     </Grid>
 </Window>

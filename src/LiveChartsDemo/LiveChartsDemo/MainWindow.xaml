@@ -36,7 +36,9 @@
 
             <!--<local:CarEnterOutChartControl d:DataContext="{x:Static local:CarEnterOutChartDesignModel.Instance}"/>-->
 
-            <local:CurveGraphControl />
+            <!--<local:CurveGraphControl />-->
+
+            <local:LineChartDemo />
 
             <!--<WebBrowser Source="http://localhost" />-->
 

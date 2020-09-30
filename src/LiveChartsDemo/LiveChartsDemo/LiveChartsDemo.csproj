@@ -76,6 +76,9 @@
     <Compile Include="Official\CurveGraphControl.xaml.cs">
       <DependentUpon>CurveGraphControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Official\LineChartDemo.xaml.cs">
+      <DependentUpon>LineChartDemo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Official\TimeEnergyControl.xaml.cs">
       <DependentUpon>TimeEnergyControl.xaml</DependentUpon>
     </Compile>
@@ -129,6 +132,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Official\CurveGraphControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Official\LineChartDemo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
