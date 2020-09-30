@@ -16,7 +16,6 @@ namespace Fasetto.Word.Core
         public async Task WriteAllTextToFileAsync(string text, string path, bool append = false)
         {
             // TODO: Add exception catching
-
             // Normalize  path
             path = NormalizePath(path);
 
@@ -28,11 +27,11 @@ namespace Fasetto.Word.Core
             {
                 // Run the synchronous file access as a new task
                 await CoreDI.Task.Run(() =>
-                {
-                    // Write the log message to file
-                    using (var fileStream = (TextWriter)new StreamWriter(File.Open(path, append ? FileMode.Append : FileMode.Create, FileAccess.Write)))
-                        fileStream.Write(text);
-                });
+                    {
+                            // Write the log message to file
+                            using (var fileStream = (TextWriter)new StreamWriter(File.Open(path, append ? FileMode.Append : FileMode.Create, FileAccess.Write)))
+                            fileStream.Write(text);
+                    });
             });
         }
 
