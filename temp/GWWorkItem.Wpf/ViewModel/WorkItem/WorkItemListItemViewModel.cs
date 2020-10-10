@@ -158,7 +158,7 @@ namespace GWWorkItem.Wpf
             await RunCommandAsync(() => Distributing, async () =>
             {
                 await Task.Delay(500);
-                await UIManager.ShowMessage("重新分配完成");
+                await UIManager.ShowDistributeDialogAsync(this);
             });
         }
 
@@ -171,7 +171,7 @@ namespace GWWorkItem.Wpf
             await RunCommandAsync(() => Misinfoing, async () =>
             {
                 await Task.Delay(500);
-                await UIManager.ShowMessage("误报完成");
+                await UIManager.ShowMessageAsync("误报完成");
             });
         }
 
@@ -184,7 +184,7 @@ namespace GWWorkItem.Wpf
             await RunCommandAsync(() => Redistributing, async () =>
             {
                 await Task.Delay(500);
-                await UIManager.ShowMessage("重新分配完成");
+                await UIManager.ShowDistributeDialogAsync(this);
             });
         }
 
@@ -197,7 +197,7 @@ namespace GWWorkItem.Wpf
             await RunCommandAsync(() => ExamPassing, async () =>
             {
                 await Task.Delay(500);
-                await UIManager.ShowMessage("审核通过完成");
+                await UIManager.ShowMessageAsync("审核通过完成");
             });
         }
 
@@ -210,7 +210,7 @@ namespace GWWorkItem.Wpf
             await RunCommandAsync(() => Restarting, async () =>
             {
                 await Task.Delay(500);
-                await UIManager.ShowMessage("重启工单完成");
+                await UIManager.ShowMessageAsync("重启工单完成");
             });
         }
 
@@ -220,7 +220,7 @@ namespace GWWorkItem.Wpf
         /// <returns></returns>
         private async Task CheckPictureAsync()
         {
-            UIManager.ShowMessage("请查看图片");
+            UIManager.ShowMessageAsync("请查看图片");
 
             await Task.CompletedTask;
         }

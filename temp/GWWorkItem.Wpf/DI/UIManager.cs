@@ -9,23 +9,45 @@ namespace GWWorkItem.Wpf
 {
     public class UIManager
     {
-        public static Task ShowMessage(string message)
+        /// <summary>
+        /// 弹出消息对话框
+        /// </summary>
+        /// <param name="message">消息内容</param>
+        /// <returns></returns>
+        public static Task ShowMessageAsync(string message)
         {
-            new WorkItemDistributeBox().ShowDialog(new BaseDialogViewModel { Title = "Hello World! "});
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                // TODO：用风格统一的样式显示消息。
 
-            //Application.Current.Dispatcher.Invoke(() =>
-            //{
-            //    MessageBox.Show(message);
-            //});
+
+                MessageBox.Show(message);
+            });
 
             return Task.CompletedTask;
         }
 
-        public static async Task<bool> ShowDistributeDialog(string message)
+        /// <summary>
+        /// 弹出“分配工单”对话框
+        /// </summary>
+        /// <param name="orderId">工单Id</param>
+        /// <returns></returns>
+        public static async Task ShowDistributeDialogAsync(WorkItemListItemViewModel workItem)
         {
+            // TODO: 获取人员列表
 
 
-            return false;
+            var vm = new WorkItemDistributeViewModel
+            {
+                Title = "分配人员",
+            };
+            vm.AddItem("别萍 - 17049095516");
+            vm.AddItem("应珊文 - 18173849792");
+            vm.AddItem("别爽黛 - 13061398763");
+            vm.AddItem("郝强黛 - 19946741147");
+
+            // 分配人员
+            await new WorkItemDistributeBox().ShowDialogAsync(vm);
         }
     }
 }

@@ -67,7 +67,7 @@ namespace GWWorkItem.Wpf
         /// </summary>
         private void Search()
         {
-            UIManager.ShowMessage($"搜索中...");
+            UIManager.ShowMessageAsync($"搜索中...");
         }
 
         #endregion

@@ -86,7 +86,7 @@ namespace GWWorkItem.Wpf
         /// <param name="viewModel">The view model</param>
         /// <typeparam name="T">The view model type for this control</typeparam>
         /// <returns></returns>
-        public Task ShowDialog<T>(T viewModel)
+        public Task ShowDialogAsync<T>(T viewModel)
             where T : BaseDialogViewModel
         {
             // Create a task the await the dialog closing
