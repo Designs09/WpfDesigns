@@ -10,7 +10,6 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         SizeToContent="WidthAndHeight"
-        Icon="Images/Logo/penguin.ico"
         MinWidth="{Binding WindowMinimumWidth}"
         MinHeight="{Binding WindowMinimumHeight}"
         Title="{Binding Title}"

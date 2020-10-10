@@ -55,7 +55,7 @@ namespace UIFramework.Controls
 
         private void DataGridRow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Single Click!");
+            //MessageBox.Show("Single Click!");
         }
     }
 }
