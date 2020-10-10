@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="GWWorkItem.Wpf.WorkItemList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:GWWorkItem.Wpf"
+             MinWidth="300"
+             d:DesignHeight="500"
+             d:DesignWidth="448"
+             mc:Ignorable="d">
+    <Grid d:DataContext="{x:Static local:WorkItemListDesignModel.Instance}"
+          Background="Transparent"
+          >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <!-- 标题 -->
+        <Border BorderBrush="#28D8D8D8"
+                BorderThickness="1"
+                CornerRadius="3"
+                VerticalAlignment="Top"
+                Height="48"
+                Margin="0 0 4 0">
+            <StackPanel VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                <!-- 状态颜色 -->
+                <Border CornerRadius="3"
+                        Width="8"
+                        Height="16"
+                        HorizontalAlignment="Left"
+                        Background="{Binding Type, Converter={local:WorkItemTypeToColorConverter}}"
+                        Margin="16 0 0 0" />
+                <!-- 状态 -->
+                <TextBlock Text="{Binding Type}"
+                           FontFamily="{StaticResource SourceHanMedium}"
+                           Foreground="#9CF0F4FF"
+                           Margin="16 0 0 0" />
+                <!-- 点 -->
+                <TextBlock Text="·"
+                           FontFamily="{StaticResource SourceHanMedium}"
+                           Foreground="#9CC1C4CD"
+                           Margin="4 0 0 0" />
+
+                <!-- 数量 -->
+                <TextBlock Text="{Binding Items.Count}"
+                           FontFamily="{StaticResource SourceHanMedium}"
+                           Foreground="#9CC1C4CD"
+                           Margin="4 0 0 0" />
+
+            </StackPanel>
+        </Border>
+        
+        <!-- 工单 -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      Margin="0 4 0 0"
+                      Grid.Row="1">
+            <ItemsControl ItemsSource="{Binding Items}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <local:WorkItemListItem Margin="0 4 16 4" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

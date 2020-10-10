@@ -1,0 +1,38 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:GWWorkItem.Wpf" xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <FontFamily x:Key="SourceHanRegular">Source Han Sans CN Regular</FontFamily>
+    <FontFamily x:Key="SourceHanMedium">Source Han Sans CN Medium</FontFamily>
+    <FontFamily x:Key="SourceHanBold">Source Han Sans CN Bold</FontFamily>
+    <FontFamily x:Key="FontAwesome">pack://application;,,,/Fonts/#FontAwesome</FontFamily>
+
+    <system:Double x:Key="FontSizeRegular">16</system:Double>
+    <system:Double x:Key="FontSizeSmall">14</system:Double>
+    <system:Double x:Key="FontSizeSmaller">12</system:Double>
+    
+    <Style TargetType="Control" x:Key="BaseStyle">
+        <Setter Property="FontFamily" Value="{StaticResource SourceHanRegular}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}" />
+    </Style>
+
+    <Style TargetType="TextBlock">
+        <Setter Property="Foreground"
+                Value="White" />
+        <Setter Property="FontFamily"
+                Value="{StaticResource SourceHanRegular}" />
+        <Setter Property="FontSize"
+                Value="{StaticResource FontSizeRegular}" />
+    </Style>
+    
+    <system:String x:Key="FontAwesomeSearchIcon">&#xf002;</system:String>
+    <system:String x:Key="FontAwesomeClockIcon">&#xf017;</system:String>
+    <system:String x:Key="FontAwesomeLocationIcon">&#xf041;</system:String>
+    <system:String x:Key="FontAwesomeUserIcon">&#xf007;</system:String>
+    <system:String x:Key="FontAwesomeMisinfoIcon">&#xf05e;</system:String>
+    <system:String x:Key="FontAwesomeOffClockIcon">&#xf1f6;</system:String>
+    <system:String x:Key="FontAwesomeRecircleIcon">&#xf1ce;</system:String>
+    <system:String x:Key="FontAwesomeRedoIcon">&#xf01e;</system:String>
+    <system:String x:Key="FontAwesomePassIcon">&#xf058;</system:String>
+    <system:String x:Key="FontAwesomeSpinIcon">&#xf110;</system:String>
+
+</ResourceDictionary>

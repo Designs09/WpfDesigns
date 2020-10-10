@@ -1,0 +1,152 @@
+﻿<Window x:Class="GWWorkItem.Wpf.DialogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GWWorkItem.Wpf"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        SizeToContent="WidthAndHeight"
+        d:DataContext="{d:DesignInstance Type=local:BaseDialogDesignModel, IsDesignTimeCreatable=True}"
+        MinWidth="{Binding WindowMinimumWidth}"
+        MinHeight="{Binding WindowMinimumHeight}"
+        Title="{Binding Title}">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type local:DialogWindow}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Window}">
+                        <!-- Outer border with the dropshadow  margin -->
+                        <Border Margin="5">
+                            <!-- Main window outline -->
+                            <Grid>
+
+                                <!-- Window container -->
+                                <Border x:Name="Container"
+                                        Background="White"
+                                        CornerRadius="10 10 0 0"/>
+
+                                <!-- Window border and dropshadow -->
+                                <Border CornerRadius="10"
+                                        Background="White">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="20"
+                                                          Opacity="0.2" />
+                                    </Border.Effect>
+                                </Border>
+
+                                <!-- The main window content -->
+                                <Grid>
+
+                                    <Grid.OpacityMask>
+                                        <VisualBrush Visual="{Binding ElementName=Container}" />
+                                    </Grid.OpacityMask>
+
+                                    <Grid.RowDefinitions>
+
+                                        <!-- Title Bar -->
+                                        <RowDefinition Height="32" />
+                                        <!-- Window content -->
+                                        <RowDefinition Height="*" />
+
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Title Bar -->
+                                    <Grid Grid.Column="0">
+                                        <Grid.ColumnDefinitions>
+                                            <!-- Icon -->
+                                            <ColumnDefinition Width="Auto" />
+                                            <!-- Title -->
+                                            <ColumnDefinition Width="*" />
+                                            <!-- Window Button -->
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- Title -->
+                                        <TextBlock Grid.Column="0"
+                                                   Text="{Binding Title}"
+                                                   Foreground="Black"
+                                                   VerticalAlignment="Center"
+                                                   FontSize="14"
+                                                   FontFamily="Source Han Sans CN Regular"
+                                                   Margin="10 0 0 0" />
+
+                                        <Button Grid.Column="2"
+                                                Command="{Binding CloseCommand}"
+                                                VerticalAlignment="Stretch"
+                                                WindowChrome.IsHitTestVisibleInChrome="True"
+                                                FontSize="14"
+                                                Padding="5 0"
+                                                FontFamily="Source Han Sans CN Regular"
+                                                Content="X">
+                                            <Button.Style>
+                                                <Style TargetType="ButtonBase">
+                                                    <Setter Property="Background"
+                                                            Value="Transparent" />
+                                                    <Setter Property="Foreground"
+                                                            Value="#6B6B6B" />
+                                                    <Setter Property="BorderThickness"
+                                                            Value="0" />
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="ButtonBase">
+                                                                <Border Padding="{TemplateBinding Padding}"
+                                                                        Background="{TemplateBinding Background}">
+                                                                    <TextBlock VerticalAlignment="Center"
+                                                                               HorizontalAlignment="Center"
+                                                                               Foreground="{TemplateBinding Foreground}"
+                                                                               Text="{TemplateBinding Content}" />
+                                                                </Border>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Style.Triggers>
+                                                        <Trigger  Property="IsMouseOver"
+                                                                  Value="True">
+                                                            <Setter Property="Background"
+                                                                    Value="Red" />
+                                                            <Setter Property="Foreground"
+                                                                    Value="#FFFFFF" />
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                            <Button.LayoutTransform>
+                                                <ScaleTransform ScaleX="1.5" />
+                                            </Button.LayoutTransform>
+                                        </Button>
+
+                                    </Grid>
+
+                                    <!-- Page Content -->
+                                    <Border Grid.Row="1"
+                                            Background="#10232F"
+                                            ClipToBounds="True">
+                                        <ContentPresenter Content="{TemplateBinding Content}" />
+                                    </Border>
+
+                                </Grid>
+
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CornerRadius="0"
+                      GlassFrameThickness="0" />
+    </WindowChrome.WindowChrome>
+
+    <Border BorderThickness="0.5"
+            BorderBrush="#FF008AF5">
+        <ContentControl Content="{Binding Content}" />
+    </Border>
+
+</Window>
