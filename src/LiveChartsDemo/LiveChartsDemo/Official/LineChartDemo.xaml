@@ -10,9 +10,9 @@
     <Grid>
         <lvc:CartesianChart>
             <lvc:CartesianChart.Series>
-                <lvc:LineSeries Values="1.5,2.5,3,5,7">
-                    
-                </lvc:LineSeries>
+                <lvc:LineSeries Values="1,25,3,0,8" />
+                <lvc:LineSeries Values="2,35,2,4,7" />
+                <lvc:LineSeries Values="3,5,4,5,9" />
             </lvc:CartesianChart.Series>
         </lvc:CartesianChart>
     </Grid>
