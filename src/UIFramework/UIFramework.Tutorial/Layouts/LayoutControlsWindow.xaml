@@ -8,7 +8,8 @@
         Title="LayoutControlsWindow"
         Height="450"
         Width="200">
-    <Border VerticalAlignment="Top"  Padding="5">
+    <Border VerticalAlignment="Top"
+            Padding="5">
         <Border.Background>
             <SolidColorBrush Color="#FFFFFF" />
         </Border.Background>
@@ -17,11 +18,44 @@
         </Border.BorderBrush>
         <Border.BorderThickness>1</Border.BorderThickness>
 
-        <StackPanel>
-            <Button Margin="3"
-                    Content="Ok">
-            </Button>
-            <Button Margin="3" Content="Cancel"/>
-        </StackPanel>
+        <Grid>
+            <StackPanel>
+                <Label Margin="3"
+                       Content="StackPanel:" />
+                <Button Margin="3"
+                        Content="Ok">
+                </Button>
+                <Button Margin="3"
+                        Content="Cancel" />
+
+                <Label Margin="3"
+                       Content="WrapPanel:" />
+                <WrapPanel>
+                    <Button Margin="3"
+                            Content="Ok" />
+                    <Button Margin="3" Content="Cancel" />
+                    <Button Margin="3" Content="This is a awesome button!" />
+                </WrapPanel>
+
+                <Label Margin="3"
+                       Content="DockPanel:" />
+                <DockPanel Margin="3" Height="100" LastChildFill="True">
+                    <Button Content="Top"
+                            DockPanel.Dock="Top" />
+                    <Button Content="Bottom"
+                            DockPanel.Dock="Bottom" />
+                    <Button Content="Left"
+                            DockPanel.Dock="Left" />
+                    <Button Content="Right"
+                            DockPanel.Dock="Right" />
+                    <Button Content="Content" />
+                </DockPanel>
+                
+                <VirtualizingStackPanel>
+                    
+                </VirtualizingStackPanel>
+            </StackPanel>
+
+        </Grid>
     </Border>
 </Window>

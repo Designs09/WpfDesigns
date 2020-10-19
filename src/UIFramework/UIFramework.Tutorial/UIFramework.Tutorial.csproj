@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Contents\BaseContentWindows.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Layouts\LayoutControlsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -63,11 +67,21 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Contents\BaseContentWindows.xaml.cs">
+      <DependentUpon>BaseContentWindows.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Layouts\LayoutControlsWindow.xaml.cs">
       <DependentUpon>LayoutControlsWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Layouts\VirtualizingStackPanelPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Layouts\VirtualizingStackPanelPage.xaml.cs">
+      <DependentUpon>VirtualizingStackPanelPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
