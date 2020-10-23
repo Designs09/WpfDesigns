@@ -20,7 +20,7 @@
         <!--<controls:ClipBoraderImage />-->
 
         <!-- 数据字符 -->
-        <Border>
+        <!--<Border>
             <Border.Resources>
                 <controls:NormalViewModel x:Key="instance">
                     <controls:NormalViewModel.Value1>5</controls:NormalViewModel.Value1>
@@ -29,6 +29,8 @@
                 </controls:NormalViewModel>
             </Border.Resources>
             <controls:MultiBindingDemo DataContext="{StaticResource instance}" />
-        </Border>
+        </Border>-->
+
+        <controls:TextControl />
     </Grid>
 </Window>

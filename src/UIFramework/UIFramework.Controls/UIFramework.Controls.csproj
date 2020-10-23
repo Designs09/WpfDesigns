@@ -107,6 +107,9 @@
     <Compile Include="StyleFireOrder1.xaml.cs">
       <DependentUpon>StyleFireOrder1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TextControl.xaml.cs">
+      <DependentUpon>TextControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValueConverter\AlarmHandleStatusToColorConverter.cs" />
     <Compile Include="ValueConverter\BaseMultiValueConverter.cs" />
     <Compile Include="ValueConverter\BaseValueConverter.cs" />
@@ -187,6 +190,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="StyleFireOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TextControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
