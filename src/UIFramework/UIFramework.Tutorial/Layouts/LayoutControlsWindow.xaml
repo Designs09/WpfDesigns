@@ -1,0 +1,61 @@
+﻿<Window x:Class="UIFramework.Tutorial.LayoutControlsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UIFramework.Tutorial"
+        mc:Ignorable="d"
+        Title="LayoutControlsWindow"
+        Height="450"
+        Width="200">
+    <Border VerticalAlignment="Top"
+            Padding="5">
+        <Border.Background>
+            <SolidColorBrush Color="#FFFFFF" />
+        </Border.Background>
+        <Border.BorderBrush>
+            <SolidColorBrush Color="#FFFFFF" />
+        </Border.BorderBrush>
+        <Border.BorderThickness>1</Border.BorderThickness>
+
+        <Grid>
+            <StackPanel>
+                <Label Margin="3"
+                       Content="StackPanel:" />
+                <Button Margin="3"
+                        Content="Ok">
+                </Button>
+                <Button Margin="3"
+                        Content="Cancel" />
+
+                <Label Margin="3"
+                       Content="WrapPanel:" />
+                <WrapPanel>
+                    <Button Margin="3"
+                            Content="Ok" />
+                    <Button Margin="3" Content="Cancel" />
+                    <Button Margin="3" Content="This is a awesome button!" />
+                </WrapPanel>
+
+                <Label Margin="3"
+                       Content="DockPanel:" />
+                <DockPanel Margin="3" Height="100" LastChildFill="True">
+                    <Button Content="Top"
+                            DockPanel.Dock="Top" />
+                    <Button Content="Bottom"
+                            DockPanel.Dock="Bottom" />
+                    <Button Content="Left"
+                            DockPanel.Dock="Left" />
+                    <Button Content="Right"
+                            DockPanel.Dock="Right" />
+                    <Button Content="Content" />
+                </DockPanel>
+                
+                <VirtualizingStackPanel>
+                    
+                </VirtualizingStackPanel>
+            </StackPanel>
+
+        </Grid>
+    </Border>
+</Window>

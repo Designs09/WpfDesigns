@@ -31,6 +31,8 @@
             <controls:MultiBindingDemo DataContext="{StaticResource instance}" />
         </Border>-->
 
+        <!--<controls:TextControl />-->
+
         <Border Width="100"
                 Height="100"
                 HorizontalAlignment="Left"

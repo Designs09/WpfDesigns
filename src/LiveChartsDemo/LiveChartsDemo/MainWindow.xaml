@@ -38,7 +38,9 @@
 
             <!--<local:CurveGraphControl />-->
 
-            <local:LineChartDemo />
+            <!--<local:LineChartDemo />-->
+
+            <local:LineGraph />
 
             <!--<WebBrowser Source="http://localhost" />-->
 

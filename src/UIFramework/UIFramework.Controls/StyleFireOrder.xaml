@@ -18,6 +18,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <StackPanel>
+        <!--<Image Source="pack://application:,,,/UIFramework.Controls1;component/Images/timg.jpg" />-->
         <TextBlock Style="{StaticResource BaseText}" Text="Hello World!" />
         <lib:UserControl1 CustomColor="AliceBlue" />
 

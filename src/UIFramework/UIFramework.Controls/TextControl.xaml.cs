@@ -16,18 +16,15 @@ using System.Windows.Shapes;
 namespace UIFramework.Controls
 {
     /// <summary>
-    /// ChromeBrowserControl.xaml 的交互逻辑
+    /// TextControl.xaml 的交互逻辑
     /// </summary>
-    public partial class ChromeBrowserControl : UserControl
+    public partial class TextControl : UserControl
     {
-        public ChromeBrowserControl()
+        public TextControl()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
+            Txt.Text = "Hello " + Environment.NewLine + 
+                "World!";
         }
     }
 }

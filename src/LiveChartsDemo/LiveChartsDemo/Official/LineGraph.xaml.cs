@@ -13,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace UIFramework.Controls
+namespace LiveChartsDemo
 {
     /// <summary>
-    /// ChromeBrowserControl.xaml 的交互逻辑
+    /// LineGraph.xaml 的交互逻辑
     /// </summary>
-    public partial class ChromeBrowserControl : UserControl
+    public partial class LineGraph : UserControl
     {
-        public ChromeBrowserControl()
+        public LineGraph()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
