@@ -30,7 +30,13 @@
             </Border.Resources>
             <controls:MultiBindingDemo DataContext="{StaticResource instance}" />
         </Border>-->
-        
-        
+
+        <Border Width="100"
+                Height="100"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top">
+
+        </Border>
+
     </Grid>
 </Window>
