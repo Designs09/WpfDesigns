@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\PropertyChanged.Fody.3.3.1\build\PropertyChanged.Fody.props" Condition="Exists('..\packages\PropertyChanged.Fody.3.3.1\build\PropertyChanged.Fody.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -14,6 +15,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,6 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PropertyChanged, Version=3.3.1.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
+      <HintPath>..\packages\PropertyChanged.Fody.3.3.1\lib\net40\PropertyChanged.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -55,7 +61,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Contents\BaseContentWindows.xaml">
+    <Compile Include="ValueConverter\FontDisplayConverter.cs" />
+    <Page Include="Controls\Contents\BaseContentWindows.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Base\BaseControlProperty.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fonts\FontsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -67,18 +82,52 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Contents\BaseContentWindows.xaml.cs">
+    <Compile Include="Controls\Contents\BaseContentWindows.xaml.cs">
       <DependentUpon>BaseContentWindows.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Base\BaseControlProperty.xaml.cs">
+      <DependentUpon>BaseControlProperty.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fonts\FontsControl.xaml.cs">
+      <DependentUpon>FontsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Layouts\LayoutControlsWindow.xaml.cs">
       <DependentUpon>LayoutControlsWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Layouts\Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Panels\CanvasPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Panels\GridPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Panels\UniformGrids.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Layouts\VirtualizingStackPanelPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Layouts\Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\CanvasPanel.xaml.cs">
+      <DependentUpon>CanvasPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\GridPanel.xaml.cs">
+      <DependentUpon>GridPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\UniformGrids.xaml.cs">
+      <DependentUpon>UniformGrids.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Layouts\VirtualizingStackPanelPage.xaml.cs">
       <DependentUpon>VirtualizingStackPanelPage.xaml</DependentUpon>
     </Compile>
@@ -99,6 +148,75 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fonts\fontawesome-webfont.ttf" />
+    <Resource Include="Cursors\0001.ani" />
+    <None Include="Cursors\0011.ani" />
+    <None Include="Cursors\0012.ani" />
+    <None Include="Cursors\0013.ani" />
+    <None Include="Cursors\0014.ani" />
+    <None Include="Cursors\0026.ani" />
+    <None Include="Cursors\0041.ani" />
+    <None Include="Cursors\0042.ani" />
+    <None Include="Cursors\0043.ani" />
+    <None Include="Cursors\0044.ani" />
+    <None Include="Cursors\0051.ani" />
+    <None Include="Cursors\0052.ani" />
+    <None Include="Cursors\0053.ani" />
+    <None Include="Cursors\0061.ani" />
+    <None Include="Cursors\0062.ani" />
+    <None Include="Cursors\0063.ani" />
+    <None Include="Cursors\0064.ani" />
+    <None Include="Cursors\0065.ani" />
+    <None Include="Cursors\0081.ani" />
+    <None Include="Cursors\0082.ani" />
+    <None Include="Cursors\0083.ani" />
+    <None Include="Cursors\0084.ani" />
+    <None Include="Cursors\0085.ani" />
+    <None Include="Cursors\0086.ani" />
+    <None Include="Cursors\0091.ani" />
+    <None Include="Cursors\0092.ani" />
+    <None Include="Cursors\0093.ani" />
+    <None Include="Cursors\0094.ani" />
+    <None Include="Cursors\0095.ani" />
+    <None Include="Cursors\0096.ani" />
+    <None Include="Cursors\0101.ani" />
+    <None Include="Cursors\0102.ani" />
+    <None Include="Cursors\0103.ani" />
+    <None Include="Cursors\0104.ani" />
+    <None Include="Cursors\0105.ani" />
+    <None Include="Cursors\0106.ani" />
+    <None Include="Cursors\0111.ani" />
+    <None Include="Cursors\0112.ani" />
+    <None Include="Cursors\0113.ani" />
+    <None Include="Cursors\01131.ani" />
+    <None Include="Cursors\01134.ani" />
+    <None Include="Cursors\0114.ani" />
+    <None Include="Cursors\0115.ani" />
+    <None Include="Cursors\0131.ani" />
+    <None Include="Cursors\0132.ani" />
+    <None Include="Cursors\0133.ani" />
+    <None Include="Cursors\0134.ani" />
+    <None Include="Cursors\0135.ani" />
+    <None Include="Cursors\0136.ani" />
+    <None Include="Cursors\01411.ani" />
+    <None Include="Cursors\01413.ani" />
+    <None Include="Cursors\1.ani" />
+    <None Include="Cursors\2.ani" />
+    <None Include="Cursors\3.ani" />
+    <None Include="Cursors\4.ani" />
+    <None Include="Cursors\arr6.ani" />
+    <None Include="Cursors\arr8.ani" />
+    <None Include="Cursors\arr9.ani" />
+    <None Include="Cursors\beam.ani" />
+    <None Include="Cursors\Black Parahna Plant.ani" />
+    <None Include="Cursors\Busy_Vnd.ani" />
+    <None Include="Cursors\winmrj685.ani" />
+    <None Include="Cursors\winmrj686.ani" />
+    <None Include="Cursors\winmrj687.ani" />
+    <None Include="Cursors\winmrj688.ani" />
+    <None Include="Cursors\winmrj689.ani" />
+    <None Include="Cursors\箭头-左轮.ani" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -107,6 +225,50 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\UIFramework.Controls\UIFramework.Controls.csproj">
+      <Project>{63beb4b6-4ecd-4874-b411-77eb56bbc982}</Project>
+      <Name>UIFramework.Controls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Cursors\0021.cur" />
+    <Resource Include="Cursors\0022.cur" />
+    <Resource Include="Cursors\0023.cur" />
+    <Resource Include="Cursors\0024.cur" />
+    <Resource Include="Cursors\0025.cur" />
+    <Resource Include="Cursors\0031.cur" />
+    <Resource Include="Cursors\0032.cur" />
+    <Resource Include="Cursors\0033.cur" />
+    <Resource Include="Cursors\0034.cur" />
+    <Resource Include="Cursors\0035.cur" />
+    <Resource Include="Cursors\0036.cur" />
+    <Resource Include="Cursors\0051.cur" />
+    <Resource Include="Cursors\0052.cur" />
+    <Resource Include="Cursors\00522.cur" />
+    <Resource Include="Cursors\0054.cur" />
+    <Resource Include="Cursors\0055.cur" />
+    <Resource Include="Cursors\0132.ico" />
+    <Resource Include="Cursors\0133.ico" />
+    <Resource Include="Cursors\0135.ico" />
+    <Resource Include="Cursors\01412.ico" />
+    <Resource Include="Cursors\01414.ico" />
+    <Resource Include="Cursors\01415.ico" />
+    <Resource Include="Cursors\Altr_Vnd.cur" />
+    <Resource Include="Cursors\ask_GM2.ico" />
+    <Resource Include="Cursors\c_hand.cur" />
+    <Resource Include="Cursors\c_help.cur" />
+    <Resource Include="Cursors\c_size1.cur" />
+    <Resource Include="Cursors\c_size2.cur" />
+    <Resource Include="Cursors\c_size3.cur" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Fody.6.3.0\build\Fody.targets" Condition="Exists('..\packages\Fody.6.3.0\build\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Fody.6.3.0\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.3.0\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\PropertyChanged.Fody.3.3.1\build\PropertyChanged.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PropertyChanged.Fody.3.3.1\build\PropertyChanged.Fody.props'))" />
+  </Target>
 </Project>
