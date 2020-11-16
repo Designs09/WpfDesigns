@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
         xmlns:local="clr-namespace:UIFramework.MaterialDesignApp"
         mc:Ignorable="d"
         Title="MainWindow"
@@ -16,18 +17,62 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
-    <Grid>
-        <StackPanel>
-            <materialDesign:Card Padding="32"
-                                 Margin="16">
-                <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}">My First Material Design App</TextBlock>
-            </materialDesign:Card>
-            <ComboBox Width="60" HorizontalAlignment="Left" Margin="20">
-                <ComboBoxItem Content="1"/>
-                <ComboBoxItem Content="1"/>
-                <ComboBoxItem Content="1"/>
-                <ComboBoxItem Content="1"/>
-            </ComboBox>
-        </StackPanel>
-    </Grid>
+    <Window.Resources>
+
+    </Window.Resources>
+    <materialDesign:DialogHost Identifier="RootDialog">
+        <Grid>
+            <StackPanel>
+                <materialDesign:Card Padding="32"
+                                     Margin="16">
+                    <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}">My First Material Design App</TextBlock>
+                </materialDesign:Card>
+                <ComboBox Width="60"
+                          HorizontalAlignment="Left"
+                          Margin="20">
+                    <ComboBoxItem Content="1" />
+                    <ComboBoxItem Content="1" />
+                    <ComboBoxItem Content="1" />
+                    <ComboBoxItem Content="1" />
+                </ComboBox>
+                <TextBlock Name="DateTimeText"
+                           Text="" />
+                <smtx:XamlDisplay UniqueKey="pickers_2">
+                    <Button Content="..."
+                            Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                            materialDesign:DialogHost.DialogOpenedAttached="CombinedDialogOpenedEventHandler"
+                            materialDesign:DialogHost.DialogClosingAttached="CombinedDialogClosingEventHandler">
+                        <Button.CommandParameter>
+                            <Grid Margin="-1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <StackPanel Grid.Row="0"
+                                            Orientation="Horizontal">
+                                    <Calendar x:Name="CombinedCalendar"
+                                              Margin="-1 -4 -1 0" />
+                                    <materialDesign:Clock x:Name="CombinedClock"
+                                                          DisplayAutomation="CycleWithSeconds"
+                                                          Is24Hours="True" />
+                                </StackPanel>
+                                <StackPanel Grid.Row="1"
+                                            Margin="8"
+                                            HorizontalAlignment="Right"
+                                            Orientation="Horizontal">
+                                    <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                                            CommandParameter="0"
+                                            Style="{DynamicResource MaterialDesignFlatButton}">取消</Button>
+                                    <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                                            CommandParameter="1"
+                                            Style="{DynamicResource MaterialDesignFlatButton}">确定</Button>
+                                </StackPanel>
+                            </Grid>
+                        </Button.CommandParameter>
+                    </Button>
+                </smtx:XamlDisplay>
+                <Calendar Name="EnglishCalendar" />
+            </StackPanel>
+        </Grid>
+    </materialDesign:DialogHost>
 </Window>
