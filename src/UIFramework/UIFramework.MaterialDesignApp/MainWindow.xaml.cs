@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,23 @@ namespace UIFramework.MaterialDesignApp
         public MainWindow()
         {
             InitializeComponent();
+            DateTimeText.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        }
+
+        public void CombinedDialogOpenedEventHandler(object sender, DialogOpenedEventArgs eventArgs)
+        {
+            var t = DateTime.Parse(DateTimeText.Text);
+            CombinedCalendar.SelectedDate = t;
+            CombinedClock.Time = t;
+        }
+
+        public void CombinedDialogClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
+        {
+            if (Equals(eventArgs.Parameter, "1"))
+            {
+                var combined = CombinedCalendar.SelectedDate.Value.AddSeconds(CombinedClock.Time.TimeOfDay.TotalSeconds);
+                DateTimeText.Text = $"{combined:yyyy-MM-dd HH:mm:ss}";
+            }
         }
     }
 }

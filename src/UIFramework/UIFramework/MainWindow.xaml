@@ -32,5 +32,8 @@
         </Border>-->
 
         <!--<controls:TextControl />-->
+
+        <controls:ControlHost />
+
     </Grid>
 </Window>
