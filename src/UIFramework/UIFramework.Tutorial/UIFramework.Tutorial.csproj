@@ -67,8 +67,14 @@
     <Compile Include="Controls\Contents\ContentControlWindow.xaml.cs">
       <DependentUpon>ContentControlWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Contents\LargerControlWindow.xaml.cs">
+      <DependentUpon>LargerControlWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Contents\PopupControlWindow.xaml.cs">
       <DependentUpon>PopupControlWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Texts\TextControlWindow.xaml.cs">
+      <DependentUpon>TextControlWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="TypeConverters\BaseTypeConverter.cs" />
     <Compile Include="TypeConverters\StandardValuesTest.cs" />
@@ -85,7 +91,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Contents\LargerControlWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Contents\PopupControlWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Texts\TextControlWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,35 @@
+﻿<Window x:Class="UIFramework.Tutorial.Controls.Texts.TextControlWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UIFramework.Tutorial.Controls.Texts"
+        mc:Ignorable="d"
+        Height="450"
+        Width="200">
+    <StackPanel Margin="5">
+        <Label Content="常规文本" />
+        <TextBox Text="12345678901234567890123456789012345678901234567890123456789"
+                 TextWrapping="Wrap" />
+        <Label Content="常规文本" />
+        <TextBox Text="C# is the best programming language in the universe and Visual Studio is the best development environment is the universe."
+                 TextWrapping="WrapWithOverflow"
+                 MinLines="1"
+                 VerticalScrollBarVisibility="Auto"
+                 MaxLines="3" />
+        <Label Content="常规文本" />
+        <TextBox Text="12345678901234567890123456789012345678901234567890 123456789"
+                 TextWrapping="WrapWithOverflow"
+                 MinLines="1"
+                 VerticalScrollBarVisibility="Auto"
+                 HorizontalScrollBarVisibility="Auto"
+                 MaxLines="3" />
+
+        <Label Content="富文本" />
+        <RichTextBox />
+
+        <Label Content="密码" />
+        <PasswordBox Password="123456" />
+
+    </StackPanel>
+</Window>

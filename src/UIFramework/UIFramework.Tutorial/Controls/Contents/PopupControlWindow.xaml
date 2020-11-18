@@ -9,7 +9,11 @@
     <Grid>
         <TextBlock><Run TextDecorations="Underline"
                         MouseEnter="Run_MouseEnter">Hello World!</Run></TextBlock>
-        <Popup Name="Pop">
+        <Popup Name="Pop" 
+               StaysOpen="False"
+               Placement="MousePoint"
+               PopupAnimation="Scroll"
+               >
             <Border Background="#FFFFFF">
                 <TextBlock>
                     For more information, see <Hyperlink Click="Hyperlink_Click" NavigateUri="https://www.baidu.com">baidu.com</Hyperlink>
