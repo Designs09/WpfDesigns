@@ -1,0 +1,47 @@
+﻿<local:HeaderControlBase x:Class="UIFramework.Controls.HeaderControl.MainContainer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UIFramework.Controls.HeaderControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="1080" d:DesignWidth="4800">
+    <local:HeaderControlBase.Template>
+        <ControlTemplate TargetType="local:HeaderControlBase">
+            <Grid>
+                <!-- 背景 -->
+                <Grid>
+                    <Grid.Background>
+                        <ImageBrush ImageSource="./imgs/main-background.png" />
+                    </Grid.Background>
+                </Grid>
+                <!-- 边框 -->
+                <Grid>
+                    <Grid.Background>
+                        <ImageBrush ImageSource="./imgs/main-border.png" />
+                    </Grid.Background>
+                </Grid>
+
+                <!-- 主标题 -->
+                <TextBlock Text="{TemplateBinding Title}"
+                           FontFamily="SourceHanSansCN"
+                           FontWeight="Bold"
+                           Foreground="#00C4FF"
+                           FontSize="60"
+                           HorizontalAlignment="Center"
+                           Margin="0 30" />
+                
+                <!-- 子标题 -->
+                <TextBlock Text="{TemplateBinding SubTitle}"
+                           FontFamily="SourceHanSansCN"
+                           Foreground="#ABB3CC"
+                           FontSize="20"
+                           HorizontalAlignment="Center"
+                           Margin="0 95" />
+
+                <!-- 内容 -->
+                <ContentPresenter />
+            </Grid>
+        </ControlTemplate>
+    </local:HeaderControlBase.Template>
+</local:HeaderControlBase>

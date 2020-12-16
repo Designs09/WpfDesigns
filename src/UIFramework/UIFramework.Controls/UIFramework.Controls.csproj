@@ -96,6 +96,10 @@
     <Compile Include="DateRangeItemControl.xaml.cs">
       <DependentUpon>DateRangeItemControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HeaderControl\Base\HeaderControlBase.cs" />
+    <Compile Include="HeaderControl\MainContainer.xaml.cs">
+      <DependentUpon>MainContainer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LinearBrushControl.xaml.cs">
       <DependentUpon>LinearBrushControl.xaml</DependentUpon>
     </Compile>
@@ -154,6 +158,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="DateRangeItemControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="HeaderControl\MainContainer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -253,6 +261,8 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\4262912c57b2ef59a20154a8bc66b8b1.jpg" />
+    <Resource Include="HeaderControl\Imgs\main-background.png" />
+    <Resource Include="HeaderControl\Imgs\main-border.png" />
     <Content Include="Lib\CefSharp.Core.dll" />
     <Content Include="Lib\CefSharp.dll" />
     <Content Include="Lib\CefSharp.Wpf.dll" />
