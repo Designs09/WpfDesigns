@@ -53,8 +53,24 @@
                    />
 
         <!-- SourceHanSansCN-Bold -->
-        <TextBlock Text="Hello World， 哈罗，世界！" 
-                   FontFamily="{StaticResource SourceHanSansCN-Bold}"
-                   />
+        <TextBlock Text="Hello World， 哈罗，世界！"
+                   FontFamily="{StaticResource SourceHanSansCN-Bold}" />
+        
+        <!-- SourceHanSansCN-Bold -->
+        <TextBlock Text="Hello World， 哈罗，世界！"
+                   FontFamily="SourceHanSansCN" 
+                   FontWeight="Bold"/>
+
+        <!-- DIN-Bold --><!--
+        <TextBlock Text="Hello World， 哈罗，世界！1234567890"
+                   FontFamily="{StaticResource DINBold}" />-->
+
+        <!-- DIN-Regular -->
+        <TextBlock Text="Hello World， 哈罗，世界！1234567890"
+                   FontFamily="{StaticResource DINRegular}" />
+        <!-- DIN-Bold -->
+        <TextBlock Text="Hello World， 哈罗，世界！1234567890"
+                   FontFamily="{StaticResource DINRegular}" 
+                   FontWeight="Bold"/>
     </StackPanel>
 </UserControl>

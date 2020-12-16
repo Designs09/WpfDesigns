@@ -241,6 +241,8 @@
     <Resource Include="Fonts\SourceHanSansCN-Medium.ttf" />
     <Resource Include="Fonts\SourceHanSansCN-Regular.ttf" />
     <Resource Include="Fonts\SourceHanSansCN-Bold.otf" />
+    <Resource Include="Fonts\DIN-Regular.otf" />
+    <Resource Include="Fonts\DIN-Bold.otf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

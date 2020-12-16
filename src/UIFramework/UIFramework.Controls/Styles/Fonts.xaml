@@ -9,5 +9,7 @@
     <FontFamily x:Key="LatoRegular">pack://application:,,,/Fonts/#Lato Regular</FontFamily>
     <FontFamily x:Key="LatoThin">pack://application:,,,/Fonts/#Lato Thin</FontFamily>
     <FontFamily x:Key="LatoBold">pack://application:,,,/Fonts/#Lato Bold</FontFamily>
+    <FontFamily x:Key="DINRegular">pack://application:,,,/Fonts/#DIN</FontFamily>
+    <!--<FontFamily x:Key="DINBold">pack://application:,,,/Fonts/#DIN Bold</FontFamily>-->
     
 </ResourceDictionary>
