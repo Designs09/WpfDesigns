@@ -10,6 +10,10 @@
         Height="450"
         Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="155*" />
+            <ColumnDefinition Width="43*" />
+        </Grid.ColumnDefinitions>
         <!--<controls:StyleFireOrder1 />-->
 
         <!--<controls:DateRangeControl Margin="50"/>-->
@@ -33,7 +37,11 @@
 
         <!--<controls:TextControl />-->
 
-        <controls:ControlHost />
+        <!--<controls:ControlHost Grid.ColumnSpan="2" />-->
+
+        <Grid Height="5" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <controls:StrokeImageControl />
+        </Grid>
 
     </Grid>
 </Window>
