@@ -75,6 +75,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="3DModelControl.xaml.cs">
+      <DependentUpon>3DModelControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AttachedProperties\BaseAttachedProperty.cs" />
     <Compile Include="AttachedProperties\ClipFromBorderProperty.cs" />
     <Compile Include="AttachedProperties\ClipFromBorderSizeProperty.cs" />
@@ -102,6 +105,9 @@
     </Compile>
     <Compile Include="LinearBrushControl.xaml.cs">
       <DependentUpon>LinearBrushControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListViewAlternateControl.xaml.cs">
+      <DependentUpon>ListViewAlternateControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\AlarmHandleStatus.cs" />
     <Compile Include="Model\DateType.cs" />
@@ -139,6 +145,10 @@
     <Compile Include="ViewModel\Date\Design\DateRangeDesignModel.cs" />
     <Compile Include="ViewModel\Design\NormalDesignModel.cs" />
     <Compile Include="ViewModel\NormalViewModel.cs" />
+    <Page Include="3DModelControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ChromeBrowserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -176,6 +186,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LinearBrushControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListViewAlternateControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

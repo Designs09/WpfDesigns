@@ -39,9 +39,13 @@
 
         <!--<controls:ControlHost Grid.ColumnSpan="2" />-->
 
-        <Grid Height="5" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <!--<Grid Height="5" HorizontalAlignment="Left" VerticalAlignment="Top">
             <controls:StrokeImageControl />
-        </Grid>
+        </Grid>-->
 
+        <Canvas HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+            <controls:_3DModelControl />
+        </Canvas>
     </Grid>
 </Window>
