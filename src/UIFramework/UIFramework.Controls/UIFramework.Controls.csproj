@@ -111,6 +111,9 @@
     <Compile Include="Overrides\ControlHost.xaml.cs">
       <DependentUpon>ControlHost.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Paragraph.xaml.cs">
+      <DependentUpon>Paragraph.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StrokeImageControl.xaml.cs">
       <DependentUpon>StrokeImageControl.xaml</DependentUpon>
     </Compile>
@@ -181,6 +184,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Overrides\ControlHost.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paragraph.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

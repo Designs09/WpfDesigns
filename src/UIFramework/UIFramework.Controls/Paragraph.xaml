@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="UIFramework.Controls.Paragraph"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UIFramework.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel>
+        <TextBlock Background="Transparent"
+                   Margin="26 18 22 0"
+                   FontFamily="Source Han Sans CN Medium"
+                   FontSize="14"
+                   Foreground="#D6E0FF"
+                   LineHeight="24"
+                   TextWrapping="Wrap"
+                   Width="666"
+                   Text="        东江水源工程是为长远解决深圳水源短缺问题，由深圳市政府投资建设的大型跨流域调水工程，是深圳两大境外引水工程之一。工程东起惠州，西至深圳市宝安区，干线全长106公里，以&quot; 长藤结瓜&quot; 的形式横穿深惠两地。取水口为西枝江泵站和水口街道办廉福地。">
+
+        </TextBlock>
+        <TextBlock Background="Transparent"
+                   Margin="26 6 22 0"
+                   FontFamily="SourceHanSansCN"
+                   FontWeight="Medium"
+                   FontSize="14"
+                   Foreground="#D6E0FF"
+                   LineHeight="24"
+                   TextWrapping="Wrap"
+                   Width="666"
+                   Text="        深圳地理条件特别，水源短缺问题由来已久。上世纪90年代开始，深圳市委、市政府积极规划境外引水线路，经过反复科学论证，最终决定自惠州境内的东江取水，兴建东江水源工程。1996年11月30日，东江水源工程一期工程建设启动，于2001年底正式通水，设计供水量为3.5亿立方米/年；2006年8月5日，二期工程开工，于2010年11月26日建成通水，新增供水量3.7亿立方米/年。">
+
+        </TextBlock>
+        <TextBlock Background="Transparent"
+                   Margin="26 6 22 0"
+                   FontFamily="SourceHanSansCN"
+                   FontWeight="Medium"
+                   FontSize="14"
+                   Foreground="#D6E0FF"
+                   LineHeight="24"
+                   TextWrapping="Wrap"
+                   Width="666"
+                   Text="        东江水源工程广泛采用新材料、新工艺，成为国内技术领先的现代化引水工程。水泵和电机等重要设备均采用西门子、耐荷等国外先进技术；2014年，又采用日本的先进变频技术，实施机电设备的更新升级工作。管材则采用定制的大吨位PCCP管，单根管重45吨，15年来未发生过一起爆管事故。" />
+        <TextBlock Background="Transparent"
+                   Margin="26 6 22 0"
+                   FontFamily="SourceHanSansCN"
+                   FontWeight="Medium"
+                   FontSize="14"
+                   Foreground="#D6E0FF"
+                   LineHeight="24"
+                   TextWrapping="Wrap"
+                   Width="666"
+                   Text="        作为广东省&quot;九五&quot;重点建设项目，东江水源工程在2010年特区建立三十周年之际当选&quot;深圳市30年30个特色建设项目&quot;之一，被誉为深圳的&quot;生命线工程&quot;。" />
+
+    </StackPanel>
+</UserControl>
