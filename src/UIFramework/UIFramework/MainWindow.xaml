@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UIFramework"
         xmlns:controls="clr-namespace:UIFramework.Controls;assembly=UIFramework.Controls"
+        xmlns:customs="clr-namespace:UIFramework.CustomControls;assembly=UIFramework.CustomControls"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="450"
@@ -43,9 +44,11 @@
             <controls:StrokeImageControl />
         </Grid>-->
 
-        <Canvas HorizontalAlignment="Center"
+        <!--<Canvas HorizontalAlignment="Center"
                 VerticalAlignment="Center">
             <controls:_3DModelControl />
-        </Canvas>
+        </Canvas>-->
+
+        <customs:CustomPanel />
     </Grid>
 </Window>

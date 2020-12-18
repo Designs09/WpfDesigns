@@ -155,6 +155,15 @@
       <Project>{4B5D331B-0D0F-4B35-B529-0A5BF945088C}</Project>
       <Name>UIFramework.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UIFramework.CustomControls\UIFramework.CustomControls.csproj">
+      <Project>{8a677b7e-6e84-4c22-bde6-6358abdb8a9d}</Project>
+      <Name>UIFramework.CustomControls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\29.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
