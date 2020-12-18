@@ -81,6 +81,10 @@
     <Compile Include="AttachedProperties\BaseAttachedProperty.cs" />
     <Compile Include="AttachedProperties\ClipFromBorderProperty.cs" />
     <Compile Include="AttachedProperties\ClipFromBorderSizeProperty.cs" />
+    <Compile Include="AutoStretchControl.xaml.cs">
+      <DependentUpon>AutoStretchControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\NoInheritanceContentControl.cs" />
     <Compile Include="ChromeBrowserControl.xaml.cs">
       <DependentUpon>ChromeBrowserControl.xaml</DependentUpon>
     </Compile>
@@ -146,6 +150,10 @@
     <Compile Include="ViewModel\Design\NormalDesignModel.cs" />
     <Compile Include="ViewModel\NormalViewModel.cs" />
     <Page Include="3DModelControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AutoStretchControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
