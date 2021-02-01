@@ -78,16 +78,23 @@
     <Compile Include="3DModelControl.xaml.cs">
       <DependentUpon>3DModelControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Animation\ListAnimation.xaml.cs">
+    <Compile Include="Animation\AnimationSlideInDirection.cs" />
+    <Compile Include="Animation\FrameworkElementAnimations.cs" />
+    <Compile Include="AnimationControls\ListAnimation.xaml.cs">
       <DependentUpon>ListAnimation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Animation\PageAnimation.cs" />
+    <Compile Include="Animation\PageAnimations.cs" />
+    <Compile Include="Animation\StoryboardHelper.cs" />
+    <Compile Include="AttachedProperties\AnimateBaseProperty.cs" />
     <Compile Include="AttachedProperties\BaseAttachedProperty.cs" />
     <Compile Include="AttachedProperties\ClipFromBorderProperty.cs" />
     <Compile Include="AttachedProperties\ClipFromBorderSizeProperty.cs" />
+    <Compile Include="AttachedProperties\FrameworkElementAnimationAttachedProperties.cs" />
     <Compile Include="AutoStretchControl.xaml.cs">
       <DependentUpon>AutoStretchControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Animation\BaseAnimation.xaml.cs">
+    <Compile Include="AnimationControls\BaseAnimation.xaml.cs">
       <DependentUpon>BaseAnimation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Base\NoInheritanceContentControl.cs" />
@@ -164,7 +171,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Animation\ListAnimation.xaml">
+    <Page Include="AnimationControls\ListAnimation.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -172,7 +179,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Animation\BaseAnimation.xaml">
+    <Page Include="AnimationControls\BaseAnimation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
