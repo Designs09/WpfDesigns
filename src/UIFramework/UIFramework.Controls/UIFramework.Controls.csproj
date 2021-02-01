@@ -78,11 +78,17 @@
     <Compile Include="3DModelControl.xaml.cs">
       <DependentUpon>3DModelControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Animation\ListAnimation.xaml.cs">
+      <DependentUpon>ListAnimation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AttachedProperties\BaseAttachedProperty.cs" />
     <Compile Include="AttachedProperties\ClipFromBorderProperty.cs" />
     <Compile Include="AttachedProperties\ClipFromBorderSizeProperty.cs" />
     <Compile Include="AutoStretchControl.xaml.cs">
       <DependentUpon>AutoStretchControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animation\BaseAnimation.xaml.cs">
+      <DependentUpon>BaseAnimation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Base\NoInheritanceContentControl.cs" />
     <Compile Include="ChromeBrowserControl.xaml.cs">
@@ -139,11 +145,16 @@
     <Compile Include="StyleFireOrder.xaml.cs">
       <DependentUpon>StyleFireOrder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ValueConverter\DoubleToLeftMarginValueConverter.cs" />
     <Compile Include="ValueConverter\MultiValueConverter.cs" />
     <Compile Include="ValueConverter\TimeToStringConverter.cs" />
+    <Compile Include="ViewModel.Design\Animation\ListAnimationDesignModel.cs" />
+    <Compile Include="ViewModel.Design\Animation\ListAnimationItemDesignModel.cs" />
     <Compile Include="ViewModel\Alarm\AlarmListItemViewModel.cs" />
     <Compile Include="ViewModel\Alarm\AlarmListViewModel.cs" />
     <Compile Include="ViewModel\Alarm\Design\AlarmListDesignModel.cs" />
+    <Compile Include="ViewModel\Animation\ListAnimationItemViewModel.cs" />
+    <Compile Include="ViewModel\Animation\ListAnimationViewModel.cs" />
     <Compile Include="ViewModel\DataGridViewModel.cs" />
     <Compile Include="ViewModel\Date\DateRangeViewModel.cs" />
     <Compile Include="ViewModel\Date\Design\DateRangeDesignModel.cs" />
@@ -153,7 +164,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Animation\ListAnimation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AutoStretchControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animation\BaseAnimation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

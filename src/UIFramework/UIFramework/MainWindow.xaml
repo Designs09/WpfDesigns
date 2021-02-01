@@ -11,10 +11,6 @@
         Height="450"
         Width="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="155*" />
-            <ColumnDefinition Width="43*" />
-        </Grid.ColumnDefinitions>
         <!--<controls:StyleFireOrder1 />-->
 
         <!--<controls:DateRangeControl Margin="50"/>-->
@@ -49,6 +45,50 @@
             <controls:_3DModelControl />
         </Canvas>-->
 
-        <customs:CustomPanel />
+        <!--<customs:CustomPanel />-->
+
+        <!--<Button HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                FontSize="50"
+                Click="Button_Click">你好</Button>-->
+
+        <!--<controls:BaseAnimation />-->
+        <controls:ListAnimation />
+
+        <!--<ScrollViewer Width="490"
+                      DataContext="{x:Static controls:ListAnimationDesignModel.Instance}"
+                      VerticalScrollBarVisibility="Hidden"
+                      HorizontalScrollBarVisibility="Hidden">
+            <ItemsControl Name="ctrItems"
+                          ItemsSource="{Binding Items}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"></StackPanel>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="100"
+                              Height="50"
+                              Background="Blue"
+                              Margin="10"></Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.Triggers>
+                    <EventTrigger RoutedEvent="Window.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard RepeatBehavior="Forever"
+                                        AutoReverse="True">
+                                <ThicknessAnimation Storyboard.TargetName="ctrItems"
+                                                    Storyboard.TargetProperty="Margin"
+                                                    From="0 0 0 0"
+                                                    To="{Binding Width, Converter={controls:DoubleToLeftMarginValueConverter}}"
+                                                    Duration="0:0:5" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </ItemsControl.Triggers>
+            </ItemsControl>
+        </ScrollViewer>-->
     </Grid>
 </Window>

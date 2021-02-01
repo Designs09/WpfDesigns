@@ -13,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace UIFramework
+namespace UIFramework.Controls
 {
     /// <summary>
-    /// MainWindow.xaml 的交互逻辑
+    /// ListAnimation.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ListAnimation : UserControl
     {
-        public MainWindow()
+        public ListAnimation()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            new DialogMessageBox().ShowDialog(new DialogMessageViewModel());
         }
     }
 }
